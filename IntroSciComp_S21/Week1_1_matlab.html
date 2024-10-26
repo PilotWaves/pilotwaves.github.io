@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S1 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S5 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S6 { border-left: 0px none rgb(0, 0, 0); border-right: 0px none rgb(0, 0, 0); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px; line-height: 16px; min-height: 16px; white-space: pre; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;  }
+.S7 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S8 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S9 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S10 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S12 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S13 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S14 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S15 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S16 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S17 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h2  class = 'S0'><span>Week 1 Coding Lecture 1</span></h2><h3  class = 'S1'><span>How to read these notes</span></h3><div  class = 'S2'><span>Coding lecture notes for this class will (mostly) be written in MATLAB live scripts, and then converted to PDF in order to mix codes and exposition.  For example, try the code below on the MATLAB command window.</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>why()</span></span></div><div  class = 'S4'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="DF478477" data-testid="output_0" data-width="1145" data-height="18" data-hashorizontaloverflow="false" style="width: 1175px; max-height: 261px;"><div class="textElement">He wanted it that way.</div></div></div></div></div><div  class = 'S5'><span>If you run that command a few times you will notice that you get a different answer.</span></div><div  class = 'S2'><span>I will sometimes include code that is intentionally broken to illustrate an error.  For example, this code tries to use a variable that has not yet been defined.  Try it on the command window and see what error it gives you.</span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S6'><span style="white-space: pre;"><span>x</span></span></div></div><div  class = 'S2'><span></span></div><h3  class = 'S7'><span>Writing your own code</span></h3><div  class = 'S2'><span>There are three ways to write code in MATLAB:  Command line (in the command window), as scripts, or as functions.</span></div><div  class = 'S2'><span>The command window is good for quick calculations (for example to test a small piece of code), but it has some serious drawbacks.  For one thing, you can't edit and rerun code you have already typed in the command window.  Instead, you just have to retype it at the prompt.  For another, nothing in the command window is saved when you exit MATLAB.  You have to redo all work from the command window every time you start.  </span></div><h4  class = 'S8'><span>Scripts</span></h4><div  class = 'S2'><span>Since the command window is so limited, you should write most of your MATLAB code in scripts (files with a .m extension).  You can make a new script with the "New Script" button in the top left corner of the program.  </span></div><div  class = 'S2'><span>Scripts are essentially just the code blocks from a live script like this one, without the text in between.  Try opening a script, typing the line "why()" (without quotes) and saving it with the name "my_script.m" (again, without quotes).  You can run the code in this script by clicking the Run button (with a green arrow) or by typing the name of the script without the .m extension in the command window.  The output will appear just as if you had typed each line of the script into the command window.  </span></div><div  class = 'S2'><span>This example only has a single line, but in general your scripts will contain many lines of code.  MATLAB runs each line in order from top to bottom.  (Next week we will learn how to make MATLAB repeat or skip lines of code.)</span></div><div  class = 'S2'><span>(Side note: There are a few rules to naming scripts.  The file name can only contain letters, numbers and underscores, and it must start with a letter.  Names are also case sensitive, so </span><span style=' font-family: monospace;'>my_script.m</span><span> and </span><span style=' font-family: monospace;'>My_Script.m</span><span> are two different files.  If you forget these rules and start a file name with a number or include a space, then you will get somewhat cryptic error messages.)  </span></div><div  class = 'S2'><span></span></div><h4  class = 'S9'><span>Comments</span></h4><div  class = 'S2'><span>It is often useful to leave explanatory text in a script.  If you begin a line of code with a percent sign and a space, then MATLAB will ignore all text on the line when running the code.  This is useful for leaving notes or explanations for yourself (or for anyone else who may read your code later).</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% This is a comment.  Matlab will ignore it </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% when you run this code block.  </span></span></div></div></div><div  class = 'S5'><span>If you start a line with two percent signs and a space, then it creates a section break.  These section breaks work just like the horizontal lines in a live script and let you use the "Run Section" button to just run pieces of your code at a time.  However, I have a very old school style of coding (because I learned how to program in C/C++ and then learned Java and MATLAB and also a bit of Assembly at the same time), so I never use section breaks.</span></div><h3  class = 'S7'><span>Basic calculation</span></h3><div  class = 'S2'><span>You can use MATLAB as a very expensive calculator.  You are probably familiar with all of the syntax already, but here are some examples: </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>1 + 3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 4</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>4 - 5</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = -1</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>2 * 3.2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 6.4000</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>4 / 3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 1.3333</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>5^3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 125</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>3 - 2*6</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = -9</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>8 * (1 + 2)</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 24</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>pi + 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 5.1416</div></div></div></div><div  class = 'S5'><span>As you can see, MATLAB uses standard symbols for all of the basic mathematical operations and follows the usual order of operations.  MATLAB also has a few common constants defined by default.  We used </span><span style=' font-family: monospace;'>pi</span><span> above, but there are a few others like the imaginary unit </span><span style=' font-family: monospace;'>i</span><span> and infinity </span><span style=' font-family: monospace;'>Inf</span><span>.  MATLAB also has all the usual scientific calculator functions like </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: normal; font-weight: 400; color: rgb(0, 0, 0);">sin</span><span>, </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: normal; font-weight: 400; color: rgb(0, 0, 0);">cos</span><span>, </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: normal; font-weight: 400; color: rgb(0, 0, 0);">tan</span><span>, </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: normal; font-weight: 400; color: rgb(0, 0, 0);">log</span><span>, etc.  For example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>sin(10)</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = -0.5440</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>cos(2*pi)</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 1</div></div></div></div><div  class = 'S5'><span>When you run this section, you will see that MATLAB displays the output as </span><span style=' font-family: monospace;'>ans = 1</span><span> (or whatever other number was produced).  </span><span style=' font-family: monospace;'>ans</span><span> is the name Matlab uses to store the last thing that was calculated.  The value is saved in memory and not just printed as output.  You can see this by looking in the workspace (which should be beside the command window in the main MATLAB screen).  You should see an entry in the workspace with name </span><span style=' font-family: monospace;'>ans</span><span> and value 1.  </span></div><h3  class = 'S7'><span>Variables</span></h3><div  class = 'S2'><span style=' font-family: monospace;'>ans</span><span> is our first example of a variable.  (Actually, </span><span style=' font-family: monospace;'>pi</span><span> is also a variable.)  Variables are values that MATLAB stores in memory so that we can use them later.  For example, we know that the line </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>2 + 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 4</div></div></div></div><div  class = 'S5'><span>sets the value of </span><span style=' font-family: monospace;'>ans</span><span> to 4.  We can then use this value in other calculations.  For example, we could calculate 4 * 2 by writing </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">ans</span><span> * 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 8</div></div></div></div><div  class = 'S5'><span>When MATLAB sees the name </span><span style=' font-family: monospace;'>ans</span><span>, it checks the workspace to find the value of the variable, then replaces </span><span style=' font-family: monospace;'>ans</span><span> with the value it found.  </span></div><div  class = 'S2'><span>It is important to emphasize that this is just an example of the concept and </span><span style=' font-family: monospace;'>ans</span><span> is a very bad choice of variable for any real computation.  (In fact, MATLAB should show you a warning when you try to run this code.)  To see why, notice that the value of </span><span style=' font-family: monospace;'>ans</span><span> is now 8, so if we now try the code </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">ans</span><span> * 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 16</div></div></div></div><div  class = 'S5'><span>a second time, we get a different answer.  The problem is that MATLAB is constantly overwriting the variable </span><span style=' font-family: monospace;'>ans</span><span>, so we have very little control over what value is actually in it.  </span></div><div  class = 'S2'><span></span></div><div  class = 'S2'><span style=' font-weight: bold;'>As a rule of thumb for beginners, don't use </span><span style=' font-weight: bold; font-style: italic;'>ans</span><span style=' font-weight: bold;'> as a variable.</span></div><h4  class = 'S8'><span>Assignment</span></h4><div  class = 'S2'><span>It is much more convenient to be able to make our own variables and not rely on automatic versions like </span><span style=' font-family: monospace;'>ans</span><span>.  To this end, we can use the assignment operator </span><span style=' font-family: monospace;'>=</span><span> to assign numbers to variables.  The </span><span style=' font-family: monospace;'>=</span><span> symbol means "calculate the value on the right and assign it to the name on the left".  For example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x = 8</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 8</div></div></div></div><div  class = 'S5'><span> Assigns the value 8 to a variable named </span><span style=' font-family: monospace;'>x</span><span>.  After running this code, you should see </span><span style=' font-family: monospace;'>x</span><span> appear in the workspace along with </span><span style=' font-family: monospace;'>ans</span><span>.  We can now use the variable </span><span style=' font-family: monospace;'>x</span><span> in calculations and MATLAB will treat it as if we typed 8.  For instance, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x / 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 4</div></div></div></div><div  class = 'S5'><span>Unlike the variable </span><span style=' font-family: monospace;'>ans</span><span>, </span><span style=' font-family: monospace;'>x</span><span> will not be overwritten automatically, so we can keep using it in multiple lines without worrying that its value will change.  </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x + 3.6</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 11.6000</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>x - 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 6</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>x * 5.0</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 40</div></div></div></div><div  class = 'S5'><span>Notice that </span><span style=' font-family: monospace;'>x</span><span> is just replaced with </span><span style=' font-family: monospace;'>8</span><span> in all of these calculations.  </span></div><div  class = 'S2'><span>If we want to change the value of </span><span style=' font-family: monospace;'>x</span><span>, we can just reassign it with the </span><span style=' font-family: monospace;'>=</span><span> operator.  </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 3</div></div></div></div><div  class = 'S5'><span>The value of </span><span style=' font-family: monospace;'>x</span><span> is now 3 instead of 8.  This doesn't change any old results (the output from previous lines is the same) but all future occurrences of </span><span style=' font-family: monospace;'>x</span><span> will use the new value.  For example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x + 3.6</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 6.6000</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>x - 2</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 1</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>x * 5.0</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>ans = 15</div></div></div></div><div  class = 'S2'><span>There is no reason to restrict ourselves to just one variable.  We can make many different variables, as long as they each have a different name.  (Side note: Just like with file names, MATLAB has a few rules for naming variables.  Variable names can be as long as you want and can contain letters, numbers and underscores, but they must start with a letter.  This means that </span><span style=' font-family: monospace;'>x</span><span>, </span><span style=' font-family: monospace;'>answer_number_4</span><span> and </span><span style=' font-family: monospace;'>int2str</span><span> are all valid variable names, but </span><span style=' font-family: monospace;'>3test, x-y and answer number 4 are not.  </span><span>Names are also case sensitive, so </span><span style=' font-family: monospace;'>ans1</span><span> and </span><span style=' font-family: monospace;'>Ans1</span><span> and </span><span style=' font-family: monospace;'>ANS1</span><span> are all different names.  That said, it is not a good idea to have different variables that differ only by case.  There are also a few reserved words that MATLAB uses for other purposes and you cannot use as variable names.  For example, </span><span style=' font-family: monospace;'>function, for, while, if and end </span><span>are all reserved words.  MATLAB will give an error if you try to use one of these as a variable name.)</span></div><div  class = 'S2'><span>As an example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x = 8</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 8</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>y = 3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>y = 3</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>var3 = 0</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>var3 = 0</div></div></div></div><div  class = 'S5'><span>We can combine these variables just as if they were numbers.  </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>z = x - y + 2^var3</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>z = 6</div></div></div></div><div  class = 'S2'><span>As we have already seen, you can't use a variable until you have assigned it a value.  If you try to do a calculation with a variable that you haven't yet defined, MATLAB will give an error along the lines of "undefined function or variable".  For example, try running this in the command window:</span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S6'><span style="white-space: pre;"><span>3 * N</span></span></div></div><div  class = 'S2'><span>It is important to remember that the assignment operator is not the same thing as mathematical equality.  In particular, it treats variables on the left and right side differently.  If a variable appears on the right side of an </span><span style=' font-family: monospace;'>=</span><span> operator, MATLAB replaces it with whatever value it finds in the workspace, so the </span><span style=' font-family: monospace;'>x - y + 2^var3</span><span> above is replaced with </span><span style=' font-family: monospace;'>8 - 3 + 2^0</span><span>.  On the other hand, if a variable appears on the left side then MATLAB does not look up its value.  Instead, MATLAB stores the value on the right in the variable named on the left.  One example that comes up a lot is </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x = 8</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 8</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">x</span><span> = x + 1</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 9</div></div></div></div><div  class = 'S5'><span>The last line doesn't make any sense in mathematics, but it is perfectly sensible code.  MATLAB evaluates this expression as follows: First, it sees an </span><span style=' font-family: monospace;'>x</span><span> on the right side of the </span><span style=' font-family: monospace;'>=</span><span> operator, so it looks up its value in the workspace.  Since </span><span style=' font-family: monospace;'>x</span><span> has the value 8, MATLAB interprets the right side as </span><span style=' font-family: monospace;'>8 + 1</span><span>, which is </span><span style=' font-family: monospace;'>9</span><span>.  Next, MATLAB sees the name </span><span style=' font-family: monospace;'>x</span><span> on the left side of the </span><span style=' font-family: monospace;'>=</span><span> operator, so it stores the value </span><span style=' font-family: monospace;'>9</span><span> in the variable named </span><span style=' font-family: monospace;'>x</span><span>.  </span></div><div  class = 'S2'><span>There are a few things worth remembering about assignment and variables in MATLAB:</span></div><ul  class = 'S13'><li  class = 'S14'><span>The left side of the </span><span style=' font-family: monospace;'>=</span><span> operator is the name of a variable.  You can't have any calculations or other code - just a single variable name.  </span></li><li  class = 'S14'><span>If the name on the left side is already a variable in the workspace, then MATLAB will overwrite the value of that variable with the result from the right hand side.  This will not affect any previous calculations with the variable.  </span></li><li  class = 'S14'><span>If the name on the left side is not already a variable in the workspace, then MATLAB will make a new variable with that name and the value from the right hand side.  </span></li><li  class = 'S14'><span>The right hand side can be as complicated as you want and can include as many variables as you want, but it can only include variables that are already defined (i.e., already in the workspace).  </span></li></ul><h3  class = 'S7'><span>Output suppression</span></h3><div  class = 'S2'><span>You have probably noticed by now that most lines of code in MATLAB cause some sort of output to be printed in the command window (or in the live script).  This is useful behavior when you are testing or fixing code, but it is actually quite undesirable in general.  </span></div><div  class = 'S2'><span>One issue is that it quickly becomes difficult to find relevant information in the command window when it is cluttered with output.  More importantly, printing output is actually substantially slower than most other work that your code might be doing.  We will see examples later in the class where printing the output takes hundreds or thousands of times longer than calculating the answer.  It is therefore useful to be able to tell MATLAB not to print the output from certain lines of code.  </span></div><div  class = 'S2'><span>This is what the semicolon </span><span style=' font-family: monospace;'>;</span><span> is for in MATLAB.  If you end a line of code with a semicolon, then MATLAB does exactly the same thing it would have without the semicolon, but it does not print the output.  For example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x = 1</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 1</div></div></div><div class="inlineWrapper"><div  class = 'S15'><span style="white-space: pre;"><span>y = 2;</span></span></div></div></div><div  class = 'S5'><span>Notice that the first line prints "x = 1" when you run it, but the second line doesn't print anything.  If you look in the workspace, though, you can see that both x and y have been defined, so we know that MATLAB still ran both lines of code.  </span></div><div  class = 'S2'><span>As a general rule, when you are finished with a script it should run without printing any output, except possibly the final answer.  This means that you should end every single line with a semicolon.  (Actually, some lines don't need a semicolon because they don't print output by default.  For example, the line </span><span style=' font-family: monospace;'>clear all</span><span> doesn't print anything, so a semicolon is unnecessary.  That said, it never hurts to end a line with a semicolon.)  This will become quite important in future assignments, where printing output will drastically slow down your code.  If you want to print out the value of a variable, you can just write the variable name on its own line without a semicolon, or you can use the </span><span style=' font-family: monospace;'>disp</span><span> function.  For example:</span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S3'><span style="white-space: pre;"><span>x</span></span></div><div  class = 'S4'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>x = 1</div></div></div><div class="inlineWrapper outputs"><div  class = 'S12'><span style="white-space: pre;"><span>disp(x)</span></span></div><div  class = 'S4'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="7A3FBCBB" data-testid="output_31" data-width="1145" data-height="18" data-hashorizontaloverflow="false" style="width: 1175px; max-height: 261px;"><div class="textElement">     1</div></div></div></div></div><div  class = 'S5'><span>The only difference is that </span><span style=' font-family: monospace;'>disp</span><span> does not print the "x = " part.  </span></div><div  class = 'S2'><span>A semicolon also indicates the end of a line of code.  This means that you can put more than one line of code in a single line of text if you end each part with a semicolon.  For example, instead of writing </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">a</span><span> = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S16'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">b</span><span> = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre;"><span class="warning_squiggle_rte233451907">c</span><span> = 3;</span></span></div></div></div><div  class = 'S5'><span>you could write </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S17'><span style="white-space: pre;"><span>a = 1; b = 2; c = 3;</span></span></div></div></div><div  class = 'S5'><span>This is almost always a bad idea.  There are only two times when this method is worth doing.  One is when you have to define a lot of variables at the beginning of a problem (like the example above with </span><span style=' font-family: monospace;'>a</span><span>, </span><span style=' font-family: monospace;'>b</span><span> and </span><span style=' font-family: monospace;'>c</span><span>) and the other is when you have some short boilerplate code that always comes together.</span></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Week 1 Coding Lecture 1
+% How to read these notes
+% Coding lecture notes for this class will (mostly) be written in MATLAB live 
+% scripts, and then converted to PDF in order to mix codes and exposition.  For 
+% example, try the code below on the MATLAB command window.
+
+why()
+%% 
+% If you run that command a few times you will notice that you get a different 
+% answer.
+%% 
+% I will sometimes include code that is intentionally broken to illustrate an 
+% error.  For example, this code tries to use a variable that has not yet been 
+% defined.  Try it on the command window and see what error it gives you.
+%%
+% 
+%   x
+%
+%% 
+% 
+% Writing your own code
+% There are three ways to write code in MATLAB:  Command line (in the command 
+% window), as scripts, or as functions.
+% 
+% The command window is good for quick calculations (for example to test a small 
+% piece of code), but it has some serious drawbacks.  For one thing, you can't 
+% edit and rerun code you have already typed in the command window.  Instead, 
+% you just have to retype it at the prompt.  For another, nothing in the command 
+% window is saved when you exit MATLAB.  You have to redo all work from the command 
+% window every time you start.  
+% Scripts
+% Since the command window is so limited, you should write most of your MATLAB 
+% code in scripts (files with a .m extension).  You can make a new script with 
+% the "New Script" button in the top left corner of the program.  
+% 
+% Scripts are essentially just the code blocks from a live script like this 
+% one, without the text in between.  Try opening a script, typing the line "why()" 
+% (without quotes) and saving it with the name "my_script.m" (again, without quotes).  
+% You can run the code in this script by clicking the Run button (with a green 
+% arrow) or by typing the name of the script without the .m extension in the command 
+% window.  The output will appear just as if you had typed each line of the script 
+% into the command window.  
+% 
+% This example only has a single line, but in general your scripts will contain 
+% many lines of code.  MATLAB runs each line in order from top to bottom.  (Next 
+% week we will learn how to make MATLAB repeat or skip lines of code.)
+% 
+% (Side note: There are a few rules to naming scripts.  The file name can only 
+% contain letters, numbers and underscores, and it must start with a letter.  
+% Names are also case sensitive, so |my_script.m| and |My_Script.m| are two different 
+% files.  If you forget these rules and start a file name with a number or include 
+% a space, then you will get somewhat cryptic error messages.)  
+% 
+% 
+% Comments
+% It is often useful to leave explanatory text in a script.  If you begin a 
+% line of code with a percent sign and a space, then MATLAB will ignore all text 
+% on the line when running the code.  This is useful for leaving notes or explanations 
+% for yourself (or for anyone else who may read your code later).
+
+% This is a comment.  Matlab will ignore it 
+% when you run this code block.  
+%% 
+% If you start a line with two percent signs and a space, then it creates a 
+% section break.  These section breaks work just like the horizontal lines in 
+% a live script and let you use the "Run Section" button to just run pieces of 
+% your code at a time.  However, I have a very old school style of coding (because 
+% I learned how to program in C/C++ and then learned Java and MATLAB and also 
+% a bit of Assembly at the same time), so I never use section breaks.
+% Basic calculation
+% You can use MATLAB as a very expensive calculator.  You are probably familiar 
+% with all of the syntax already, but here are some examples: 
+
+1 + 3
+4 - 5
+2 * 3.2
+4 / 3
+5^3
+3 - 2*6
+8 * (1 + 2)
+pi + 2
+%% 
+% As you can see, MATLAB uses standard symbols for all of the basic mathematical 
+% operations and follows the usual order of operations.  MATLAB also has a few 
+% common constants defined by default.  We used |pi| above, but there are a few 
+% others like the imaginary unit |i| and infinity |Inf|.  MATLAB also has all 
+% the usual scientific calculator functions like $\sin$, $\cos$, $\tan$, $\log$, 
+% etc.  For example, 
+
+sin(10)
+cos(2*pi)
+%% 
+% When you run this section, you will see that MATLAB displays the output as 
+% |ans = 1| (or whatever other number was produced).  |ans| is the name Matlab 
+% uses to store the last thing that was calculated.  The value is saved in memory 
+% and not just printed as output.  You can see this by looking in the workspace 
+% (which should be beside the command window in the main MATLAB screen).  You 
+% should see an entry in the workspace with name |ans| and value 1.  
+% Variables
+% |ans| is our first example of a variable.  (Actually, |pi| is also a variable.)  
+% Variables are values that MATLAB stores in memory so that we can use them later.  
+% For example, we know that the line 
+
+2 + 2
+%% 
+% sets the value of |ans| to 4.  We can then use this value in other calculations.  
+% For example, we could calculate 4 * 2 by writing 
+
+ans * 2
+%% 
+% When MATLAB sees the name |ans|, it checks the workspace to find the value 
+% of the variable, then replaces |ans| with the value it found.  
+% 
+% It is important to emphasize that this is just an example of the concept and 
+% |ans| is a very bad choice of variable for any real computation.  (In fact, 
+% MATLAB should show you a warning when you try to run this code.)  To see why, 
+% notice that the value of |ans| is now 8, so if we now try the code 
+
+ans * 2
+%% 
+% a second time, we get a different answer.  The problem is that MATLAB is constantly 
+% overwriting the variable |ans|, so we have very little control over what value 
+% is actually in it.  
+% 
+% 
+% 
+% *As a rule of thumb for beginners, don't use _ans_ as a variable.*
+% Assignment
+% It is much more convenient to be able to make our own variables and not rely 
+% on automatic versions like |ans|.  To this end, we can use the assignment operator 
+% |=| to assign numbers to variables.  The |=| symbol means "calculate the value 
+% on the right and assign it to the name on the left".  For example, 
+
+x = 8
+%% 
+% Assigns the value 8 to a variable named |x|.  After running this code, you 
+% should see |x| appear in the workspace along with |ans|.  We can now use the 
+% variable |x| in calculations and MATLAB will treat it as if we typed 8.  For 
+% instance, 
+
+x / 2
+%% 
+% Unlike the variable |ans|, |x| will not be overwritten automatically, so we 
+% can keep using it in multiple lines without worrying that its value will change.  
+
+x + 3.6
+x - 2
+x * 5.0
+%% 
+% Notice that |x| is just replaced with |8| in all of these calculations.  
+% 
+% If we want to change the value of |x|, we can just reassign it with the |=| 
+% operator.  
+
+x = 3
+%% 
+% The value of |x| is now 3 instead of 8.  This doesn't change any old results 
+% (the output from previous lines is the same) but all future occurrences of |x| 
+% will use the new value.  For example, 
+
+x + 3.6
+x - 2
+x * 5.0
+%% 
+% There is no reason to restrict ourselves to just one variable.  We can make 
+% many different variables, as long as they each have a different name.  (Side 
+% note: Just like with file names, MATLAB has a few rules for naming variables.  
+% Variable names can be as long as you want and can contain letters, numbers and 
+% underscores, but they must start with a letter.  This means that |x|, |answer_number_4| 
+% and |int2str| are all valid variable names, but |3test, x-y and answer number 
+% 4 are not.|  Names are also case sensitive, so |ans1| and |Ans1| and |ANS1| 
+% are all different names.  That said, it is not a good idea to have different 
+% variables that differ only by case.  There are also a few reserved words that 
+% MATLAB uses for other purposes and you cannot use as variable names.  For example, 
+% |function, for, while, if and end| are all reserved words.  MATLAB will give 
+% an error if you try to use one of these as a variable name.)
+% 
+% As an example, 
+
+x = 8
+y = 3
+var3 = 0
+%% 
+% We can combine these variables just as if they were numbers.  
+
+z = x - y + 2^var3
+%% 
+% As we have already seen, you can't use a variable until you have assigned 
+% it a value.  If you try to do a calculation with a variable that you haven't 
+% yet defined, MATLAB will give an error along the lines of "undefined function 
+% or variable".  For example, try running this in the command window:
+%%
+% 
+%   3 * N
+%
+%% 
+% It is important to remember that the assignment operator is not the same thing 
+% as mathematical equality.  In particular, it treats variables on the left and 
+% right side differently.  If a variable appears on the right side of an |=| operator, 
+% MATLAB replaces it with whatever value it finds in the workspace, so the |x 
+% - y + 2^var3| above is replaced with |8 - 3 + 2^0|.  On the other hand, if a 
+% variable appears on the left side then MATLAB does not look up its value.  Instead, 
+% MATLAB stores the value on the right in the variable named on the left.  One 
+% example that comes up a lot is 
+
+x = 8
+x = x + 1
+%% 
+% The last line doesn't make any sense in mathematics, but it is perfectly sensible 
+% code.  MATLAB evaluates this expression as follows: First, it sees an |x| on 
+% the right side of the |=| operator, so it looks up its value in the workspace.  
+% Since |x| has the value 8, MATLAB interprets the right side as |8 + 1|, which 
+% is |9|.  Next, MATLAB sees the name |x| on the left side of the |=| operator, 
+% so it stores the value |9| in the variable named |x|.  
+% 
+% There are a few things worth remembering about assignment and variables in 
+% MATLAB:
+%% 
+% * The left side of the |=| operator is the name of a variable.  You can't 
+% have any calculations or other code - just a single variable name.  
+% * If the name on the left side is already a variable in the workspace, then 
+% MATLAB will overwrite the value of that variable with the result from the right 
+% hand side.  This will not affect any previous calculations with the variable.  
+% * If the name on the left side is not already a variable in the workspace, 
+% then MATLAB will make a new variable with that name and the value from the right 
+% hand side.  
+% * The right hand side can be as complicated as you want and can include as 
+% many variables as you want, but it can only include variables that are already 
+% defined (i.e., already in the workspace).  
+% Output suppression
+% You have probably noticed by now that most lines of code in MATLAB cause some 
+% sort of output to be printed in the command window (or in the live script).  
+% This is useful behavior when you are testing or fixing code, but it is actually 
+% quite undesirable in general.  
+% 
+% One issue is that it quickly becomes difficult to find relevant information 
+% in the command window when it is cluttered with output.  More importantly, printing 
+% output is actually substantially slower than most other work that your code 
+% might be doing.  We will see examples later in the class where printing the 
+% output takes hundreds or thousands of times longer than calculating the answer.  
+% It is therefore useful to be able to tell MATLAB not to print the output from 
+% certain lines of code.  
+% 
+% This is what the semicolon |;| is for in MATLAB.  If you end a line of code 
+% with a semicolon, then MATLAB does exactly the same thing it would have without 
+% the semicolon, but it does not print the output.  For example, 
+
+x = 1
+y = 2;
+%% 
+% Notice that the first line prints "x = 1" when you run it, but the second 
+% line doesn't print anything.  If you look in the workspace, though, you can 
+% see that both x and y have been defined, so we know that MATLAB still ran both 
+% lines of code.  
+% 
+% As a general rule, when you are finished with a script it should run without 
+% printing any output, except possibly the final answer.  This means that you 
+% should end every single line with a semicolon.  (Actually, some lines don't 
+% need a semicolon because they don't print output by default.  For example, the 
+% line |clear all| doesn't print anything, so a semicolon is unnecessary.  That 
+% said, it never hurts to end a line with a semicolon.)  This will become quite 
+% important in future assignments, where printing output will drastically slow 
+% down your code.  If you want to print out the value of a variable, you can just 
+% write the variable name on its own line without a semicolon, or you can use 
+% the |disp| function.  For example:
+
+x
+disp(x)
+%% 
+% The only difference is that |disp| does not print the "x = " part.  
+% 
+% A semicolon also indicates the end of a line of code.  This means that you 
+% can put more than one line of code in a single line of text if you end each 
+% part with a semicolon.  For example, instead of writing 
+
+a = 1;
+b = 2;
+c = 3;
+%% 
+% you could write 
+
+a = 1; b = 2; c = 3;
+%% 
+% This is almost always a bad idea.  There are only two times when this method 
+% is worth doing.  One is when you have to define a lot of variables at the beginning 
+% of a problem (like the example above with |a|, |b| and |c|) and the other is 
+% when you have some short boilerplate code that always comes together.
+##### SOURCE END #####
+--></body></html>

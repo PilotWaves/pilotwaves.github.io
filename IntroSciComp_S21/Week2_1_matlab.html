@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S2 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S3 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { border-left: 0px none rgb(0, 0, 0); border-right: 0px none rgb(0, 0, 0); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px; line-height: 16px; min-height: 16px; white-space: pre; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;  }
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S10 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h2  class = 'S0'><span>Week 2 Coding Lecture 1:  For loops</span></h2><div  class = 'S1'><span>In this lecture we will discuss loops: A programming concept that allows you to repeat a block of code many times.  </span></div><div  class = 'S1'><span>Suppose that we want to make the vector </span><span style=' font-family: monospace;'>x = [1 2 3 4 5]</span><span>.  We know at least two very easy ways to make this vector: We could write it out like this</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">x</span><span> = [1 2 3 4 5];</span></span></div></div></div><div  class = 'S3'><span>or we could use the colon operator like this</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">x</span><span> = 1:5;</span></span></div></div></div><div  class = 'S1'><span>But suppose that we did not know the shortcut and did not want to type out the whole vector.  (I will mostly stick to short vectors in these notes because they don't fill the entire command window, but you can imagine why we wouldn't want to type out the entire vector if there were 1,000 or 1,000,000 entries instead of 5.)  Another approach would be to make an "empty vector" x and then fill in the correct entries.  By "empty vector" I mean a vector of the appropriate size but without the correct entries.  </span></div><div  class = 'S1'><span>There are a few commands in MATLAB to construct matrices and vectors.  Two of the most useful are </span><span style=' font-family: monospace;'>zeros</span><span> and </span><span style=' font-family: monospace;'>ones</span><span>.  As with every MATLAB function you meet, you should look at the documentation for these functions with </span><span style=' font-family: monospace;'>doc zeros</span><span> and </span><span style=' font-family: monospace;'>doc ones</span><span>.  The syntax for these functions is fairly straightforward.  You can use </span><span style=' font-family: monospace;'>zeros(m, n)</span><span> to make an </span><span texencoding="m\times n" style="vertical-align:-5px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAkCAYAAADB7MdlAAAEz0lEQVRoQ+2YZahtVRSFv2egooKFhY2KiB0YCGInKnaL3a3Y3QGi4jNQsLDjPRR9T38o2A2iiIqK3YqNLd9lLlh3v308e+37ftwfa8LlnntXjzXmmGOdCdTojMCEzj1rRypYBSSoYFWwChAo6FqZVcEqQKCga2VWBasAgYKulVkVrAIECrqOF2YdCXwJ3FO490uB+4HnC8b17joewFoTeBH4C9ijI2DueyJwCPARsAzwR28UOg7sAtZCwM/AT9mc8wCzAJ+3rDMvYPu7Hfdgt1OACzsC5p6vBQ4GfgA2AV4qWCt1nR2YG/gkGzsTsDTwDvBPc842sNYHNgNWjZ/5gQWBrwKEG4FtY6KzgfPi86zAZXGImSM9diw4xKnABUMAc7/XAQcBPwKbAi90XGNRYLc40yrAssCxwFUw8kY+DjgHEMRPgbUbQLY+pBcHlgJuBhYDXgNWA/z/Q8B9wDrA5sB7cRNzAFOA12PjhwL/ZiB3PA+nAecPAMwDXQ8cGEB5oSVaNRewInAWsFFsaMlI47uA74A3Azybj84+j3T/vzR8GVgduBi4BLgTOAZ4GzgeuDy0RuAejoNMDtZNChqbjqZKSZwebM01zH3eABwQcuBFPVsyadb3ZOCiuNiVgSuBZzKt/A0wS/YCbs/XGASWaaRGqUsbAvuFprwVg72JXSLtfgG+DsG12VQypV4B1uh5oDOAc4Nhe4Yu7R/aKVAerm9MjfSVwaabZxQww0z6MD7Lwje6gCVbvDmF/STg40jBNNa/F4k8Xxg4MZv0uch3Galw9w3TRU1M4aVsATzVd8JgzPfxW/3aKhiUptwZuDsKl+caFYOYJUAeVg16FJC6KawWVjrTS53y5k0ZY87IfauKjHxiDAdzb7LTQmPIBBk3lrByPgZ8Eey0UKhVKdRE/3crsE9XsB4HNo4KaNXIdUeBVT+M9Rop4c0/AvwalfP3nifLNepPQFko8WGDllVn1Vs9mZd8b6PjB8AS4ffu6AKWpfPbyGXFVg3KQ5e9E/AksEGjTetwQjBO4PpEXvVMvS1jHVNyrICZKWpRm56mjLGKLxA6PGr/bWm4dejT34B5q79KMWNMopkz5xX6PFIF1bNc0QOp3EeplwKVNOrM8EF9AdNcfxZ7mqbSAYcB1wCvhguYZvttYGn6dMfmtl4mD42aAm6aaVa9+RT6GBk5Q9yelWTd7CkzDLvcmQuUzHy6MSivkl2fRmmKvYFbAK2Be3eNPB4EtguttjDNF1Kimx+JNrBSpdPT3NSYUIfrDWtOt2m0JUbKRGm8VuiCj+Rhkb/1BgGV5sh92O4tujNoLT2TAD8A7NDo5PpetBljEZDNAqsx9YHfCpaVRxr6LpK2eQo6wDeY3uko4OrGgqnU6+r1WabprsAwkXej0l/Xr7eTUcN8VO70uwDmGlZAGbVvvE7y7Xu5thsCun3IyKh9NJmVaG4nK11zQh/OjlkunHzebnW5LZ45PpUOD8oPY5XfOqTULnHm6S3p5Sw/5FuHnAS+czXRzfCp4zzfREZoXkdFl28dhh02b18B0PTpjEtCM2j6C1pJHBFW5f2SQQP6zgasFO/Dpp6NDJneYE2HPY/fKSpYBXdTwapgFSBQ0LUyq4JVgEBB18qsClYBAgVd/wOtjhE0yuJhPQAAAABJRU5ErkJggg==" width="37.5" height="18" /></span><span> matrix of all zeros or </span><span style=' font-family: monospace;'>ones(m, n)</span><span> to make an </span><span texencoding="m\times n" style="vertical-align:-5px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAkCAYAAADB7MdlAAAEz0lEQVRoQ+2YZahtVRSFv2egooKFhY2KiB0YCGInKnaL3a3Y3QGi4jNQsLDjPRR9T38o2A2iiIqK3YqNLd9lLlh3v308e+37ftwfa8LlnntXjzXmmGOdCdTojMCEzj1rRypYBSSoYFWwChAo6FqZVcEqQKCga2VWBasAgYKulVkVrAIECrqOF2YdCXwJ3FO490uB+4HnC8b17joewFoTeBH4C9ijI2DueyJwCPARsAzwR28UOg7sAtZCwM/AT9mc8wCzAJ+3rDMvYPu7Hfdgt1OACzsC5p6vBQ4GfgA2AV4qWCt1nR2YG/gkGzsTsDTwDvBPc842sNYHNgNWjZ/5gQWBrwKEG4FtY6KzgfPi86zAZXGImSM9diw4xKnABUMAc7/XAQcBPwKbAi90XGNRYLc40yrAssCxwFUw8kY+DjgHEMRPgbUbQLY+pBcHlgJuBhYDXgNWA/z/Q8B9wDrA5sB7cRNzAFOA12PjhwL/ZiB3PA+nAecPAMwDXQ8cGEB5oSVaNRewInAWsFFsaMlI47uA74A3Azybj84+j3T/vzR8GVgduBi4BLgTOAZ4GzgeuDy0RuAejoNMDtZNChqbjqZKSZwebM01zH3eABwQcuBFPVsyadb3ZOCiuNiVgSuBZzKt/A0wS/YCbs/XGASWaaRGqUsbAvuFprwVg72JXSLtfgG+DsG12VQypV4B1uh5oDOAc4Nhe4Yu7R/aKVAerm9MjfSVwaabZxQww0z6MD7Lwje6gCVbvDmF/STg40jBNNa/F4k8Xxg4MZv0uch3Galw9w3TRU1M4aVsATzVd8JgzPfxW/3aKhiUptwZuDsKl+caFYOYJUAeVg16FJC6KawWVjrTS53y5k0ZY87IfauKjHxiDAdzb7LTQmPIBBk3lrByPgZ8Eey0UKhVKdRE/3crsE9XsB4HNo4KaNXIdUeBVT+M9Rop4c0/AvwalfP3nifLNepPQFko8WGDllVn1Vs9mZd8b6PjB8AS4ffu6AKWpfPbyGXFVg3KQ5e9E/AksEGjTetwQjBO4PpEXvVMvS1jHVNyrICZKWpRm56mjLGKLxA6PGr/bWm4dejT34B5q79KMWNMopkz5xX6PFIF1bNc0QOp3EeplwKVNOrM8EF9AdNcfxZ7mqbSAYcB1wCvhguYZvttYGn6dMfmtl4mD42aAm6aaVa9+RT6GBk5Q9yelWTd7CkzDLvcmQuUzHy6MSivkl2fRmmKvYFbAK2Be3eNPB4EtguttjDNF1Kimx+JNrBSpdPT3NSYUIfrDWtOt2m0JUbKRGm8VuiCj+Rhkb/1BgGV5sh92O4tujNoLT2TAD8A7NDo5PpetBljEZDNAqsx9YHfCpaVRxr6LpK2eQo6wDeY3uko4OrGgqnU6+r1WabprsAwkXej0l/Xr7eTUcN8VO70uwDmGlZAGbVvvE7y7Xu5thsCun3IyKh9NJmVaG4nK11zQh/OjlkunHzebnW5LZ45PpUOD8oPY5XfOqTULnHm6S3p5Sw/5FuHnAS+czXRzfCp4zzfREZoXkdFl28dhh02b18B0PTpjEtCM2j6C1pJHBFW5f2SQQP6zgasFO/Dpp6NDJneYE2HPY/fKSpYBXdTwapgFSBQ0LUyq4JVgEBB18qsClYBAgVd/wOtjhE0yuJhPQAAAABJRU5ErkJggg==" width="37.5" height="18" /></span><span> matrix of all ones.  Remember that a row vector is just a matrix with one row and a column vector is just a matrix with one column.  If we want to make an empty vector of the same size as </span><span style=' font-family: monospace;'>x</span><span>, we can therefore use </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S2'><span style="white-space: pre;"><span>x = zeros(1, 5);</span></span></div></div></div><div  class = 'S3'><span>(A common mistake is to try </span><span style=' font-family: monospace;'>x = zeros(5)</span><span> instead.  This actually makes a </span><span texencoding="5\times 5" style="vertical-align:-5px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAAkCAYAAADfJffWAAAEGklEQVRoQ+3YWch9YxQG8N/fHHFhVuYpKVPkAiGkjIkyTyFxYYpMKTIPceHGECEyz5kyz0RR5jFEuVDmyKxH79H+n7PPOXtv31ef2u/N19d+3/Wu91nPWutZZ55+jSAwr8dkFIEelBpW9KD0oDQrFj1TZoEpO+FJ/NIsBnNq1+LYCo8OezWNKYvhRSxV85x8+wDbzamnzu/M0ThxjH8rYWc80xaUo3DFhEfvhbvnKCgL42OsMsa/N7Fh3bdJTFkA7+N1vFdzOBfeiD/nKCgH4RJcXePf77gFH7YFJSy4Cqvipzn68EluvYGbcHFb3ycx5WU8hLPbGh2zf0Wcj+PwQwubG+BIHI8/Gp5LAwgTEtDvG575d9s4ULYuBegLvICX8EDJ0bZ3DPY/WApb7MXpJsAEkHS3ZZGieWXDy3MmneUVJLjP4hH82uT8OFACwC41BvKgU/F8E+NDe1bG01irAD0NmBTBJwogSYNDGtavzfBqjX9f4xqchZ8n+V8HyoKlgG6CtbHQkIEU1jNwQQdg0gkCzJpTgNkIjxdAbsbBLVJnd5yE9bFMjY+RETvg83H+T9Mpi2BdHFByOtpksA7DdbMATAAJQ/KgW3FgC0CG3VkBm+NMbFr5+Ba2HFdvpoFSvSRF6zKkK2WlJqyGbzoAE1thzBpDjNm4MCSA3FaC0bS4TsuIgBv/U5+yziuMHznXBpQcjnZ5GDsWS6kvF3UAJUcCTNTk6gWY03EPlsYd2B/REzO5ti2gp0R8i3TEkRGlLShxMFF8G6Fm8j2p1XWFaWFMgBmsu7DvLAAysJ96eE75J6VhRMB1ASX2kuv74KkZmH32KAyJ3WiKpFQ6xWyt9fBuMb5Nadfz3dUVlJNL2tyAQ/+D96khKapJmd+QeaWNjulydUpAwF+iBODTYSNdQQkQ6TxRp5d38QzVLpOh8hQ8Vqkx03RMx2v/ORYgMvknGCOrKygZtKIFonyf6+BdFZBqDUmNSUoOd6UOV4w9siS+K/dsP1OgRMy9gxiPOm07LFaV6p3Yb6iojmvXMwVMlPH15XeWtOhGTNkVWxQqJ2rD6wRcij1xb0tPq7PMpLYbYHL3NOU7fP3yZXhMoK4tjKjuScqkc35Z3ljb8ofTJ/071EoRykrLzXT6VdEox+BCHF6+tcGkCsjtpZVP0iFNR4KqD9FNg/EjDz8WYWNWUvM+/IjdJonOuppyLk4rIMRYjLyGdXB/6TqftEGj7I1DmUuiVKMumwizABPGJE2PKNGfdHV8zM8dmdkGK+03zFm0BDRyYqJKHldolyv0yt9ohlTrj7r8NlFxLtQN6yKv20j3TNd7F4neJBZpuZl3AmRmt8+K/wnkX00MdO0+TWz/b/f0oNSErgelB6VZRvdM6ZnSM6UZAj1TmuH0NwxJ1SX7TIkuAAAAAElFTkSuQmCC" width="34.5" height="18" /></span><span> matrix instead of a vector.)  </span></div><div  class = 'S1'><span>Now that we have an empty vector to work with, we can fill in the entries we want.  In particular, we can use </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(2) = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(3) = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(4) = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">x</span><span>(5) = 5;</span></span></div></div></div><div  class = 'S3'><span>We have now created exactly the same vector as in the previous section, albeit with much more typing.  The step where we make an empty vector is called "initialization", and we say that we "initialized" the vector </span><span style=' font-family: monospace;'>x</span><span>.  This tells MATLAB to set aside a block of memory large enough to hold a </span><span texencoding="1\times 5" style="vertical-align:-5px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAAkCAYAAADfJffWAAADYklEQVRoQ+3YW8ilUxzH8c+QQ8SFkfM4DXLIoUhCjeIGkauJYbgg5QZFkRQlhyiX0kS5EMYxFzPJedTUZK6cMk4NuTBXDkPkrF+trcd+n73ftd+97f2+9ay7vZ+11vP/f5/f+h/WMt2YQ2BZx2QugQ5Kiyo6KB2UumDRKWUCSjkGn9fxXvSz9sK5eLXf0lqlnIS7cTGy2VIZN+CWAcYejIuwaVQox+MurMYu+BV7LhEiu+ELrBhg7wc4pe3ZMKVchuPwCR7BIUsMylo8hHUtjv+Bp/HZqFCa87PB5UsMyvt4Eg+OquzamPIYrh0TykG4DzfhxxEMPRnX42b8WbnuwqKEw7Gzcs2/06YJZUMJbJsRo2vABMib2B8Jmo9WOpg1ySzvYgvewSv4rWb9NKEchrexEjVgEgTfKEByDK7BXxVOnYGtLfO+RRSfLPrLsH2mCSV2JBMEzNHzgDkVrxcgT+HqEY7OpbgVJ2J5i/Of4gJ8PQjMtKHUgAmQKCQOPYOrRgDS7+eBOLOUFac3Hn6IcwbFm1lAiW0JgFHMUX2KOa0oJEDW48oxgDQBxc/AfbioL8/uxZ3jpORJZJ/+9wdMqskjC5g78BL2w3NYg9QTkxznFei74nskI6Yg/c+YlVJ6RhxRFBMwvfFCqYkmDaS3f9RxT/mR4nROATdrKLEtlXMUkpGaIkcqmeL/GmldPi6bryrpelEpJTEkQTVH5nekX6lJ1+MASw8X+HuXD/DlYjo+zSzzIm7Da40YU1vgLQRQQOxbPsac9bM6Pk0gzRiSGPNWS1ZaiOOD1uyDH8p7zm+bNAsozUr1eVzRl2UGpetJgUll/ES5Z0mKXrBSel1yeoc9xrCu2csMS7sBE8XMV/n2m3JAaR5/xuNFEc05OTIf4RucPSjl1yglcku0PrTsfgK2LQBME8izpTAblnZrW4KmKbfj/vJHHL8RUWNGjubL+AmX4LtBPgyDchZyUZOUmQum3thRXvReabBq+cSg9CWpVFNd1tQhARPFpIm8rnz9Ye87FhuRu+TeyAeNcqLwB0rrMPQKokYptU7PNy/SzZ1Iyuvae5Hsme4616Gt57/lpUm56XcCcnd8hWSb7fh7PiPzfJpQauxZFHM6KC2foYPSQak7nZ1SOqV0Sqkj0CmljtM/XkvBJZ33+gsAAAAASUVORK5CYII=" width="34.5" height="18" /></span><span> vector.  </span></div><div  class = 'S1'><span>It is worth noting that you can often get away without initializing your vectors in MATLAB, because MATLAB will add space to vectors as needed.  For instance, you could have just used the code </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>x(1) = 1; </span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>x(2) = 2; </span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>x(3) = 3; </span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>x(4) = 4; </span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>x(5) = 5;</span></span></div></div><div  class = 'S1'><span>without any initialization.  At each line, MATLAB adds enough space to the vector to fit the next number.  However, it is worth getting into the habit of initializing vectors whenever possible.  Not only will this avoid needless errors, but it is usually quite a bit faster.</span></div><div  class = 'S1'><span>As you might imagine, code like that in the above block is not very practical.  This is already a tedious amount of typing with only 5 entries and would be much worse with 1,000 or 1,000,000.  In addition, it is easy to make mistakes with this much code and harder to hunt them down if we find out later that we made the wrong vector.  It is also tedious to make changes to this code.  If we later decide that each entry of </span><span style=' font-family: monospace;'>x</span><span> should be twice as big, we would have to change 5 lines of code (or 1,000 or 1,000,000 if our vector were larger).  </span></div><div  class = 'S1'><span>However, these five lines are almost exactly the same.  This suggests that we should be able to avoid most of this typing.  If we could tell MATLAB the pattern for one of these lines, then we could hopefully just tell MATLAB to repeat the pattern five times.  </span></div><div  class = 'S1'><span>This is exactly what a loop is for.  If you want to repeat the same block of code several times, you can use something called a "for loop".  For example, to repeat some code five times, we could write the code </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:5</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>The words </span><span style=' font-family: monospace;'>for</span><span> and </span><span style=' font-family: monospace;'>end</span><span> are reserved words that tell Matlab this is a for loop.  The variable </span><span style=' font-family: monospace;'>k</span><span> is called a "loop counter" or a "loop index" or a "loop variable", depending on context.  You can think of it as keeping track of what step you are on.  When you run this code, it will behave exactly as if you had instead typed </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">k</span><span> = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">k</span><span> = 2; </span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">k</span><span> = 3; </span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">k</span><span> = 4; </span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">k</span><span> = 5; </span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 127, 0);">% Some code to be repeated</span></span></div></div></div><div  class = 'S3'><span>As you can see, the code is repeated five times and the variable </span><span style=' font-family: monospace;'>k</span><span> tells us which step we are on.  For a particularly silly example, the following code prints the number 8 ten times: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:10</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    disp(8);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="5CD9BBED" data-testid="output_0" data-width="715" data-height="269" data-hashorizontaloverflow="false" style="width: 745px; max-height: 280px;"><div class="textElement">     8
+
+     8
+
+     8
+
+     8
+
+     8
+
+     8
+
+     8
+
+     8
+
+     8
+
+     8</div></div></div></div></div><div  class = 'S3'><span>We can also use the loop variable in the code to be repeated.  This is useful for making the code do slightly different things each time.  As another example, the following code prints out the first four perfect squares: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:4</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    disp(k^2);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="42028EAD" data-testid="output_1" data-width="715" data-height="101" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">     1
+
+     4
+
+     9
+
+    16</div></div></div></div></div><div  class = 'S3'><span>There is nothing special about the name </span><span style=' font-family: monospace;'>k</span><span>.  You can call your loop index whatever you want.  I will usually stick to things like </span><span style=' font-family: monospace;'>i</span><span>, </span><span style=' font-family: monospace;'>j</span><span>, </span><span style=' font-family: monospace;'>k</span><span>, </span><span style=' font-family: monospace;'>m</span><span> and </span><span style=' font-family: monospace;'>n</span><span> because those are common index variables in mathematics, but some people prefer more descriptive names like </span><span style=' font-family: monospace;'>counter</span><span> or </span><span style=' font-family: monospace;'>index</span><span> or </span><span style=' font-family: monospace;'>loop_var</span><span>.  This is really just a matter of taste.  </span></div><div  class = 'S1'><span>It is worth noting that MATLAB automatically indents code in the </span><span style=' font-family: monospace;'>for</span><span> loop for you, but the indentation is just there for readability.  The keywords </span><span style=' font-family: monospace;'>for</span><span> and </span><span style=' font-family: monospace;'>end</span><span> are what actually tells MATLAB which code belongs to the loop.  This is different from python, where the indentation is actually required.  </span></div><div  class = 'S1'><span>Getting back to our previous example, after initializing </span><span style=' font-family: monospace;'>x</span><span> we want to repeat the code </span><span style=' font-family: monospace;'>x(some_number) = some_number</span><span> over and over again.  The value of </span><span style=' font-family: monospace;'>some_number</span><span> starts at 1, then increases to 2, then 3, then 4, then 5.  This is exactly what our loop counter did.  We can rewrite our original code as </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x = zeros(1, 5);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>j = 1:5</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    x(j) = j;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>Remember, what MATLAB is really doing when we run this is </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x = zeros(1, 5);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>j = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(j) = j;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>j = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(j) = j;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>j = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(j) = j;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>j = 4; </span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(j) = j;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>j = 5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">x</span><span>(j) = j;</span></span></div></div></div><div  class = 'S3'><span>which is exactly what we wanted.  </span></div><div  class = 'S1'><span>This is an incredibly common coding construct, and we will use it many times in this course.  First, you initialize a variable that will be used for storing your results.  Next, you use a loop to make many related calculations.  The result of each of these calculations gets stored in one of the entries of your original variable.  In our case, the "calculation" was just finding the value of </span><span style=' font-family: monospace;'>j</span><span>, but in real problems it will often be substantially more complicated.  </span></div><div  class = 'S1'><span>As another example, suppose that we wanted to create the vector </span><span style=' font-family: monospace;'>x = [1; 1.1; 1.2; 1.3; 1.4]</span><span>.  Of course, we already know a shortcut with the colon operator, but suppose that we didn't have this shortcut.  We could do almost the same thing as before.  (Notice that </span><span style=' font-family: monospace;'>x</span><span> is a column vector this time.)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x = zeros(5, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(2) = 1.1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(3) = 1.2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x(4) = 1.3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">x</span><span>(5) = 1.4;</span></span></div></div></div><div  class = 'S3'><span>Once again, we are repeating almost the same line of code five times, so we should be able to use a loop to make this simpler.  However, this problem has an extra wrinkle because there are two different numbers that change in each line: The index of </span><span style=' font-family: monospace;'>x</span><span> (which takes the values 1, 2, 3, 4 and 5) and the value being assigned (which takes the values 1, 1.1, 1.2, 1.3 and 1.4).  A loop only keeps track of one loop variable for us.  This means that we will need to deal with the other value on our own.  Probably the easiest way to approach this problem is to write something like </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>x = zeros(5, 1);</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:5</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>   x(k) = </span><span style="color: rgb(0, 127, 0);">% Some value</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>This means that the loop will keep track of the index of </span><span style=' font-family: monospace;'>x</span><span> (we get to use </span><span style=' font-family: monospace;'>k</span><span> as the index), but we will still have to figure out what "some value" should be at each step.  A standard way to do this is to start by defining a variable as whichever value we want in the first step, then incrementing this variable at every step of the loop.  That is, </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x = zeros(5, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>x_value = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:5</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    x(k) = x_value;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    x_value = x_value + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>The line </span><span style=' font-family: monospace;'>x_value = 1</span><span> is also called "initialization".  Here we are initializing the variable </span><span style=' font-family: monospace;'>x_value</span><span>.  The line </span><span style=' font-family: monospace;'>x_value = x_value + 0.1</span><span> increments this value by 0.1 after each step.  The first time through the loop, </span><span style=' font-family: monospace;'>x_value</span><span> is 1 (as desired).  The second time through the loop it is 1.1, then 1.2, then 1.3, then 1.4.  </span></div><div  class = 'S1'><span>This is another very common pattern in programming.  If you have a variable that changes at each step in a loop, you can initialize it to some useful starting value, then update it at the end of each loop step.  </span></div><div  class = 'S1'><span>The incrementing approach described above is a standard approach and should almost always be your first choice.  In this case, however, we have another interesting option: We can find a formula for </span><span style=' font-family: monospace;'>x_value</span><span> in terms of </span><span style=' font-family: monospace;'>k</span><span>.  In particular, we can use </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>x = zeros(5, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:5</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    x(k) = 1 + 0.1 * (k - 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>You should convince yourself that this makes exactly the same vector as in the previous example.  </span></div><div  class = 'S1'><span>It is not always easy to find a formula like this, but if you happen to notice one then this is often a good approach.  It tends to be much harder to think up and possibly a little bit slower, but often doesn't accumulate as much rounding error.  As with many things, unless you are extremely concerned about efficiency, which method you choose is largely a matter of taste.  </span></div><div  class = 'S1'><span>It is worth noting that the line </span><span style=' font-family: monospace;'>k = 1:5</span><span> does something slightly different than the line </span><span style=' font-family: monospace;'>for k = 1:5</span><span>.  The former produces a vector named </span><span style=' font-family: monospace;'>k</span><span> with the value </span><span style=' font-family: monospace;'>[1 2 3 4 5]</span><span>, but the latter produces a variable </span><span style=' font-family: monospace;'>k</span><span> that is only ever a single number at a time.  This is easy to forget but quite important.  </span></div><div  class = 'S1'><span>It is also worth noting that there is nothing particularly special about the colon syntax in a for loop.  You can actually write </span><span style=' font-family: monospace;'>for k = vec</span><span> where </span><span style=' font-family: monospace;'>vec</span><span> is any row vector.  (In fact, </span><span style=' font-family: monospace;'>vec</span><span> can also be a column vector or matrix, but the loop behaves somewhat differently - we will never use that syntax in this class.)  For example, we could write </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = [1 3 -10 2.5]</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    disp(n);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="638692A4" data-testid="output_2" data-width="715" data-height="101" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">     1
+
+     3
+
+   -10
+
+    2.5000</div></div></div></div></div><div  class = 'S3'><span>This is equivalent to writing </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>n = 1;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(n);</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="DC4515CC" data-testid="output_3" data-width="715" data-height="18" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">     1</div></div></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span>n = 3;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(n);</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="91FD2F4B" data-testid="output_4" data-width="715" data-height="18" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">     3</div></div></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span>n = -10;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(n);</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="0606A3C0" data-testid="output_5" data-width="715" data-height="18" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">   -10</div></div></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre;"><span>n = 2.5;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(n);</span></span></div><div  class = 'S9'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="C50F5097" data-testid="output_6" data-width="715" data-height="18" data-hashorizontaloverflow="false" style="width: 745px; max-height: 261px;"><div class="textElement">    2.5000</div></div></div></div></div><div  class = 'S3'><span>We will almost always use the colon syntax, but it is occasionally useful to be able to loop over other row vectors.  </span></div><h3  class = 'S11'><span>Nested loops</span></h3><div  class = 'S1'><span>Now let's try something slightly more complicated.  Instead of filling out the entries of a vector, we will fill out the entries of a matrix.  For starters, we will try to create the matrix </span><span style=' font-family: monospace;'>A = [1 1 1; 2 2 2; 3 3 3; 4 4 4]</span><span>.  </span></div><div  class = 'S1'><span>If we do not want to type the whole matrix out (and once the matrix gets large that would be very impractical) then we can use a similar approach to the last section.  For instance, we could type </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(1, :) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(2, :) = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(3, :) = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">A</span><span>(4, :) = 4;</span></span></div></div></div><div  class = 'S3'><span>This initializes the matrix (creates a zero matrix of the right size), then sets each row in turn.  As in our previous examples, we have almost exactly repeated the same line of code several times, which means that this is a prime candidate for a loop.  Following the same logic as above, we can write </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 1:4</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    A(k, :) = k;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>This produces the desired matrix.  </span></div><div  class = 'S1'><span>Now suppose that we want to make the matrix </span><span style=' font-family: monospace;'>A = [1 2 3; 4 5 6; 7 8 9; 10 11 12]</span><span>.  Following a similar strategy, we could initialize our matrix and then fill in each value one at a time: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(1, 1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(1, 2) = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(1, 3) = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(2, 1) = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(2, 2) = 5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(2, 3) = 6;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(3, 1) = 7;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(3, 2) = 8;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(3, 3) = 9;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(4, 1) = 10;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A(4, 2) = 11;</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span class="warning_squiggle_rte2057635136">A</span><span>(4, 3) = 12;</span></span></div></div></div><div  class = 'S3'><span>Once again, this seems like a good candidate for a loop, but this time we have three values that are changing: The row number, the column number and the value on the right hand side.  One approach might be to have one loop </span><span style=' font-family: monospace;'>for k = 1:12</span><span> and perform each of these 12 steps, but it would end up being pretty messy to keep track of the necessary variables.  A better method is to think of each block of three commands as a single piece of code.  We really repeat each of those blocks three times.  This means that we want something like </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>i = 1:4</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    A(i, 1) = </span><span style="color: rgb(0, 127, 0);">% Some value</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    A(i, 2) = </span><span style="color: rgb(0, 127, 0);">% Some other value</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    A(i, 3) = </span><span style="color: rgb(0, 127, 0);">% Some different value</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>Look at the three lines inside this for loop: They are really just the same line of code repeated three times with slightly different numbers, which makes them another good candidate for a for loop.  We can therefore write </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>i = 1:4</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">for </span><span>j = 1:3</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>        A(i, j) = </span><span style="color: rgb(0, 127, 0);">% Some value</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">end</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>Now all we need to do is keep track of "some value".  Here is one of the more straightforward methods (very similar to one of the examples from the single for loops section):</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>A = zeros(4, 3);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>A_value = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>i = 1:4</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">for </span><span>j = 1:3</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>        A(i, j) = A_value;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>        A_value = A_value + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>You should carefully study this example until you can clearly see why it creates the matrix we are looking for and what order everything happens in.  In particular, it may help to have MATLAB print out the values of </span><span style=' font-family: monospace;'>i</span><span>, </span><span style=' font-family: monospace;'>j</span><span> and </span><span style=' font-family: monospace;'>A_value</span><span> at every step.  </span></div><div  class = 'S1'><span>As you can see, code inside the for loop does not have to be just one line; it can be arbitrarilly complicated.  In particular, we are allowed to put loops inside other loops.  These are called nested for loops.  The loop involving </span><span style=' font-family: monospace;'>i</span><span> (the one where the </span><span style=' font-family: monospace;'>for</span><span> and </span><span style=' font-family: monospace;'>end</span><span> are not indented) is called the outer loop.  The loop involving </span><span style=' font-family: monospace;'>j</span><span> (the one where the </span><span style=' font-family: monospace;'>for</span><span> and </span><span style=' font-family: monospace;'>end</span><span> are indented once) is called the inner loop.  We will often need two loops nested together like this example, but it is probably wise to avoid going any deeper than this.  MATLAB doesn't have any limit on how many loops you can nest (well, it does, but the limit is very very large), but you will find that your code becomes both very slow and very hard to understand once you have too many nested loops.  </span></div><h2  class = 'S0'><span>Fibonacci numbers</span></h2><div  class = 'S1'><span>Now let's try a more interesting mathematical example.  We will try to calculate some Fibonacci numbers.  The Fibonacci numbers </span><span texencoding="F_n" style="vertical-align:-6px"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAoCAYAAACb3CikAAACqklEQVRYR+3WS6hVdRTH8c9VE7UEEx9gpGKmEyFr4gMNsoFZgg4MEkvFR6A2ayTYw+fMEF/5yImBlKRkEZGCID0IwYlRAyFQEGmggwRNykpWrHs5bs65d599zxGD84cD++z9/6/fl7X+69HlIVldDwmHDkgxEh2P/G89sgALMaBCdu3Fz2XPlbkjQ7Eba2qMnsQPuIVBeBQTMQPP5r74f6WVIGFrKY6l0Z8wHf80ENmJNzCmLETsK+OR2LcVm9Lw9prneloz8Q5eaQfIWbyQhufiu15EnsFibG41yGO4gcH4HaNwtw+R8PS/rQaJrPkyjZ7AkjoCq3GkGeEqdWQP3sqDa/FRwcjzWIGAqbzKXNZLeDoVnsTVfI6QzUtPrMRXlSlKZM0k/JoCka4B1V03xmahu4nR+LOdIOuwPwXiDnyIKHAjMBnvpyeW9QeiTB35HItS5CV8UxCMIvcZotL2a/V2Rx7JtB2OOxiJPwpqn2AVbveLoo87EtlwLgVOY34dsXhX9FIlpt48sgMb0+rb+KCSQslDvYFcwHNpZ1ozLb2k9n3bGoFE5/wtQ3cNT1Qx3syZRiDrsS8NfYrXmjGae2chfuHV4/gix4mowDHLvFtrsx7IQPyCKbnxMN6sAPIUYjaJ9J+QEKEXvWs2hmU2/me6CLIB0U+ilXevv3EKkTkHmwSKOhQQu3A5s/AoXiyGu0yvaVK7Z3u0ghgfonPH/HIgv0SbOI/X+wpNVeHiuTn4Fl/j5fw4PufY5fj4QYFsyZExgL5P0RjAD2FcZmUPSztD8yOG5KDdLRgZODXfBUyUhrqXtVVheRzX8R621RiN2hSp3D3xnWk3yKspGNl3sQYkZptopjFY3zdatjM09bwbnfyv2vrRbo80HeIH7ZGGgB2Qoms6Hil65B6yzWgpSSdI6wAAAABJRU5ErkJggg==" width="17" height="20" /></span><span> are defined by the following recurrence relation: </span></div><div  class = 'S1'><span texencoding="F_n = F_{n-1} + F_{n-2}" style="vertical-align:-6px"><img src="data:image/png;base64,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" width="107" height="20" /></span><span>, </span></div><div  class = 'S1'><span>where </span><span texencoding="F_1 = F_2 = 1" style="vertical-align:-6px"><img src="data:image/png;base64,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" width="76" height="20" /></span><span>.  That is, the </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">n</span><span>th Fibonacci number is the sum of the previous two.  We will start by calculating the first 20 Fibonacci numbers and saving them in a vector.  This is the first example where we really do need a loop: There is no MATLAB shortcut like the colon operator for calculating Fibonacci numbers (well, there is actually a builtin function in one of the toolboxes, but we will ignore it).  </span></div><div  class = 'S1'><span>We will use the same basic approach as before: Initialize a vector for our Fibonacci numbers, then use a loop to fill in each entry of the vector in turn.  The basic skeleton is </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(1, 20);</span></span></div><div  class = 'S7'></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = </span><span style="color: rgb(0, 127, 0);">% something</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    fib(n) = </span><span style="color: rgb(0, 127, 0);">% calculate the nth fibonacci number</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>There are quite a few variations we could use to write this code, but probably the most straightforward way is to essentially copy the definition into our loop like so: </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(1, 20);</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div><div  class = 'S7'></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = </span><span style="color: rgb(0, 127, 0);">% something</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span>    fib(n) = fib(n - 1) + fib(n - 2);</span></span></div><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>Notice that we included the first two Fibonacci numbers in the initialization step.  This is just part of the definition of the problem.  We can now figure out what the loop variable is supposed to be.  We have already filled out the first two values, so </span><span style=' font-family: monospace;'>n</span><span> should start at 3, and we want to fill out everything up to the </span><span style=' font-family: monospace;'>20</span><span>th entry, so </span><span style=' font-family: monospace;'>n</span><span> should end at 20.  We therefore have </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>fib = zeros(1, 20);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = 3:20</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    fib(n) = fib(n - 1) + fib(n - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S1'><span>Suppose that we decide to calculate the first 200 numbers instead.  We can use almost exactly the same code, but we have to make two changes: We need to change the loop variable from </span><span style=' font-family: monospace;'>n = 3:20</span><span> to </span><span style=' font-family: monospace;'>n = 3:200</span><span> and we need to change the initialization line so that </span><span style=' font-family: monospace;'>fib</span><span> is the right size.  </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>fib = zeros(1, 200);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = 3:200</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    fib(n) = fib(n - 1) + fib(n - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>It is pretty easy to forget one of these changes.  (If you forget to change the </span><span style=' font-family: monospace;'>zeros</span><span> command, your code will still work, but will run slower.  If you forget to change the loop bounds then your code won't work correctly.)  Since both numbers are always supposed to be the same, it is a good idea to make a variable for the number of Fibonacci numbers that we are calculating.  </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre;"><span>total_numbers = 200;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib = zeros(1, total_numbers);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>n = 3:total_numbers</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre;"><span>    fib(n) = fib(n - 1) + fib(n - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S3'><span>This way we only need to change the value of </span><span style=' font-family: monospace;'>total_numbers</span><span> and the rest of our code will work as desired.  </span></div><div  class = 'S1'><span>We have successfully calculated the first 20 (or 200, or any number) Fibonacci numbers.  In fact, this code is pretty close to the best solution we can get for this problem.  However, imagine that we modify the problem slightly.  Suppose that instead of the first 20 numbers, we want to find all the Fibonacci numbers that are less than 1,000,000.  Now our solution doesn't work.  The issue is that we don't know beforehand how many numbers we will need, so we don't know what our loop variable should be.  </span></div><div  class = 'S1'><span>To solve this problem, we want to start calculating Fibonacci numbers like before, but tell MATLAB to stop when </span><span style=' font-family: monospace;'>fib(n)</span><span> reaches 1,000,000.  To write this in code, we will need a new concept that tells MATLAB "if fib(n) is bigger than 1,000,000, stop the loop".  We will talk about this concept in the next lecture.  </span></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Week 2 Coding Lecture 1:  For loops
+% In this lecture we will discuss loops: A programming concept that allows you 
+% to repeat a block of code many times.  
+% 
+% Suppose that we want to make the vector |x = [1 2 3 4 5]|.  We know at least 
+% two very easy ways to make this vector: We could write it out like this
+
+x = [1 2 3 4 5];
+%% 
+% or we could use the colon operator like this
+
+x = 1:5;
+%% 
+% But suppose that we did not know the shortcut and did not want to type out 
+% the whole vector.  (I will mostly stick to short vectors in these notes because 
+% they don't fill the entire command window, but you can imagine why we wouldn't 
+% want to type out the entire vector if there were 1,000 or 1,000,000 entries 
+% instead of 5.)  Another approach would be to make an "empty vector" x and then 
+% fill in the correct entries.  By "empty vector" I mean a vector of the appropriate 
+% size but without the correct entries.  
+% 
+% There are a few commands in MATLAB to construct matrices and vectors.  Two 
+% of the most useful are |zeros| and |ones|.  As with every MATLAB function you 
+% meet, you should look at the documentation for these functions with |doc zeros| 
+% and |doc ones|.  The syntax for these functions is fairly straightforward.  
+% You can use |zeros(m, n)| to make an $m\times n$ matrix of all zeros or |ones(m, 
+% n)| to make an $m\times n$ matrix of all ones.  Remember that a row vector is 
+% just a matrix with one row and a column vector is just a matrix with one column.  
+% If we want to make an empty vector of the same size as |x|, we can therefore 
+% use 
+
+x = zeros(1, 5);
+%% 
+% (A common mistake is to try |x = zeros(5)| instead.  This actually makes a 
+% $5\times 5$ matrix instead of a vector.)  
+% 
+% Now that we have an empty vector to work with, we can fill in the entries 
+% we want.  In particular, we can use 
+
+x(1) = 1;
+x(2) = 2;
+x(3) = 3;
+x(4) = 4;
+x(5) = 5;
+%% 
+% We have now created exactly the same vector as in the previous section, albeit 
+% with much more typing.  The step where we make an empty vector is called "initialization", 
+% and we say that we "initialized" the vector |x|.  This tells MATLAB to set aside 
+% a block of memory large enough to hold a $1\times 5$ vector.  
+% 
+% It is worth noting that you can often get away without initializing your vectors 
+% in MATLAB, because MATLAB will add space to vectors as needed.  For instance, 
+% you could have just used the code 
+%%
+% 
+%   x(1) = 1; 
+%   x(2) = 2; 
+%   x(3) = 3; 
+%   x(4) = 4; 
+%   x(5) = 5;
+%
+%% 
+% without any initialization.  At each line, MATLAB adds enough space to the 
+% vector to fit the next number.  However, it is worth getting into the habit 
+% of initializing vectors whenever possible.  Not only will this avoid needless 
+% errors, but it is usually quite a bit faster.
+%% 
+% As you might imagine, code like that in the above block is not very practical.  
+% This is already a tedious amount of typing with only 5 entries and would be 
+% much worse with 1,000 or 1,000,000.  In addition, it is easy to make mistakes 
+% with this much code and harder to hunt them down if we find out later that we 
+% made the wrong vector.  It is also tedious to make changes to this code.  If 
+% we later decide that each entry of |x| should be twice as big, we would have 
+% to change 5 lines of code (or 1,000 or 1,000,000 if our vector were larger).  
+% 
+% However, these five lines are almost exactly the same.  This suggests that 
+% we should be able to avoid most of this typing.  If we could tell MATLAB the 
+% pattern for one of these lines, then we could hopefully just tell MATLAB to 
+% repeat the pattern five times.  
+% 
+% This is exactly what a loop is for.  If you want to repeat the same block 
+% of code several times, you can use something called a "for loop".  For example, 
+% to repeat some code five times, we could write the code 
+
+for k = 1:5
+    % Some code to be repeated
+end
+%% 
+% The words |for| and |end| are reserved words that tell Matlab this is a for 
+% loop.  The variable |k| is called a "loop counter" or a "loop index" or a "loop 
+% variable", depending on context.  You can think of it as keeping track of what 
+% step you are on.  When you run this code, it will behave exactly as if you had 
+% instead typed 
+
+k = 1;
+% Some code to be repeated
+k = 2; 
+% Some code to be repeated
+k = 3; 
+% Some code to be repeated
+k = 4; 
+% Some code to be repeated
+k = 5; 
+% Some code to be repeated
+%% 
+% As you can see, the code is repeated five times and the variable |k| tells 
+% us which step we are on.  For a particularly silly example, the following code 
+% prints the number 8 ten times: 
+
+for k = 1:10
+    disp(8);
+end
+%% 
+% We can also use the loop variable in the code to be repeated.  This is useful 
+% for making the code do slightly different things each time.  As another example, 
+% the following code prints out the first four perfect squares: 
+
+for k = 1:4
+    disp(k^2);
+end
+%% 
+% There is nothing special about the name |k|.  You can call your loop index 
+% whatever you want.  I will usually stick to things like |i|, |j|, |k|, |m| and 
+% |n| because those are common index variables in mathematics, but some people 
+% prefer more descriptive names like |counter| or |index| or |loop_var|.  This 
+% is really just a matter of taste.  
+% 
+% It is worth noting that MATLAB automatically indents code in the |for| loop 
+% for you, but the indentation is just there for readability.  The keywords |for| 
+% and |end| are what actually tells MATLAB which code belongs to the loop.  This 
+% is different from python, where the indentation is actually required.  
+%% 
+% Getting back to our previous example, after initializing |x| we want to repeat 
+% the code |x(some_number) = some_number| over and over again.  The value of |some_number| 
+% starts at 1, then increases to 2, then 3, then 4, then 5.  This is exactly what 
+% our loop counter did.  We can rewrite our original code as 
+
+x = zeros(1, 5);
+for j = 1:5
+    x(j) = j;
+end
+%% 
+% Remember, what MATLAB is really doing when we run this is 
+
+x = zeros(1, 5);
+j = 1;
+x(j) = j;
+j = 2;
+x(j) = j;
+j = 3;
+x(j) = j;
+j = 4; 
+x(j) = j;
+j = 5;
+x(j) = j;
+%% 
+% which is exactly what we wanted.  
+% 
+% This is an incredibly common coding construct, and we will use it many times 
+% in this course.  First, you initialize a variable that will be used for storing 
+% your results.  Next, you use a loop to make many related calculations.  The 
+% result of each of these calculations gets stored in one of the entries of your 
+% original variable.  In our case, the "calculation" was just finding the value 
+% of |j|, but in real problems it will often be substantially more complicated.  
+%% 
+% As another example, suppose that we wanted to create the vector |x = [1; 1.1; 
+% 1.2; 1.3; 1.4]|.  Of course, we already know a shortcut with the colon operator, 
+% but suppose that we didn't have this shortcut.  We could do almost the same 
+% thing as before.  (Notice that |x| is a column vector this time.)
+
+x = zeros(5, 1);
+x(1) = 1;
+x(2) = 1.1;
+x(3) = 1.2;
+x(4) = 1.3;
+x(5) = 1.4;
+%% 
+% Once again, we are repeating almost the same line of code five times, so we 
+% should be able to use a loop to make this simpler.  However, this problem has 
+% an extra wrinkle because there are two different numbers that change in each 
+% line: The index of |x| (which takes the values 1, 2, 3, 4 and 5) and the value 
+% being assigned (which takes the values 1, 1.1, 1.2, 1.3 and 1.4).  A loop only 
+% keeps track of one loop variable for us.  This means that we will need to deal 
+% with the other value on our own.  Probably the easiest way to approach this 
+% problem is to write something like 
+%%
+% 
+%   x = zeros(5, 1);
+%   for k = 1:5
+%      x(k) = % Some value
+%   end
+%
+%% 
+% This means that the loop will keep track of the index of |x| (we get to use 
+% |k| as the index), but we will still have to figure out what "some value" should 
+% be at each step.  A standard way to do this is to start by defining a variable 
+% as whichever value we want in the first step, then incrementing this variable 
+% at every step of the loop.  That is, 
+
+x = zeros(5, 1);
+x_value = 1;
+for k = 1:5
+    x(k) = x_value;
+    x_value = x_value + 1;
+end
+%% 
+% The line |x_value = 1| is also called "initialization".  Here we are initializing 
+% the variable |x_value|.  The line |x_value = x_value + 0.1| increments this 
+% value by 0.1 after each step.  The first time through the loop, |x_value| is 
+% 1 (as desired).  The second time through the loop it is 1.1, then 1.2, then 
+% 1.3, then 1.4.  
+% 
+% This is another very common pattern in programming.  If you have a variable 
+% that changes at each step in a loop, you can initialize it to some useful starting 
+% value, then update it at the end of each loop step.  
+%% 
+% The incrementing approach described above is a standard approach and should 
+% almost always be your first choice.  In this case, however, we have another 
+% interesting option: We can find a formula for |x_value| in terms of |k|.  In 
+% particular, we can use 
+
+x = zeros(5, 1);
+for k = 1:5
+    x(k) = 1 + 0.1 * (k - 1);
+end
+%% 
+% You should convince yourself that this makes exactly the same vector as in 
+% the previous example.  
+% 
+% It is not always easy to find a formula like this, but if you happen to notice 
+% one then this is often a good approach.  It tends to be much harder to think 
+% up and possibly a little bit slower, but often doesn't accumulate as much rounding 
+% error.  As with many things, unless you are extremely concerned about efficiency, 
+% which method you choose is largely a matter of taste.  
+%% 
+% It is worth noting that the line |k = 1:5| does something slightly different 
+% than the line |for k = 1:5|.  The former produces a vector named |k| with the 
+% value |[1 2 3 4 5]|, but the latter produces a variable |k| that is only ever 
+% a single number at a time.  This is easy to forget but quite important.  
+%% 
+% It is also worth noting that there is nothing particularly special about the 
+% colon syntax in a for loop.  You can actually write |for k = vec| where |vec| 
+% is any row vector.  (In fact, |vec| can also be a column vector or matrix, but 
+% the loop behaves somewhat differently - we will never use that syntax in this 
+% class.)  For example, we could write 
+
+for n = [1 3 -10 2.5]
+    disp(n);
+end
+%% 
+% This is equivalent to writing 
+
+n = 1;
+disp(n);
+n = 3;
+disp(n);
+n = -10;
+disp(n);
+n = 2.5;
+disp(n);
+%% 
+% We will almost always use the colon syntax, but it is occasionally useful 
+% to be able to loop over other row vectors.  
+% Nested loops
+% Now let's try something slightly more complicated.  Instead of filling out 
+% the entries of a vector, we will fill out the entries of a matrix.  For starters, 
+% we will try to create the matrix |A = [1 1 1; 2 2 2; 3 3 3; 4 4 4]|.  
+% 
+% If we do not want to type the whole matrix out (and once the matrix gets large 
+% that would be very impractical) then we can use a similar approach to the last 
+% section.  For instance, we could type 
+
+A = zeros(4, 3);
+A(1, :) = 1;
+A(2, :) = 2;
+A(3, :) = 3;
+A(4, :) = 4;
+%% 
+% This initializes the matrix (creates a zero matrix of the right size), then 
+% sets each row in turn.  As in our previous examples, we have almost exactly 
+% repeated the same line of code several times, which means that this is a prime 
+% candidate for a loop.  Following the same logic as above, we can write 
+
+A = zeros(4, 3);
+for k = 1:4
+    A(k, :) = k;
+end
+%% 
+% This produces the desired matrix.  
+%% 
+% Now suppose that we want to make the matrix |A = [1 2 3; 4 5 6; 7 8 9; 10 
+% 11 12]|.  Following a similar strategy, we could initialize our matrix and then 
+% fill in each value one at a time: 
+
+A = zeros(4, 3);
+
+A(1, 1) = 1;
+A(1, 2) = 2;
+A(1, 3) = 3;
+
+A(2, 1) = 4;
+A(2, 2) = 5;
+A(2, 3) = 6;
+
+A(3, 1) = 7;
+A(3, 2) = 8;
+A(3, 3) = 9;
+
+A(4, 1) = 10;
+A(4, 2) = 11;
+A(4, 3) = 12;
+%% 
+% Once again, this seems like a good candidate for a loop, but this time we 
+% have three values that are changing: The row number, the column number and the 
+% value on the right hand side.  One approach might be to have one loop |for k 
+% = 1:12| and perform each of these 12 steps, but it would end up being pretty 
+% messy to keep track of the necessary variables.  A better method is to think 
+% of each block of three commands as a single piece of code.  We really repeat 
+% each of those blocks three times.  This means that we want something like 
+%%
+% 
+%   A = zeros(4, 3);
+%   for i = 1:4
+%       A(i, 1) = % Some value
+%       A(i, 2) = % Some other value
+%       A(i, 3) = % Some different value
+%   end
+%
+%% 
+% Look at the three lines inside this for loop: They are really just the same 
+% line of code repeated three times with slightly different numbers, which makes 
+% them another good candidate for a for loop.  We can therefore write 
+%%
+% 
+%   A = zeros(4, 3);
+%   for i = 1:4
+%       for j = 1:3
+%           A(i, j) = % Some value
+%       end
+%   end
+%
+%% 
+% Now all we need to do is keep track of "some value".  Here is one of the more 
+% straightforward methods (very similar to one of the examples from the single 
+% for loops section):
+
+A = zeros(4, 3);
+A_value = 1;
+for i = 1:4
+    for j = 1:3
+        A(i, j) = A_value;
+        A_value = A_value + 1;
+    end
+end
+%% 
+% You should carefully study this example until you can clearly see why it creates 
+% the matrix we are looking for and what order everything happens in.  In particular, 
+% it may help to have MATLAB print out the values of |i|, |j| and |A_value| at 
+% every step.  
+%% 
+% As you can see, code inside the for loop does not have to be just one line; 
+% it can be arbitrarilly complicated.  In particular, we are allowed to put loops 
+% inside other loops.  These are called nested for loops.  The loop involving 
+% |i| (the one where the |for| and |end| are not indented) is called the outer 
+% loop.  The loop involving |j| (the one where the |for| and |end| are indented 
+% once) is called the inner loop.  We will often need two loops nested together 
+% like this example, but it is probably wise to avoid going any deeper than this.  
+% MATLAB doesn't have any limit on how many loops you can nest (well, it does, 
+% but the limit is very very large), but you will find that your code becomes 
+% both very slow and very hard to understand once you have too many nested loops.  
+%% Fibonacci numbers
+% Now let's try a more interesting mathematical example.  We will try to calculate 
+% some Fibonacci numbers.  The Fibonacci numbers $F_n$ are defined by the following 
+% recurrence relation: 
+% 
+% $F_n = F_{n-1} + F_{n-2}$, 
+% 
+% where $F_1 = F_2 = 1$.  That is, the $n$th Fibonacci number is the sum of 
+% the previous two.  We will start by calculating the first 20 Fibonacci numbers 
+% and saving them in a vector.  This is the first example where we really do need 
+% a loop: There is no MATLAB shortcut like the colon operator for calculating 
+% Fibonacci numbers (well, there is actually a builtin function in one of the 
+% toolboxes, but we will ignore it).  
+% 
+% We will use the same basic approach as before: Initialize a vector for our 
+% Fibonacci numbers, then use a loop to fill in each entry of the vector in turn.  
+% The basic skeleton is 
+%%
+% 
+%   fib = zeros(1, 20);
+%   
+%   for n = % something
+%       fib(n) = % calculate the nth fibonacci number
+%   end
+%
+%% 
+% There are quite a few variations we could use to write this code, but probably 
+% the most straightforward way is to essentially copy the definition into our 
+% loop like so: 
+%%
+% 
+%   fib = zeros(1, 20);
+%   fib(1) = 1;
+%   fib(2) = 1;
+%   
+%   for n = % something
+%       fib(n) = fib(n - 1) + fib(n - 2);
+%   end
+%
+%% 
+% Notice that we included the first two Fibonacci numbers in the initialization 
+% step.  This is just part of the definition of the problem.  We can now figure 
+% out what the loop variable is supposed to be.  We have already filled out the 
+% first two values, so |n| should start at 3, and we want to fill out everything 
+% up to the |20|th entry, so |n| should end at 20.  We therefore have 
+
+fib = zeros(1, 20);
+fib(1) = 1;
+fib(2) = 1;
+
+for n = 3:20
+    fib(n) = fib(n - 1) + fib(n - 2);
+end
+%% 
+% Suppose that we decide to calculate the first 200 numbers instead.  We can 
+% use almost exactly the same code, but we have to make two changes: We need to 
+% change the loop variable from |n = 3:20| to |n = 3:200| and we need to change 
+% the initialization line so that |fib| is the right size.  
+
+fib = zeros(1, 200);
+fib(1) = 1;
+fib(2) = 1;
+
+for n = 3:200
+    fib(n) = fib(n - 1) + fib(n - 2);
+end
+%% 
+% It is pretty easy to forget one of these changes.  (If you forget to change 
+% the |zeros| command, your code will still work, but will run slower.  If you 
+% forget to change the loop bounds then your code won't work correctly.)  Since 
+% both numbers are always supposed to be the same, it is a good idea to make a 
+% variable for the number of Fibonacci numbers that we are calculating.  
+
+total_numbers = 200;
+fib = zeros(1, total_numbers);
+fib(1) = 1;
+fib(2) = 1;
+
+for n = 3:total_numbers
+    fib(n) = fib(n - 1) + fib(n - 2);
+end
+%% 
+% This way we only need to change the value of |total_numbers| and the rest 
+% of our code will work as desired.  
+%% 
+% We have successfully calculated the first 20 (or 200, or any number) Fibonacci 
+% numbers.  In fact, this code is pretty close to the best solution we can get 
+% for this problem.  However, imagine that we modify the problem slightly.  Suppose 
+% that instead of the first 20 numbers, we want to find all the Fibonacci numbers 
+% that are less than 1,000,000.  Now our solution doesn't work.  The issue is 
+% that we don't know beforehand how many numbers we will need, so we don't know 
+% what our loop variable should be.  
+% 
+% To solve this problem, we want to start calculating Fibonacci numbers like 
+% before, but tell MATLAB to stop when |fib(n)| reaches 1,000,000.  To write this 
+% in code, we will need a new concept that tells MATLAB "if fib(n) is bigger than 
+% 1,000,000, stop the loop".  We will talk about this concept in the next lecture.
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,117 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 2 Theory
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+
+
+
+\section*{Week 2:  Programming Logic}
+
+As humans most of our problem solving involves decisions.  ``If this then that.''  This is called a \emph{conditional} because there is no guarantee of ``this''.  For example if someone says, ``If I have \$ 5, then I will order a beer.''  Well, that person may or may not have \$ 5.
+
+Everything in programming basically boils down to loops and conditionals.  Even loops are just conditionals.
+
+\textbf{Loops}:  Suppose we want to solve $\int_0^1 f(x)dx$ on the computer.  The computer doesn't understand continuity so we must discretize:
+%
+\begin{equation}
+\int_0^1 f(x)dx \approx \sum_{n=1}^N g(x,n).
+\end{equation}
+%
+We know the sum gets closer to the integral the bigger $N$ is, so it could be a million or more.  We can't possibly do this one at a time, so we use loops.  (We will mainly use ``for'' loops because ``while'' loops may blow up.)
+
+To find the sum lets write the algorithm in ``pseudocode''.  This is code mainly written in natural language that can then be used to create code in the language we are using.
+
+\begin{algorithm}
+\caption{Pseudocode}
+\begin{algorithmic}
+\FOR{$n$ from $1$ to $N$}
+\STATE Sum = Sum $+ g(x,n)$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+Notice that the way I wrote the pseudocode here is different from the way I wrote it on the board.  We have a lot of flexibility when writing pseudocode.
+
+
+\textbf{Conditionals}:  Conditionals carry out logical operations.  We already saw the syntax, but lets think about the logic.  Consider a statement $x$ and a statement $y$.  We don't know if they are true or false, but it can only be one or the other.  To analyze logical operations we can use ``truth tables''.  These are tables where we explore all possibilities for the statements.  For one statement there are two possibilities: either true or false.  For two statements there are four combinations.  We will write true as the boolean ``1'' (which is an on transistor), and a false as ``0'' (which is an off transistor).
+
+The truth statement for the \textbf{NOT} operator will be:
+
+\begin{tabular}{c|c}
+x & \textbf{NOT} x\\
+0 (false) & 1 (true)\\
+1 (true) & 0 (false)
+\end{tabular}
+
+With the NOT operator, if $x$ is one boolean value, \textbf{NOT} $x$ is the opposite boolean value.
+
+The truth statement for the \textbf{AND} operator will be:
+
+\begin{tabular}{cc|c}
+x & y & x \textbf{AND} y\\
+0 & 0 & 0\\
+0 & 1 & 0\\
+1 & 0 & 0\\
+1 & 1 & 1
+\end{tabular}
+
+For the \textbf{AND} operator we have four combinations of boolean values.  The statement $x$ \textbf{AND} $y$ is only true if both statements are true.
+
+The truth statement for the \textbf{OR} operator will be:
+
+\begin{tabular}{cc|c}
+x & y & x \textbf{OR} y\\
+0 & 0 & 0\\
+0 & 1 & 1\\
+1 & 0 & 1\\
+1 & 1 & 1
+\end{tabular}
+
+For the \textbf{OR} operator we again have four combinations of boolean values.  The statement $x$ \textbf{OR} $y$ is true if either statement is true.
+
+An example of pseudocode where we would use such operations is as follows:
+%
+\begin{algorithm}
+\caption{Pseudocode}
+\begin{algorithmic}
+\IF{$x$ \textbf{AND} $y$}
+\STATE Solve a Millennium problem
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+%
+Here we are pretending that we can solve a Millennium problem if only some things came true.  Unfortunately, to solve a Millennium problem many different statements have to be true at once, and us mere mortals have a hard time getting one or two to be true -- this is represented by the \textbf{AND} operator.
+
+
+
+\end{document}

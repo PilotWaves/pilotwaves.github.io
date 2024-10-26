@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2020b"><title>Untitled</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { border-left: 0px none rgb(0, 0, 0); border-right: 0px none rgb(0, 0, 0); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px; line-height: 16px; min-height: 16px; white-space: pre; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;  }
+.CodeBlock { background-color: #F7F7F7; margin: 10px 0 10px 0;}
+.S3 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { color: rgb(64, 64, 64); padding: 10px 0px 6px 17px; background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box; font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px; overflow-x: hidden; line-height: 17.234px;  }
+.embeddedOutputsErrorElement {min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsErrorElement.inlineElement {}
+.embeddedOutputsErrorElement.rightPaneElement {}
+.embeddedOutputsWarningElement{min-height: 18px; max-height: 250px; overflow: auto;}
+.embeddedOutputsWarningElement.inlineElement {}
+.embeddedOutputsWarningElement.rightPaneElement {}
+.diagnosticMessage-wrapper {font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType {color: rgb(255,100,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-warningType a {color: rgb(255,100,0); text-decoration: underline;}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType {color: rgb(230,0,0);}
+.diagnosticMessage-wrapper.diagnosticMessage-errorType a {color: rgb(230,0,0); text-decoration: underline;}
+.diagnosticMessage-wrapper .diagnosticMessage-messagePart,.diagnosticMessage-wrapper .diagnosticMessage-causePart {white-space: pre-wrap;}
+.diagnosticMessage-wrapper .diagnosticMessage-stackPart {white-space: pre;}
+.embeddedOutputsTextElement,.embeddedOutputsVariableStringElement {white-space: pre; word-wrap: initial; min-height: 18px; max-height: 250px; overflow: auto;}
+.textElement,.rtcDataTipElement .textElement {padding-top: 3px;}
+.embeddedOutputsTextElement.inlineElement,.embeddedOutputsVariableStringElement.inlineElement {}
+.inlineElement .textElement {}
+.embeddedOutputsTextElement.rightPaneElement,.embeddedOutputsVariableStringElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .textElement {padding-top: 2px; padding-left: 9px;}
+.S6 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 6px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 0px none rgb(0, 0, 0); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S10 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S11 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S12 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S13 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 0px none rgb(0, 0, 0); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S14 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S15 { border-left: 1px solid rgb(233, 233, 233); border-right: 1px solid rgb(233, 233, 233); border-top: 1px solid rgb(233, 233, 233); border-bottom: 1px solid rgb(233, 233, 233); border-radius: 4px 4px 0px 0px; padding: 6px 45px 4px 13px; line-height: 17.234px; min-height: 18px; white-space: nowrap; color: rgb(0, 0, 0); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.variableValue { width: 100% !important; }
+.embeddedOutputsMatrixElement,.eoOutputWrapper .matrixElement {min-height: 18px; box-sizing: border-box;}
+.embeddedOutputsMatrixElement .matrixElement,.eoOutputWrapper .matrixElement,.rtcDataTipElement .matrixElement {position: relative;}
+.matrixElement .variableValue,.rtcDataTipElement .matrixElement .variableValue {white-space: pre; display: inline-block; vertical-align: top; overflow: hidden;}
+.embeddedOutputsMatrixElement.inlineElement {}
+.embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {display: none;}
+.embeddedOutputsMatrixElement.inlineElement .veTable .body {padding-top: 0 !important; max-height: 100px;}
+.inlineElement .matrixElement {max-height: 300px;}
+.embeddedOutputsMatrixElement.rightPaneElement {}
+.rightPaneElement .matrixElement,.rtcDataTipElement .matrixElement {overflow: hidden; padding-left: 9px;}
+.rightPaneElement .matrixElement {margin-bottom: -1px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer,.eoOutputWrapper .matrixElement .valueContainer,.rtcDataTipElement .matrixElement .valueContainer {white-space: nowrap; margin-bottom: 3px;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis.hide,.embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis.hide,.eoOutputWrapper .matrixElement .verticalEllipsis.hide,.rtcDataTipElement .matrixElement .valueContainer .horizontalEllipsis.hide,.rtcDataTipElement .matrixElement .verticalEllipsis.hide {display: none;}
+.embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .verticalEllipsis, .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer.hideEllipses .horizontalEllipsis {display:none;}
+.embeddedOutputsMatrixElement .matrixElement .valueContainer .horizontalEllipsis,.eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis {margin-bottom: -3px;}
+.eoOutputWrapper .embeddedOutputsVariableMatrixElement .matrixElement .valueContainer {cursor: default !important;}
+.embeddedOutputsVariableElement {white-space: pre-wrap; word-wrap: break-word; min-height: 18px; max-height: 250px; overflow: auto;}
+.variableElement {}
+.embeddedOutputsVariableElement.inlineElement {}
+.inlineElement .variableElement {}
+.embeddedOutputsVariableElement.rightPaneElement {min-height: 16px;}
+.rightPaneElement .variableElement {padding-top: 2px; padding-left: 9px;}
+.variableNameElement {margin-bottom: 3px; display: inline-block;}
+.matrixElement .horizontalEllipsis,.rtcDataTipElement .matrixElement .horizontalEllipsis {display: inline-block; margin-top: 3px; width: 30px; height: 12px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAJCAYAAADO1CeCAAAAJUlEQVR42mP4//8/A70xw0i29BUDFPxnAEtTW37wWDqakIa4pQDvOOG89lHX2gAAAABJRU5ErkJggg==");}
+.matrixElement .verticalEllipsis,.textElement .verticalEllipsis,.rtcDataTipElement .matrixElement .verticalEllipsis,.rtcDataTipElement .textElement .verticalEllipsis {margin-left: 35px; width: 12px; height: 30px; background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAZCAYAAAAIcL+IAAAALklEQVR42mP4//8/AzGYgWyFMECMwv8QddRS+P//KyimlmcGUOFoOI6GI/UVAgDnd8Dd4+NCwgAAAABJRU5ErkJggg==");}
+.S16 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h2  class = 'S0'><span>Week 2 Coding Lecture 2:  Conditional statements</span></h2><div  class = 'S1'><span>When you are programming, you will often encounter situations where you want your code to do one thing in some contexts and another thing in other contexts.  We already saw one example in the last lecture: We wanted to be able to stop our loop if </span><span style=' font-family: monospace;'>fib(n)</span><span> was too large.  For a simpler example, you might want to calculate the absolute value of a number.  The absolute value is defined as </span></div><div  class = 'S1'><span texencoding="|x| = \left\{ \begin{array}{lr} x &amp; \textrm{if }x \geq 0, \\ -x &amp; \textrm{if }x &lt; 0. \end{array} \right." style="vertical-align:-14px"><img src="data:image/png;base64,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" width="130" height="39" /></span></div><div  class = 'S1'><span>In English, this means that the absolute value of x is the same value if x is not negative, but you have to flip the sign if x is negative.  This is such a common problem that MATLAB has a special syntax called an "if statement" set up to handle it.  In its simplest form, an </span><span style=' font-family: monospace;'>if</span><span> statement looks like this: </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>condition</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% Code to run if the condition is true</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>The words </span><span style=' font-family: monospace;'>if</span><span> and </span><span style=' font-family: monospace;'>end</span><span> are not variables - they are reserved words that tell MATLAB that this is an if statement.  The word "condition" should be a number or (much more commonly) some code that evaluates to a number.  Any (arbitrarilly complicated) code can go in between the </span><span style=' font-family: monospace;'>if</span><span> and </span><span style=' font-family: monospace;'>end</span><span>.  When MATLAB encounters an if statement it does one of two things.  If the condition is 0, then MATLAB skips everything in the </span><span style=' font-family: monospace;'>if</span><span> statement and goes directly to the line after </span><span style=' font-family: monospace;'>end</span><span>.  If the condition is not zero, then MATLAB runs the code in between </span><span style=' font-family: monospace;'>if</span><span> and </span><span style=' font-family: monospace;'>end</span><span> and then continues as usual.  Here are a couple examples: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>disp(</span><span style="color: rgb(170, 4, 249);">"The code before the if statement is always run"</span><span>)</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="AC4FC538" data-testid="output_0" data-width="787" data-height="18" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement">The code before the if statement is always run</div></div></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    disp(</span><span style="color: rgb(170, 4, 249);">"The code in the if statement is run because x is not zero"</span><span>);</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="B32D70A5" data-testid="output_1" data-width="787" data-height="18" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement">The code in the if statement is run because x is not zero</div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>disp(</span><span style="color: rgb(170, 4, 249);">"The code after the if statement is always run"</span><span>)</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="E2047199" data-testid="output_2" data-width="787" data-height="18" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement">The code after the if statement is always run</div></div></div></div></div><div  class = 'S9'><span>or</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>y = 0;</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>disp(</span><span style="color: rgb(170, 4, 249);">"The code before the if statement is always run"</span><span>)</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="9DAE4AD7" data-testid="output_3" data-width="787" data-height="18" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement">The code before the if statement is always run</div></div></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>y</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span class="warning_squiggle_rte1307888617">disp(</span><span class="warning_squiggle_rte1307888617" style="color: rgb(170, 4, 249);">"The code in the if statement is not run because y is zero"</span><span class="warning_squiggle_rte1307888617">)</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>disp(</span><span style="color: rgb(170, 4, 249);">"The code after the if statement is always run"</span><span>)</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsTextElement" uid="FC71B720" data-testid="output_4" data-width="787" data-height="18" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement">The code after the if statement is always run</div></div></div></div></div><div  class = 'S1'><span>There are a few operators that are used extremely often in conditions: </span></div><ul  class = 'S10'><li  class = 'S11'><span>The </span><span style=' font-family: monospace;'>==</span><span> operator checks if two numbers are equal.  If they are equal, the condition evaluates to 1.  If they are are not equal, the condition evaluates to 0.  For example, </span></li></ul><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3; </span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>y = 3;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>z = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>x </span><span class="warning_squiggle_rte1307888617 warningHighlight1307888617">==</span><span> y</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="C234D340" data-testid="output_5" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>x </span><span class="warning_squiggle_rte1307888617 warningHighlight1307888617">==</span><span> z</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="E27DB4BD" data-testid="output_6" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div></div><ul  class = 'S10'><li  class = 'S11'><span>The </span><span style=' font-family: monospace;'>&gt;</span><span> operator checks if the left number is greater than the right number.  If the left number is greater, the condition evaluates to 1, otherwise it evaluates to 0.  </span></li></ul><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3; y = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>x &gt; y</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="EE46EABC" data-testid="output_7" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>y &gt; x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="028FD859" data-testid="output_8" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>x &gt; x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="65FEBEE5" data-testid="output_9" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div></div><ul  class = 'S10'><li  class = 'S11'><span>The </span><span style=' font-family: monospace;'>&lt;</span><span> operator checks if the left number is less than the right number.  If the left number is less, the condition evaluates to 1, otherwise it evaluates to 0.  </span></li></ul><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3; y = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>x &lt; y</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="A4C2343D" data-testid="output_10" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>y &lt; x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="07C324C0" data-testid="output_11" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>x &lt; x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="0A297FB4" data-testid="output_12" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div></div><ul  class = 'S10'><li  class = 'S11'><span>The </span><span style=' font-family: monospace;'>&gt;=</span><span> operator checks if the left number is greater than or equal to the right number.  If the left number is greater or equal, the condition evaluates to 1, otherwise it evaluates to 0.  </span></li></ul><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3; y = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>x &gt;= y</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="9CE7F024" data-testid="output_13" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>y &gt;= x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="BD5267B3" data-testid="output_14" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>x &gt;= x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="33C982E9" data-testid="output_15" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div></div><ul  class = 'S10'><li  class = 'S11'><span>The &lt;= operator checks if the left number is less than or equal to the right number.  If the left number is less or equal, the condition evaluates to 1, otherwise it evaluates to 0.  </span></li></ul><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 3; y = 4;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>x &lt;= y</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="36BCFE57" data-testid="output_16" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>y &lt;= x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="3F57B3C7" data-testid="output_17" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>x &lt;= x</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="D1519C18" data-testid="output_18" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div></div><h4  class = 'S12'><span>Absolute value</span></h4><div  class = 'S1'><span>We are now in a position to calculate absolute value in code.  </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = 10;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x &gt;= 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x &lt; 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = -x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>absolute_value_of_x</span></span></div><div  class = 'S5'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>absolute_value_of_x = 10</div></div></div></div><div  class = 'S9'><span>We chose a positive value for </span><span style=' font-family: monospace;'>x</span><span> in above example, but it works just as well with a negative value.  </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = -5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x &gt;= 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x &lt; 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = -x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper outputs"><div  class = 'S4'><span style="white-space: pre;"><span>absolute_value_of_x</span></span></div><div  class = 'S5'><div class='variableElement' style='font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px; '>absolute_value_of_x = 5</div></div></div></div><div  class = 'S9'><span>Notice that we had two mutually exclusive conditions (either </span><span style=' font-family: monospace;'>x</span><span> is non-negative or it is negative) and we wanted to run different code in either case.  Our solution is perfectly fine, but this comes up so often that MATLAB has a shortcut: The </span><span style=' font-family: monospace;'>else</span><span> statement.  In general, </span><span style=' font-family: monospace;'>else</span><span> statements work like this: </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>condition</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block 1</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">else</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block 2</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>When MATLAB encounters a block like this, it first checks the value of </span><span style=' font-family: monospace;'>condition</span><span>.  If </span><span style=' font-family: monospace;'>condition</span><span> is not zero, then Matlab executes code block 1, then jumps to the next line after </span><span style=' font-family: monospace;'>end</span><span>.  If </span><span style=' font-family: monospace;'>condition</span><span> is zero, then Matlab executes code block 2, then jumps to the next line after </span><span style=' font-family: monospace;'>end</span><span>.  We can therefore clean up our absolute value code like this: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>x = -12;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>x &gt;= 0</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">else</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    absolute_value_of_x = -x;</span></span></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S9'><span>There is actually one more level of generality for </span><span style=' font-family: monospace;'>if</span><span> statements.  If we have more than two cases, but we only ever want to run one block of code, we can use the keyword </span><span style=' font-family: monospace;'>elseif</span><span>.  The general case looks like this:</span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">if </span><span>condition_1</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block 1</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">elseif </span><span>condition_2</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block 2</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">...</span><span style="color: rgb(0, 127, 0);">.</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">elseif </span><span>condition_n</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block n</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">else</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% code block n+1</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>When MATLAB encounters a block like this, it checks each of the conditions in turn.  The first time it encounters a condition that is non-zero, it executes the corresponding code block and then jumps to the code after </span><span style=' font-family: monospace;'>end</span><span>.  If all of the conditions evaluate to zero, then MATLAB executes the last code block (after </span><span style=' font-family: monospace;'>else</span><span>) and then goes on to the code after </span><span style=' font-family: monospace;'>end</span><span>.  You can have as many </span><span style=' font-family: monospace;'>elseif</span><span> conditions as you want after an </span><span style=' font-family: monospace;'>if</span><span>.  </span></div><h3  class = 'S14'><span>Combining conditions</span></h3><div  class = 'S1'><span>There are two very common ways to combine conditions: The and operator </span><span style=' font-family: monospace;'>&amp;&amp;</span><span> and the or operator </span><span style=' font-family: monospace;'>||</span><span>.  The and operator evaluates to 1 if both the left and right condition are nonzero and evaluates to 0 otherwise.  For instance, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S15'><span style="white-space: pre;"><span>0 &amp;&amp; 0</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="68FF7BF1" data-testid="output_21" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>1 &amp;&amp; 0</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="21E49604" data-testid="output_22" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>0 &amp;&amp; 5</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="86E4F28F" data-testid="output_23" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>2 &amp;&amp; 3</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="80087BA6" data-testid="output_24" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div></div><div  class = 'S9'><span>The or operator evaluates to 1 if either the left or right condition is nonzero and evaluates to 0 otherwise.  For example, </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S15'><span style="white-space: pre;"><span>0 || 0</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="C717F87B" data-testid="output_25" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>1 || 0</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="F38E4A6B" data-testid="output_26" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>0 || 5</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="59E4A446" data-testid="output_27" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>2 || 3</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="A0B0322D" data-testid="output_28" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div></div><div  class = 'S1'><span>If you look in the workspace, you can see that these answers are a different type than we are used to.  Before today, all the variables we made were "doubles", which essentially means a decimal number, but these answers are called "logicals".  Logicals are only allowed to be 1 or 0, and we typically think of logical 1 as representing "true" and logical 0 as representing "false".  In fact, MATLAB has two builtin variables for logical 1 and logical 0 called </span><span style=' font-family: monospace;'>true</span><span> and </span><span style=' font-family: monospace;'>false</span><span>.  </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S15'><span style="white-space: pre;"><span>true</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="FB8AF489" data-testid="output_29" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   1
+</div></div></div></div></div><div class="inlineWrapper outputs"><div  class = 'S8'><span style="white-space: pre;"><span>false</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableStringElement" uid="02AC5631" data-testid="output_30" data-width="787" data-height="34" data-hashorizontaloverflow="false" style="width: 817px; max-height: 261px;"><div class="textElement"><div><span class="variableNameElement">ans = <span class="headerElement">logical</span></span></div><div>   0
+</div></div></div></div></div></div><div  class = 'S9'><span>That said, there is no requirement that you use logical variables in your </span><span style=' font-family: monospace;'>if</span><span> statements.  Any number that is not zero counts as true and zero counts as false, even if the numbers are doubles.  </span></div><h2  class = 'S0'><span>Fibonacci numbers</span></h2><div  class = 'S1'><span>We are now in a position to solve the last problem from the previous lecture.  Recall that we were trying to calculate all of the Fibonacci numbers less than 1,000,000.  We already have code to calculate the first </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">N</span><span> Fibonacci numbers, where </span><span style="font-family: STIXGeneral, STIXGeneral-webfont, serif; font-style: italic; font-weight: 400; color: rgb(0, 0, 0);">N</span><span> is a fixed number: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>N = 20;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(N, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 3:N</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    fib(k) = fib(k - 1) + fib(k - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S9'><span>We now want to adjust this code so that it stops once we find a number larger than 1,000,000.  To solve this, we really just have to add a statement to our loop sayng "if fib(k) is at least 1,000,000 then stop the loop".  Translating this into an </span><span style=' font-family: monospace;'>if</span><span> statement is pretty straightforward.  The only other thing we need to know is that the keyword </span><span style=' font-family: monospace;'>break</span><span> tells MATLAB to stop whatever loop it is running.  We can now write</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>N = 20;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(N, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 3:N</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    fib(k) = fib(k - 1) + fib(k - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">if </span><span>fib(k) &gt;= 1000000</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>        </span><span style="color: rgb(0, 114, 189);">break</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S9'><span>This code is almost done, but there are a couple of small issues.  Most obviously, if you look at the vector </span><span style=' font-family: monospace;'>fib</span><span> you will discover that we don't actually have the right answer: </span></div><div class="CodeBlock"><div class="inlineWrapper outputs"><div  class = 'S15'><span style="white-space: pre;"><span>fib</span></span></div><div  class = 'S5'><div class="inlineElement eoOutputWrapper embeddedOutputsVariableMatrixElement" uid="303A8EF4" data-testid="output_31" data-width="787" style="width: 817px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="matrixElement veSpecifier saveLoad" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="veVariableName variableNameElement double" style="width: 787px; white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="headerElementClickToInteract" style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><span style="white-space: normal; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">fib = </span><span class="veVariableValueSummary veMetaSummary" style="white-space: normal; font-style: normal; color: rgb(179, 179, 179); font-size: 12px;">20×1</span></div></div><div class="valueContainer" data-layout="{&quot;columnWidth&quot;:44,&quot;totalColumns&quot;:&quot;1&quot;,&quot;totalRows&quot;:&quot;20&quot;,&quot;charsPerColumn&quot;:6}" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"><div class="variableValue" style="width: 46px; white-space: pre; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;">     1
+     1
+     2
+     3
+     5
+     8
+    13
+    21
+    34
+    55
+</div><div class="horizontalEllipsis hide" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div><div class="verticalEllipsis" style="white-space: nowrap; font-style: normal; color: rgb(64, 64, 64); font-size: 12px;"></div></div></div></div></div></div></div><div  class = 'S9'><span>The issue is that there are two reasons our loop might stop.  One reason is if </span><span style=' font-family: monospace;'>fib(k)</span><span> is ever over 1,000,000.  The other is that </span><span style=' font-family: monospace;'>k</span><span> gets to 20 and the loop ends as usual.  In our case, we just went through all 20 steps of our </span><span style=' font-family: monospace;'>for</span><span> loop without ever finding a large enough Fibonacci number.  We can mostly solve this by making </span><span style=' font-family: monospace;'>N</span><span> larger.  For example, we already saw in the last lecture that the 200th Fibonacci number is larger than 1,000,000, so if we set </span><span style=' font-family: monospace;'>N</span><span> to 200 we know that we will calculate enough values.  </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>N = 200;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(N, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 3:N</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    fib(k) = fib(k - 1) + fib(k - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">if </span><span>fib(k) &gt;= 1000000</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>        </span><span style="color: rgb(0, 114, 189);">break</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div></div><div  class = 'S9'><span>If you look at the vector </span><span style=' font-family: monospace;'>fib</span><span> now, you will see a different issue.  Now the vector has all of the Fibonacci numbers we wanted, but it also has more than 100 trailing zeros.  This is because there are actually only 30 Fibonacci numbers less than 1,000,000, not 200.  We could of course just set </span><span style=' font-family: monospace;'>N</span><span> to 30, but that would destroy the point of using the </span><span style=' font-family: monospace;'>if</span><span> statement.  A better solution is just to cut off the extra zeros once we are done.  How do we know how many entries of our vector to keep?  The trick to notice is that </span><span style=' font-family: monospace;'>k</span><span> is still defined after the loop ends, so the final value of </span><span style=' font-family: monospace;'>k</span><span> tells you how many steps were completed.  In our case it is easy to check that </span><span style=' font-family: monospace;'>k</span><span> is 31 at the end of this code block, which means that we filled in 31 non-zero Fibonacci numbers.  We actually don't want the last one either, because fib(31) is over 1,000,000, so we only want to keep the first 30 entries of </span><span style=' font-family: monospace;'>fib</span><span>.  We can therefore use the solution: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>N = 200;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib = zeros(N, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">for </span><span>k = 3:N</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    fib(k) = fib(k - 1) + fib(k - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">if </span><span>fib(k) &gt;= 1000000</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>        </span><span style="color: rgb(0, 114, 189);">break</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span class="warning_squiggle_rte1307888617">fib</span><span> = fib(1:(k-1));</span></span></div></div></div><div  class = 'S9'><span>You should take some time to study the above code - it is a very common method and we will use the same structure repeatedly in this class.  The general idea is to initialize storage (in this case the </span><span style=' font-family: monospace;'>fib</span><span> vector) for our results, then use a loop to calculate each value in turn, then use a combination of </span><span style=' font-family: monospace;'>if</span><span> and </span><span style=' font-family: monospace;'>break</span><span> to stop our loop once we have all the answers we need.  </span></div><div  class = 'S1'><span>There is still one small nuisance with this code: We need to make sure that we make </span><span style=' font-family: monospace;'>N</span><span> large enough.  Our solution was essentially just to guess and check until we found a sufficiently large value of </span><span style=' font-family: monospace;'>N</span><span>, but MATLAB has another coding construct for this purpose.  </span></div><h3  class = 'S14'><span>While loops</span></h3><div  class = 'S1'><span>Up until now, we have been using </span><span style=' font-family: monospace;'>for</span><span> loops, but MATLAB actually has another type of loop called the </span><span style=' font-family: monospace;'>while</span><span> loop.  The general syntax for a </span><span style=' font-family: monospace;'>while</span><span> loop is </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">while </span><span>condition</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    </span><span style="color: rgb(0, 127, 0);">% Code to repeat</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>When MATLAB encounters a </span><span style=' font-family: monospace;'>while</span><span> loop, it checks to see if the condition is non-zero.  If it is, then MATLAB runs the code between the </span><span style=' font-family: monospace;'>while</span><span> and </span><span style=' font-family: monospace;'>end</span><span>.  MATLAB then returns to the top of the </span><span style=' font-family: monospace;'>while</span><span> loop and starts over.  If the condition is ever zero, then MATLAB will instead skip to the next line of code after the </span><span style=' font-family: monospace;'>end</span><span>.  </span></div><div  class = 'S1'><span>You should think of a </span><span style=' font-family: monospace;'>while</span><span> loop as a repeating </span><span style=' font-family: monospace;'>if</span><span> statement.  MATLAB repeats the </span><span style=' font-family: monospace;'>if</span><span> statement over and over until the condition becomes false.  </span></div><div  class = 'S1'><span>The big advantage of a </span><span style=' font-family: monospace;'>while</span><span> loop is that you don't have to know the maximum number of steps beforehand.  The disadvantage is that MATLAB does not automatically track a loop variable for you.  For example, in the Fibonacci numbers problem we will have to track </span><span style=' font-family: monospace;'>k</span><span> ourselves.  </span></div><div  class = 'S1'><span>We can rewrite our previous solution using a </span><span style=' font-family: monospace;'>while</span><span> loop as follows: </span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre;"><span>fib = zeros(200, 1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(1) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>fib(2) = 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>k = 2;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">while </span><span>fib(k) &lt; 1000000</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    k = k + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span>    fib(k) = fib(k - 1) + fib(k - 2);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S13'><span style="white-space: pre;"><span>fib = fib(1:(k - 1));</span></span></div></div></div><div  class = 'S9'><span>Notice that we still have to guess a size for </span><span style=' font-family: monospace;'>fib</span><span> when we initialize it.  This code would still work if we ended up needing more than 200 values because MATLAB would automatically resize </span><span style=' font-family: monospace;'>fib</span><span> for us, but we would prefer to make </span><span style=' font-family: monospace;'>fib</span><span> large enough at the beginning because such resizing tends to be fairly slow.  </span></div><h3  class = 'S16'><span>Infinite loops</span></h3><div  class = 'S1'><span>There is one very important point that you have to keep in mind when working with </span><span style=' font-family: monospace;'>while</span><span> loops.  It is possible that the condition in your </span><span style=' font-family: monospace;'>while</span><span> loop never becomes false.  If this happens, then the loop will just repeat forever and your code will never stop running.  As a silly example, this code prints the number 1 forever: </span></div><div class = 'preformatted-matlab' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">while </span><span>true</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span>    disp(1)</span></span></div><div  class = 'S2'><span style="white-space: pre;"><span style="color: rgb(0, 114, 189);">end</span></span></div></div><div  class = 'S1'><span>We call such an example an infinite loop.  If you ever accidentally create one, you can force MATLAB to stop with the hot key "Ctrl+C" (or "Command+." for mac).  </span></div></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Week 2 Coding Lecture 2:  Conditional statements
+% When you are programming, you will often encounter situations where you want 
+% your code to do one thing in some contexts and another thing in other contexts.  
+% We already saw one example in the last lecture: We wanted to be able to stop 
+% our loop if |fib(n)| was too large.  For a simpler example, you might want to 
+% calculate the absolute value of a number.  The absolute value is defined as 
+% 
+% $$|x| = \left\{ \begin{array}{lr} x & \textrm{if }x \geq 0, \\ -x & \textrm{if 
+% }x < 0. \end{array} \right.$$
+% 
+% In English, this means that the absolute value of x is the same value if x 
+% is not negative, but you have to flip the sign if x is negative.  This is such 
+% a common problem that MATLAB has a special syntax called an "if statement" set 
+% up to handle it.  In its simplest form, an |if| statement looks like this: 
+%%
+% 
+%   if condition
+%       % Code to run if the condition is true
+%   end
+%
+%% 
+% The words |if| and |end| are not variables - they are reserved words that 
+% tell MATLAB that this is an if statement.  The word "condition" should be a 
+% number or (much more commonly) some code that evaluates to a number.  Any (arbitrarilly 
+% complicated) code can go in between the |if| and |end|.  When MATLAB encounters 
+% an if statement it does one of two things.  If the condition is 0, then MATLAB 
+% skips everything in the |if| statement and goes directly to the line after |end|.  
+% If the condition is not zero, then MATLAB runs the code in between |if| and 
+% |end| and then continues as usual.  Here are a couple examples: 
+
+x = 3;
+disp("The code before the if statement is always run")
+if x
+    disp("The code in the if statement is run because x is not zero");
+end
+disp("The code after the if statement is always run")
+%% 
+% or
+
+y = 0;
+disp("The code before the if statement is always run")
+if y
+    disp("The code in the if statement is not run because y is zero")
+end
+disp("The code after the if statement is always run")
+%% 
+% There are a few operators that are used extremely often in conditions: 
+%% 
+% * The |==| operator checks if two numbers are equal.  If they are equal, the 
+% condition evaluates to 1.  If they are are not equal, the condition evaluates 
+% to 0.  For example, 
+
+x = 3; 
+y = 3;
+z = 2;
+
+x == y
+x == z
+%% 
+% * The |>| operator checks if the left number is greater than the right number.  
+% If the left number is greater, the condition evaluates to 1, otherwise it evaluates 
+% to 0.  
+
+x = 3; y = 4;
+
+x > y
+y > x
+x > x
+%% 
+% * The |<| operator checks if the left number is less than the right number.  
+% If the left number is less, the condition evaluates to 1, otherwise it evaluates 
+% to 0.  
+
+x = 3; y = 4;
+
+x < y
+y < x
+x < x
+%% 
+% * The |>=| operator checks if the left number is greater than or equal to 
+% the right number.  If the left number is greater or equal, the condition evaluates 
+% to 1, otherwise it evaluates to 0.  
+
+x = 3; y = 4;
+
+x >= y
+y >= x
+x >= x
+%% 
+% * The <= operator checks if the left number is less than or equal to the right 
+% number.  If the left number is less or equal, the condition evaluates to 1, 
+% otherwise it evaluates to 0.  
+
+x = 3; y = 4;
+
+x <= y
+y <= x
+x <= x
+% Absolute value
+% We are now in a position to calculate absolute value in code.  
+
+x = 10;
+if x >= 0
+    absolute_value_of_x = x;
+end
+if x < 0
+    absolute_value_of_x = -x;
+end
+absolute_value_of_x
+%% 
+% We chose a positive value for |x| in above example, but it works just as well 
+% with a negative value.  
+
+x = -5;
+if x >= 0
+    absolute_value_of_x = x;
+end
+if x < 0
+    absolute_value_of_x = -x;
+end
+absolute_value_of_x
+%% 
+% Notice that we had two mutually exclusive conditions (either |x| is non-negative 
+% or it is negative) and we wanted to run different code in either case.  Our 
+% solution is perfectly fine, but this comes up so often that MATLAB has a shortcut: 
+% The |else| statement.  In general, |else| statements work like this: 
+%%
+% 
+%   if condition
+%       % code block 1
+%   else
+%       % code block 2
+%   end
+%
+%% 
+% When MATLAB encounters a block like this, it first checks the value of |condition|.  
+% If |condition| is not zero, then Matlab executes code block 1, then jumps to 
+% the next line after |end|.  If |condition| is zero, then Matlab executes code 
+% block 2, then jumps to the next line after |end|.  We can therefore clean up 
+% our absolute value code like this: 
+
+x = -12;
+if x >= 0
+    absolute_value_of_x = x;
+else
+    absolute_value_of_x = -x;
+end
+%% 
+% There is actually one more level of generality for |if| statements.  If we 
+% have more than two cases, but we only ever want to run one block of code, we 
+% can use the keyword |elseif|.  The general case looks like this:
+%%
+% 
+%   if condition_1
+%       % code block 1
+%   elseif condition_2
+%       % code block 2
+%   ....
+%   elseif condition_n
+%       % code block n
+%   else
+%       % code block n+1
+%   end
+%
+%% 
+% When MATLAB encounters a block like this, it checks each of the conditions 
+% in turn.  The first time it encounters a condition that is non-zero, it executes 
+% the corresponding code block and then jumps to the code after |end|.  If all 
+% of the conditions evaluate to zero, then MATLAB executes the last code block 
+% (after |else|) and then goes on to the code after |end|.  You can have as many 
+% |elseif| conditions as you want after an |if|.  
+% Combining conditions
+% There are two very common ways to combine conditions: The and operator |&&| 
+% and the or operator ||||.  The and operator evaluates to 1 if both the left 
+% and right condition are nonzero and evaluates to 0 otherwise.  For instance, 
+
+0 && 0
+1 && 0
+0 && 5
+2 && 3
+%% 
+% The or operator evaluates to 1 if either the left or right condition is nonzero 
+% and evaluates to 0 otherwise.  For example, 
+
+0 || 0
+1 || 0
+0 || 5
+2 || 3
+%% 
+% If you look in the workspace, you can see that these answers are a different 
+% type than we are used to.  Before today, all the variables we made were "doubles", 
+% which essentially means a decimal number, but these answers are called "logicals".  
+% Logicals are only allowed to be 1 or 0, and we typically think of logical 1 
+% as representing "true" and logical 0 as representing "false".  In fact, MATLAB 
+% has two builtin variables for logical 1 and logical 0 called |true| and |false|.  
+
+true
+false
+%% 
+% That said, there is no requirement that you use logical variables in your 
+% |if| statements.  Any number that is not zero counts as true and zero counts 
+% as false, even if the numbers are doubles.  
+%% Fibonacci numbers
+% We are now in a position to solve the last problem from the previous lecture.  
+% Recall that we were trying to calculate all of the Fibonacci numbers less than 
+% 1,000,000.  We already have code to calculate the first $N$ Fibonacci numbers, 
+% where $N$ is a fixed number: 
+
+N = 20;
+fib = zeros(N, 1);
+fib(1) = 1;
+fib(2) = 1;
+
+for k = 3:N
+    fib(k) = fib(k - 1) + fib(k - 2);
+end
+%% 
+% We now want to adjust this code so that it stops once we find a number larger 
+% than 1,000,000.  To solve this, we really just have to add a statement to our 
+% loop sayng "if fib(k) is at least 1,000,000 then stop the loop".  Translating 
+% this into an |if| statement is pretty straightforward.  The only other thing 
+% we need to know is that the keyword |break| tells MATLAB to stop whatever loop 
+% it is running.  We can now write
+
+N = 20;
+fib = zeros(N, 1);
+fib(1) = 1;
+fib(2) = 1;
+
+for k = 3:N
+    fib(k) = fib(k - 1) + fib(k - 2);
+    if fib(k) >= 1000000
+        break
+    end
+end
+%% 
+% This code is almost done, but there are a couple of small issues.  Most obviously, 
+% if you look at the vector |fib| you will discover that we don't actually have 
+% the right answer: 
+
+fib
+%% 
+% The issue is that there are two reasons our loop might stop.  One reason is 
+% if |fib(k)| is ever over 1,000,000.  The other is that |k| gets to 20 and the 
+% loop ends as usual.  In our case, we just went through all 20 steps of our |for| 
+% loop without ever finding a large enough Fibonacci number.  We can mostly solve 
+% this by making |N| larger.  For example, we already saw in the last lecture 
+% that the 200th Fibonacci number is larger than 1,000,000, so if we set |N| to 
+% 200 we know that we will calculate enough values.  
+
+N = 200;
+fib = zeros(N, 1);
+fib(1) = 1;
+fib(2) = 1;
+
+for k = 3:N
+    fib(k) = fib(k - 1) + fib(k - 2);
+    if fib(k) >= 1000000
+        break
+    end
+end
+%% 
+% If you look at the vector |fib| now, you will see a different issue.  Now 
+% the vector has all of the Fibonacci numbers we wanted, but it also has more 
+% than 100 trailing zeros.  This is because there are actually only 30 Fibonacci 
+% numbers less than 1,000,000, not 200.  We could of course just set |N| to 30, 
+% but that would destroy the point of using the |if| statement.  A better solution 
+% is just to cut off the extra zeros once we are done.  How do we know how many 
+% entries of our vector to keep?  The trick to notice is that |k| is still defined 
+% after the loop ends, so the final value of |k| tells you how many steps were 
+% completed.  In our case it is easy to check that |k| is 31 at the end of this 
+% code block, which means that we filled in 31 non-zero Fibonacci numbers.  We 
+% actually don't want the last one either, because fib(31) is over 1,000,000, 
+% so we only want to keep the first 30 entries of |fib|.  We can therefore use 
+% the solution: 
+
+N = 200;
+fib = zeros(N, 1);
+fib(1) = 1;
+fib(2) = 1;
+
+for k = 3:N
+    fib(k) = fib(k - 1) + fib(k - 2);
+    if fib(k) >= 1000000
+        break
+    end
+end
+
+fib = fib(1:(k-1));
+%% 
+% You should take some time to study the above code - it is a very common method 
+% and we will use the same structure repeatedly in this class.  The general idea 
+% is to initialize storage (in this case the |fib| vector) for our results, then 
+% use a loop to calculate each value in turn, then use a combination of |if| and 
+% |break| to stop our loop once we have all the answers we need.  
+% 
+% There is still one small nuisance with this code: We need to make sure that 
+% we make |N| large enough.  Our solution was essentially just to guess and check 
+% until we found a sufficiently large value of |N|, but MATLAB has another coding 
+% construct for this purpose.  
+% While loops
+% Up until now, we have been using |for| loops, but MATLAB actually has another 
+% type of loop called the |while| loop.  The general syntax for a |while| loop 
+% is 
+%%
+% 
+%   while condition
+%       % Code to repeat
+%   end
+%
+%% 
+% When MATLAB encounters a |while| loop, it checks to see if the condition is 
+% non-zero.  If it is, then MATLAB runs the code between the |while| and |end|.  
+% MATLAB then returns to the top of the |while| loop and starts over.  If the 
+% condition is ever zero, then MATLAB will instead skip to the next line of code 
+% after the |end|.  
+% 
+% You should think of a |while| loop as a repeating |if| statement.  MATLAB 
+% repeats the |if| statement over and over until the condition becomes false.  
+% 
+% The big advantage of a |while| loop is that you don't have to know the maximum 
+% number of steps beforehand.  The disadvantage is that MATLAB does not automatically 
+% track a loop variable for you.  For example, in the Fibonacci numbers problem 
+% we will have to track |k| ourselves.  
+% 
+% We can rewrite our previous solution using a |while| loop as follows: 
+
+fib = zeros(200, 1);
+fib(1) = 1;
+fib(2) = 1;
+
+k = 2;
+while fib(k) < 1000000
+    k = k + 1;
+    fib(k) = fib(k - 1) + fib(k - 2);
+end
+fib = fib(1:(k - 1));
+%% 
+% Notice that we still have to guess a size for |fib| when we initialize it.  
+% This code would still work if we ended up needing more than 200 values because 
+% MATLAB would automatically resize |fib| for us, but we would prefer to make 
+% |fib| large enough at the beginning because such resizing tends to be fairly 
+% slow.  
+% Infinite loops
+% There is one very important point that you have to keep in mind when working 
+% with |while| loops.  It is possible that the condition in your |while| loop 
+% never becomes false.  If this happens, then the loop will just repeat forever 
+% and your code will never stop running.  As a silly example, this code prints 
+% the number 1 forever: 
+%%
+% 
+%   while true
+%       disp(1)
+%   end
+%
+%% 
+% We call such an example an infinite loop.  If you ever accidentally create 
+% one, you can force MATLAB to stop with the hot key "Ctrl+C" (or "Command+." 
+% for mac).
+##### SOURCE END #####
+--></body></html>
