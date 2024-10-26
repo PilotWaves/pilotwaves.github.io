@@ -1,0 +1,255 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 5
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 2.1 and 2.2 Vector spaces and subspaces}
+
+Here we saw some definitions and how they apply to some examples.
+
+\begin{definition}
+The vectors $v_1,\ldots,v_n$ are said to be \underline{Linearly Independent} if
+$c_1v_1 + \cdots + c_nv_n \neq 0$ whenever $c_i \neq 0$ for $i = 1,\ldots,n$; otherwise
+they are said to be \underline{Linearly Dependent}.
+\end{definition}
+
+\begin{definition}
+The expression $c_1v_1 + \cdots + c_nv_n$ is said to be a \underline{Linear Combination} of $v_1,\ldots,v_n$.
+\end{definition}
+
+A vector space is simply a space that contains all of the axioms of vector addition and scalar multiplication, and
+is self-contained; i.e., addition and scalar multiplication of any combination of vectors will produce a vector
+in that space.
+
+\begin{definition}
+A \underline{subspace} of a vector space is a nonempty subset that satisfies the requirements for a vector space:
+Linear combinations stay in the subset;
+%
+\begin{itemize}
+
+\item[(i)  ]  if we add any vectors $x$ and $y$ in the subspace $x+y$ is in the subspace,
+
+\item[(ii)]  if we multiply any vector $x$ in the subspace by any scalar $c$, $cx$ is in the subspace.
+
+\end{itemize}
+\label{Def: Subspace}
+\end{definition}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+Now lets look at some examples
+
+\begin{enumerate}
+
+\setlength{\itemsep}{2em}
+
+\item[Ex:  ]  $W \subseteq \R^4$ such that $\forall\quad x,y,z \in \R$,
+%
+\begin{equation*}
+\begin{vmatrix}
+x\\
+y\\
+z\\
+0
+\end{vmatrix} \in W.
+\end{equation*}
+
+$W$ is clearly nonempty and a subset of $V$.  We just have to check the properties listed in
+Def. \ref{Def: Subspace}.
+
+\begin{itemize}
+
+\item[(i)  ]
+
+\begin{equation*}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+0
+\end{bmatrix} + \begin{bmatrix}
+y_1\\
+y_2\\
+y_3\\
+0
+\end{bmatrix} = \begin{bmatrix}
+x_1 + y_1\\
+x_2 + y_2\\
+x_3 + y_3\\
+0
+\end{bmatrix}
+\end{equation*}
+%
+By the axioms of arithmetic $x_i + y_i$ will be real numbers, and the last entry is zero, so this is in $W$.
+
+\item[(ii)  ]  
+
+\begin{equation*}
+c\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+0
+\end{bmatrix} = \begin{bmatrix}
+cx_1\\
+cx_2\\
+cx_3\\
+0
+\end{bmatrix}
+\end{equation*}
+%
+Again, by the axioms of arithmetic $cx_i$ will be real numbers, and the last entry is zero, so this is in $W$ as well.
+
+\end{itemize}
+
+Since both properties are satisfied, $W$ is a subspace of $\R^4$.
+
+
+\item[Ex:  ]  $V \subseteq \R^3$ such that $\forall\quad x,y\in \R$,
+%
+\begin{equation*}
+\begin{vmatrix}
+x\\
+y\\
+4x-5y
+\end{vmatrix}\in V.
+\end{equation*}
+
+Just as the previous problem
+
+\begin{itemize}
+
+\item[(i)  ]  
+
+\begin{equation*}
+\begin{bmatrix}
+x_1\\
+x_2\\
+4x_1 - 5y_1
+\end{bmatrix} + \begin{bmatrix}
+y_1\\
+y_2\\
+y_3
+\end{bmatrix} = \begin{bmatrix}
+x_1 + y_1\\
+x_2 + y_2\\
+4(x_1 + x_2) - 5(y_1 + y_2)
+\end{bmatrix}
+\end{equation*}
+%
+By the axioms of arithmetic all three entries will be real, thus matching the definition of the set $V$, and hence the vector is in $V$.
+
+\item[(ii)  ]  
+
+\begin{equation*}
+c\begin{bmatrix}
+x_1\\
+x_2\\
+4x_1 - 5y_1
+\end{bmatrix} = \begin{bmatrix}
+cx_1\\
+cx_2\\
+4cx_1 - 5cy_1
+\end{bmatrix} \in V
+\end{equation*}
+%
+So, this too satisfies our conditions.
+
+Therefore, $V$ is a subspace in $\R^3$.
+
+\end{itemize}
+
+\item[Ex:  ]  $W \subseteq \R^3$ such that $\forall\quad x,y\in \R$,
+%
+\begin{equation*}
+\begin{vmatrix}
+x\\
+y\\
+-1
+\end{vmatrix} \in W
+\end{equation*}
+
+Here both properties can be violated.  For property (ii),
+%
+\begin{equation*}
+c\begin{bmatrix}
+x\\
+y\\
+-1
+\end{bmatrix} = \begin{bmatrix}
+cx\\
+cy\\
+-c
+\end{bmatrix}
+\end{equation*}
+%
+In general $-c \neq -1$, so this vector cannot be in $W$.  Hence, $W$ is not a subspace of $\R^3$.
+
+\item[Ex:  ]  $V \subseteq \R^2$ such that $\forall\quad x,y\in \R$,
+%
+\begin{equation*}
+\begin{vmatrix}
+x\\
+y
+\end{vmatrix} \in V.
+\end{equation*}
+
+
+Here only property (ii) is violated,
+%
+\begin{equation*}
+\sqrt{2}\begin{bmatrix}
+1\\
+1
+\end{bmatrix} = \begin{bmatrix}
+\sqrt{2}\\
+\sqrt{2}
+\end{bmatrix} \notin Q,
+\end{equation*}
+%
+therefore is not in $V$, and $V$ is not a subspace of $\R^2$.
+
+\end{enumerate}
+
+\end{document}

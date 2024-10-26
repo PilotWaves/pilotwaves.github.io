@@ -1,0 +1,178 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 7
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+\newcommand*\circled[1]{\color{red}\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+
+\section*{Sec. 3.1 and 4.1 Inner products and orthogonality}
+
+We briefly reviewed how to do dot products.  Then we talked about orthogonality and projections.
+
+\bigskip
+
+\underline{Brief dot product review}
+
+{\color{red}You would have seen this in previous courses, especially Calc III}
+
+\begin{itemize}
+
+\item  Length of a vector: $\|v\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} = \sqrt{v\cdot v}$.
+\item  A unit vector is a vector that has length one.  Any vector $v$ can be turned into a unit vector by dividing by its length: $v/\|v\|$.  This type of vector is also said to be \underline{normal}.
+\item  Distance between vectors: $\|u-v\| = \sqrt{(u_1-v_1)^2 + (u_2-v_2)^2}$.
+\item  Angle between vectors (law of cosines): $\cos\theta = u\cdot v/\|u\|\|v\|$.  Notice that a right angle $\theta = \pi/2$ implies $u\cdot v = 0$, so this is another way that we can show two vectors are perpendicular.
+\item  Pythagorean theorem:  $\|u+v\|^2 = \|u\|^2 + \|v\|^2$.
+
+\end{itemize}
+
+\begin{definition}
+Consider $\vec{u},\vec{v},\vec{w} \in V \subseteq \R^n$.  The product $\langle \vec{v},\vec{w}\rangle \in \R$ is said to be an \underline{\color{red}inner product} if for scalars $c, d \in \R$,
+%
+\begin{itemize}
+
+\item[(i)]  $\langle c\vec{u} + d\vec{v},\vec{w}\rangle = c\langle\vec{u},\vec{w}\rangle + d\langle\vec{v},\vec{w}\rangle$, and
+
+$\langle\vec{u},c\vec{v}+d\vec{w}\rangle = c\langle\vec{u},\vec{v}\rangle + d\langle\vec{u},\vec{w}\rangle$.
+
+\item[(ii)]  $\langle \vec{v},\vec{w}\rangle = \langle \vec{w},\vec{v}\rangle$
+
+\item[(iii)]  $\langle\vec{v},\vec{v}\rangle > 0$ whenever $\vec{v} \neq \vec{0}$, and
+$\langle\vec{v},\vec{v}\rangle = 0$ only if $\vec{v} = \vec{0}$.
+
+\end{itemize}
+\end{definition}
+
+{\color{blue}A dot product is a type of inner product, and that will be the only inner product we will use for now.}
+
+\begin{definition}
+If $\langle\vec{v},\vec{w}\rangle = 0$, $\vec{v}$ and $\vec{w}$ are said to be \underline{\color{red}orthogonal}.
+\end{definition}
+
+{\color{blue}For vectors in $\R^n$ this corresponds to $\vec{v}\cdot\vec{w}$ and $\vec{v}$ and $\vec{w}$ are said to be perpendicular}.
+
+\bigskip
+
+\underline{Orhtogonality}
+
+We notice that right angles are the most important angles in linear algebra.  Recall that the four fundamental
+subspaces meet at right angles.  Also our standard bases are produced using orthogonal vectors, in fact they
+are even better; they are unit vectors, which is referred to as \underline{normal}.  So, $\hat{i}, \hat{j}, \hat{k}$
+are \underline{orthonormal}.
+
+\begin{itemize}
+
+\item[Ex:  ]  The following vectors are orthogonal.
+%
+\begin{equation*}
+\begin{pmatrix}
+-1\\
+2
+\end{pmatrix}\cdot \begin{pmatrix}
+4\\
+2
+\end{pmatrix} = 0.
+\end{equation*}
+
+\item[Ex:  ]  Same as above
+%
+\begin{equation*}
+\begin{pmatrix}
+2\\
+2\\
+-1
+\end{pmatrix}\cdot \begin{pmatrix}
+-1\\
+2\\
+2
+\end{pmatrix} = 0.
+\end{equation*}
+
+\end{itemize}
+
+\begin{thm}
+If nonzero vectors $v_1,\ldots, v_k$ are mutually orthogonal (every vector is perpendicular to every
+other vector), then those vectors are linearly independent.
+\end{thm}
+
+An example of mutually orthogonal vectors are the standard basis vectors: $\hat{i}$, $\hat{j}$, $\hat{k}$ in $\R^3$.  They are clearly linearly independent.  Notice that they are also normal.
+
+There are times when orthogonal will not mean exactly right angles, such as when we look at functions:
+%
+\begin{equation*}
+\begin{pmatrix}
+\cos\theta\\
+\sin\theta
+\end{pmatrix}\cdot \begin{pmatrix}
+-\sin\theta\\
+\cos\theta
+\end{pmatrix}
+\end{equation*}
+%
+Notice that these vectors are also normal since $\cos^2\theta + \sin^2\theta = 1$.  However, these vector functions are not in euclidean space, but rather in function space, so our concept of perpendicular does not hold for these.
+
+\begin{definition}
+A basis is an \underline{\color{red}orthonomral basis} if it consists of mutually orthogonal unit vectors; i.e., perpendicular
+vectors of length one.
+\end{definition}
+
+Also, we notice that we can only have certain combinations of orthogonal vectors in a finite subspace.
+Take $\R^3$ for example.  We can only have two lines or a line and a plane, but we cannot have two planes
+orthogonal to each other.
+
+\begin{itemize}
+
+\item[Ex:  ]  In $\R^4$ suppose $V$ is the plane spanned by the vectors $v_1 = (1,0,0,0)$ and $v_2 = (1,1,0,0)$.  If $W$ is the line spanned by $w = (0,0,4,5)$, then $w$ is orthogonal to both $v_1$ and $v_2$.  So, the subspaces $W$ and $V$ are mutually orthogonal.
+
+\end{itemize}
+
+\begin{thm}[orthogonality]
+The row space $\mathcal{C}(A^T)$ and the nullspace $\mathcal{N}(A)$ are orthogonal to each other, as are
+the column space $\mathcal{C}(A)$ and the left nullspace $\mathcal{N}(A^T)$.
+
+\begin{proof}
+Notice that $Ax = 0$ for $\mathcal{N}(A)$, but the nonzero rows of $A$ make up $\mathcal{C}(A^T)$.
+So, each $x \in \mathcal{N}(A)$ is orthogonal to each row of $A$.
+\end{proof}
+\end{thm}
+
+\end{document}
