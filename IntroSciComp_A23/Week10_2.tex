@@ -1,0 +1,230 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{wrapfig}
+\usepackage{esint}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 10 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\xvect}{\overrightarrow{x}}
+\newcommand{\vect}{\overrightarrow{v}}
+\newcommand{\wvect}{\overrightarrow{w}}
+\newcommand{\nuvect}{\overrightarrow{\nu}}
+\newcommand{\omegavect}{\overrightarrow{\omega}}
+\newcommand{\del}{\nabla}
+
+
+\section*{Week 10 Part 2:  Heat Equation Example and Finite Differences for Heat Equation}
+
+\subsection*{Heat Equation Examples}
+
+Consider the heat equation with a generic initial condition,
+%
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2 u}{\partial x^2};\quad
+u(x,0) = f(x).
+\end{equation}
+%
+with the following boundary conditions: $u(0,t) = u(L,t) = 0$.
+
+\textbf{Solution:  }  We make the Ansatz, $u(x,t) = T(t)X(x)$.  Then we plug this
+into our heat equation
+%
+\begin{equation*}
+u_t = T'(t)X(x),\, u_{xx} = T(t)X''(x) \Rightarrow T'X = kTX''
+\Rightarrow \frac{T'}{kT} = \frac{X''}{X}.
+\end{equation*}
+%
+Since the LHS is a function of $t$ alone, and the RHS is a function of $x$ alone,
+and since they are equal, they must equal a constant.  Lets call it $-\lambda^2$.
+Then we have
+%
+\begin{equation}
+\frac{T'}{kT} = \frac{X''}{X} = -\lambda^2.
+\end{equation}
+%
+Notice that I call this from the get go because in our Sturm-Liouville problems
+the negative eigenvalue case always gave us trivial solutions.  Here we bypass
+that by automatically assuming a positive eigenvalue $\lambda^2$.  Now we must
+solve the two differential equations.
+
+The $T$ equation is the easiest to solve
+%
+\begin{equation*}
+\frac{T'}{kT} = -\lambda^2 \Rightarrow T' = -k\lambda^2 T
+\Rightarrow \frac{dT}{dt} =  -k\lambda^2 T \Rightarrow
+\frac{dT}{T} = -k\lambda^2 dt \Rightarrow \int \frac{dT}{T} = \int -k\lambda^2 dt
+\Rightarrow \ln T = -k\lambda^2 t \Rightarrow T = e^{-k\lambda^2 t}
+\end{equation*}
+%
+Notice that we don't include the constant in front of the exponential, and that
+is because the $X$ equation will have constants, and we would simply by multiplying
+constants to reduce it to one constant anyway, so I choose to leave it out from the
+beginning.  You don't have to though.
+
+Now, we solve the $X$ equation by recalling our Sturm-Liouville problems
+%
+\begin{equation*}
+\frac{X''}{X} = -\lambda^2 \Rightarrow X'' + \lambda^2 X = 0
+\Rightarrow X = A\cos\lambda x + B\sin\lambda x \text{  for $\lambda \neq 0$ and  }
+X = c_1x + c_2 \text{  for $\lambda = 0$.}
+\end{equation*}
+%
+If we look at the $\lambda = 0$ case we have $X(0) = c_2 = 0$
+and $X(L) = Lc_1 = 0$, so $X \equiv 0$.
+
+Now we look at the $\lambda \neq 0$ case.  $X(0) = A = 0$ and
+%
+\begin{equation*}
+X(L) = X(L) = B\sin\lambda x = 0 \Rightarrow \lambda = \frac{n\pi}{L}
+\Rightarrow X_n = B_n\sin\frac{n\pi}{L}x \text{  and  }
+T_n = e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation*}
+
+Next we combine the $T$ and $X$ solutions to get the general solutions,
+%
+\begin{equation}
+u(x,t) = \sum_{n=1}^\infty B_n\sin\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation}
+%
+And we can solve for the constants using the principles from Fourier series
+with the initial condition.
+Since this is a Fourier sine series we have
+%
+\begin{equation*}
+u(x,0) = \sum_{n=1}^\infty B_n\sin\frac{n\pi x}{L} = f(x)
+\Rightarrow B_n = \frac{2}{L}\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{equation*}
+%
+Then our full solution is
+%
+\begin{equation}
+u(x,t) = \frac{2}{L}\sum_{n=1}^\infty \sin\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{equation}
+
+\pagebreak
+
+\subsection*{Finite Differences}
+
+The idea here is that we know how to solve boundary value problems using finite differences so we are just going to solve a boundary value problem at each timestep $n$ and iterate using a loop.
+
+We must discretize the Heat equation 
+%
+\begin{equation*}
+\frac{\partial u}{\partial t} = k\frac{\partial^2 u}{\partial x^2};
+\end{equation*}
+%
+using finite differences with $i$ representing the spatial steps and $n$ representing the temporal steps.
+%
+\begin{equation*}
+\frac{\partial u}{\partial t} = \frac{u_i^{n+1} - u_i^n}{\Delta t}
+\end{equation*}
+%
+which is just the usual forward difference.  And
+%
+\begin{equation*}
+k\frac{\partial^2 u}{\partial x^2} = k\left[\frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{2\Delta x^2} + \frac{u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}}{2\Delta x^2}\right]
+\end{equation*}
+%
+which is the average of the second derivative central difference for the next time and the previous time.  Plugging this into the PDE gives us
+%
+\begin{equation}
+\frac{u_i^{n+1} - u_i^n}{\Delta t} = k\left[\frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{2\Delta x^2} + \frac{u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}}{2\Delta x^2}\right]
+\end{equation}
+%
+which can be simplified by letting $\mu = k\Delta t/(2\Delta x^2)$,
+%
+\begin{equation*}
+u_i^{n+1} - u_i^n = \mu\left[u_{i+1}^n - 2u_i^n + u_{i-1}^n + u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}\right]
+\end{equation*}
+%
+then we put all the time $n+1$ terms on the left hand side and all the time $n$ terms on the right hand side
+%
+\begin{equation*}
+-\mu u_{i+1}^{n+1} + (1+2\mu)u_i^{n+1} - \mu u_{i-1}^{n+1} = \mu u_{i+1}^n + (1-2\mu)u_i^n + \mu u_{i-1}^n
+\end{equation*}
+%
+Just like we did with ODEs, we can use tridiagonal matrices to represent this.  First lets write out each equation so we get a good idea of what needs to go into the tridiagonal entries.  It should be noted that $u_0$ and $u_M$ are just boundary terms, so lets call them $u_a$ and $u_b$ (the left and right hand boundary values).  
+%
+\begin{align*}
+(1+2\mu)u_1^{n+1} -\mu u_2^{n+1} &= \mu u_2^n + (1-2\mu)u_1^n + 2\mu u_a\\
+-\mu u_1^{n+1} + (1+2\mu)u_2^{n+1} - \mu u_3^{n+1} &= \mu u_1^n + (1-2\mu)u_2^n + \mu u_3^n\\
+&\vdots\\
+-\mu u_{i-1}^{n+1} + (1+2\mu)u_i^{n+1} - \mu u_{i+1}^{n+1} &= \mu u_{i-1}^n + (1-2\mu)u_i^n + \mu u_{i+1}^n\\
+&\vdots\\
+-\mu u_{M-3}^{n+1} + (1+2\mu)u_{M-2}^{n+1} - \mu u_{M-1}^{n+1} &= \mu u_{M-3}^n + (1-2\mu)u_{M-2}^n + \mu u_{M-1}^n\\
+-\mu u_{M-2}^{n+1} + (1+2\mu)u_{M-1}^{n+1} &= \mu u_{M-2}^n + (1-2\mu)u_{M-1}^n + 2\mu u_b
+\end{align*}
+%
+Then all we have is an $Au^{n+1} = b$ equation where $b = Bu^n + (2\mu u_a, 0, 0, \ldots, 0, 0, 2\mu u_b)$, and
+%
+\begin{equation}
+A = \begin{pmatrix}
+1 + 2\mu & -\mu & & &  \\
+-\mu & 1 + 2\mu & -\mu & & \\
+ & \ddots & \ddots & \ddots & \\
+ & & -\mu & 1 + 2\mu & -\mu\\
+ & & & -\mu & 1 + 2\mu
+\end{pmatrix}; \qquad B = \begin{pmatrix}
+1 - 2\mu & \mu & & &  \\
+\mu & 1 - 2\mu & \mu & & \\
+ & \ddots & \ddots & \ddots & \\
+ & & \mu & 1 - 2\mu & \mu\\
+ & & & \mu & 1 - 2\mu
+\end{pmatrix}
+\end{equation}
+%
+and therefore
+%
+\begin{equation}
+b = Bu^n + \begin{pmatrix}
+2\mu u_a\\
+0\\
+\vdots\\
+0\\
+2\mu u_b
+\end{pmatrix}
+\end{equation}
+
+
+
+\end{document}
