@@ -1,0 +1,481 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{wrapfig}
+\usepackage{esint}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 10 Theory Part 1
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\xvect}{\overrightarrow{x}}
+\newcommand{\vect}{\overrightarrow{v}}
+\newcommand{\wvect}{\overrightarrow{w}}
+\newcommand{\nuvect}{\overrightarrow{\nu}}
+\newcommand{\omegavect}{\overrightarrow{\omega}}
+\newcommand{\del}{\nabla}
+
+
+\section*{Week 10 Part 1:  Brief Introduction to Partial Differential Equations (PDEs)}
+
+\subsection*{The Three Classical PDEs}
+
+In the coding project I will only give a Heat equation problem, but if anyone was interested I included the other two types of PDEs.
+
+\subsubsection*{The Heat Equation}
+
+Consider heat conduction in some bulk space $V$ with a boundary $\partial V$.
+Also consider an infinitesimal space in that bulk called $dV$.  Let $u(x,y,z,t)$
+represent the temperature in $V$ at any time $t$.  Let $E = c\rho u$
+where $c$ is the specific heat and $\rho$ is the mass density of the bulk,
+be the total energy in $dV$.
+
+There are some fundamental laws that will lead us to the heat equation:
+%
+\begin{framed}
+Fourier heat conduction laws:
+\begin{enumerate}
+\item  If the temperature in a region is constant, there is no heat transfer in that region.
+\item  Heat always flows from hot to cold.
+\item  The greater the difference between temperatures at two points the faster the flow of heat
+from one point to the other.
+\item  The flow of heat is material dependent.
+\end{enumerate}
+\end{framed}
+%
+All these laws can be summarized into one equation
+%
+\begin{equation}
+\phi(x,y,z,t) = -K_0 \del u(x,y,z,t)
+\end{equation}
+%
+
+Now we can form a word equation:
+%
+\begin{equation}
+\left(\text{Rate of change of heat}\right)
+= \left(\text{Heat flowing into $dV$ per unit time}\right) +
+\left(\text{Heat generated in $dV$ per unit time}\right)
+\end{equation}
+%
+The first statement is the rate of change of the total energy $E$.
+The second is the flux at $\partial V$ in the normal direction.  
+The third is additional heat being generated in $dV$.  For the third
+statement lets called the additional heat $Q$.
+This gives us the equation
+%
+\begin{equation}
+\frac{\partial}{\partial t} \iiint_V c\rho u\, dV
+= - \oiint_{\partial V} \phi\cdot n\, dS
++\iiint_V Q\, dV
+\end{equation}
+%
+And using divergence theorem we get
+%
+\begin{equation*}
+\oiint_{\partial V} \phi\cdot n\, dS = \iiint_V \del\cdot\phi\, dV
+= \iiint_V \del\cdot (-K_0\del u)\, dV = K_0\iiint_V \del^2u\, dV
+\end{equation*}
+%
+therefore, the equation becomes
+%
+\begin{equation}
+\frac{\partial}{\partial t} \iiint_V c\rho u\, dV
+= \iiint_V c\rho \frac{\partial}{\partial t}u\, dV
+= K_0\iiint_V \del^2u\, dV +\iiint_V Q\, dV
+\Rightarrow c\rho \frac{\partial u}{\partial t} = K_0\del^2u + Q.
+\end{equation}
+%
+If we consider the case $Q = 0$; i.e., no external heat being generated,
+and if we divide through by $c\rho$, then we get the simplest form of the
+heat equation
+%
+\begin{equation}
+\color{red}\frac{\partial u}{\partial t} = K\del^2u
+\end{equation}
+%
+where $K$ is called the thermal diffusivity.
+%
+In 1-D this is,
+%
+\begin{equation}
+\color{red}\frac{\partial u}{\partial t} = K\frac{\partial^2 u}{\partial x^2}
+\end{equation}
+
+
+\subsubsection*{The Wave Equation}
+
+Here we will only derive the 1-D version, but keeping in mind we can extend the notion
+of a derivative to higher dimensions with the $\del$ operator.
+
+Consider a vibrating string.  Let $u$ be the vertical displacement.
+The slop of the string at any horizontal position $x$ is
+$\tan\theta(x) = \partial u/\partial x$
+where $\theta$ is the angle from the horizontal.
+
+If we ignore any horizontal motion of the atoms we can directly use Newton's laws
+for the vertical motion.  The mass of any small segment of string is $\rho\Delta x$
+and the acceleration is $\partial^2 u/\partial t^2$.  The total tensile force on the
+string at $x$ is $F(x,t)$ and at $\Delta x$ is $F(x+\Delta x,t)$.  We can ``pick out''
+the vertical component of the force by multiplying it by sine of the angle.  Lets also
+consider an external force on the string $Q$.  Then we get the equation
+%
+\begin{equation}
+\rho\Delta x\frac{\partial^2 u}{\partial t^2} = F(x+\Delta x,t)\sin(\theta(x+\Delta x,t))
+- F(x,t)\sin(\theta(x,t)) + \rho\Delta x Q(x)
+\end{equation}
+%
+Dividing through by $\Delta x$ and taking the limit gives us
+%
+\begin{equation*}
+\rho \frac{\partial^2 u}{\partial t^2} = \lim_{\Delta x \rightarrow 0} \frac{1}{\Delta x}
+\left(F(x+\Delta x,t)\sin(\theta(x+\Delta x,t)) - F(x,t)\sin(\theta(x,t))\right)
++ \rho Q(x) = \frac{\partial}{\partial x}\left(F(x,t)\sin(\theta(x,t))\right) + \rho Q(x)
+\end{equation*}
+%
+If our angle of deflection isn't huge, $\tan\theta = \sin\theta/\cos\theta \approx \sin\theta$,
+so we can approximate sine by $\sin\theta = \partial u/\partial x$.  Let us also assume
+a constant tensile force through out the string; i.e., $F = T_0$.
+Then our equation simplifies to
+%
+\begin{equation}
+\rho \frac{\partial^2 u}{\partial t^2} = \frac{\partial}{\partial x}
+\left(T_0 \frac{\partial u}{\partial x}\right) + \rho Q
+\Rightarrow \frac{\partial^2 u}{\partial t^2} = \frac{T_0}{\rho}
+\frac{\partial^2 u}{\partial x^2} + Q
+\end{equation}
+%
+Here $T_0/\rho = c^2$, where $c$ is the speed of propagation of the wave.  Now,
+if the only external force is gravity, it is negligible compared to $T_0$, so
+$Q \approx 0$.  This gives us the simplest wave equation
+%
+\begin{equation}
+\color{red}\frac{\partial^2 u}{\partial t^2} = c^2\frac{\partial^2 u}{\partial x^2}
+\end{equation}
+%
+This can be extended to the higher orders using the $\del$ operator
+%
+\begin{equation}
+\color{red}\frac{\partial^2 u}{\partial t^2} = c^2\del^2 u
+\end{equation}
+
+\bigskip
+\bigskip
+
+\subsubsection*{Laplace's Equation}
+
+We will often want to see what happens for steady state problems or when
+the time derivatives of a PDE are zero.  This gives us Laplace's Equation
+%
+\begin{equation}
+\color{red} \del^2 u = 0
+\end{equation}
+
+\bigskip
+\bigskip
+
+\subsubsection*{Boundary and Initial Condition}
+
+Consider a boundary $x = b$, then we have some usual conditions
+%
+\begin{align*}
+&\text{Dirichlet conditions:  } u(b,t) = B \text{  [Heat: prescribed, Wave: clamped]}\\
+&\text{Neumann conditions:  }  u_x(b,t) = B \text{  [Heat: flux, Wave: sloped string]}
+\end{align*}
+%
+We may also have a combination of these conditions.
+It should be noted that for the heat equation because
+we have one time derivative, it will have one initial condition.
+For the wave equation since we take two time derivatives we will
+have two initial conditions: one for the initial profile and the other
+for the initial velocity.
+
+\bigskip
+\bigskip
+
+\subsubsection*{Examples}
+
+\begin{itemize}
+
+\item[6)]  Here we need Newton's law of cooling:  The rate of change of temperature at a
+point is proportional to the difference between that and the surrounding temperature; i.e.,
+$\partial T/\partial t = -K(T-T_a)$, where $T_a$ is the ambient temperature.  Since the
+heat transfer is not happening in the domain, but rather lateral to the domain we treat
+this as external heat generation.  The problem also has insulated boundaries ($u_x = 0$
+at the boundaries), and the initial temperature is a constant 100 C.  So we get
+%
+\begin{equation*}
+\frac{\partial u}{\partial t} = D\frac{\partial^2 u}{\partial x^2} - K(u - 50);
+\frac{\partial u}{\partial x}\bigg|_{x = 0} = \frac{\partial u}{\partial x}\bigg|_{x = L} = 0;
+u(x,0) = 100.
+\end{equation*}
+
+\item[10)]  They say we have an external force proportional to the position, so $Q = kx$,
+and the problem tells us that the string is secured at the ends ($u = 0$ at the boundaries).
+For the initial condition it tells us that it is at rest ($u_t(x,0) = 0$) on the x-axis
+($u(x,0) = 0$).  So we have
+%
+\begin{equation*}
+\frac{\partial^2 u}{\partial t^2} = c^2\frac{\partial^2 u}{\partial x^2} + kx;
+u(0,t) = u(L,t) = 0; u(x,0) = \frac{\partial u}{\partial t}\bigg|_{t = 0} = 0.
+\end{equation*}
+
+\item[12)]  Here the one complication is the boundary on the right.  We need a
+way to express that it is 100C only after a certain value of $y$.  We do this
+using the Heaviside function
+%
+\begin{equation*}
+\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0;
+u(0,y) = e^{-y}, u(x,0) = f(x), u(\pi,y) = 100\left(1 - H_1(y)\right).
+\end{equation*}
+
+\end{itemize}
+
+\subsection*{Heat Equation Examples}
+
+Consider the heat equation with a generic initial condition,
+%
+\begin{equation}
+\frac{\partial u}{\partial t} = k\frac{\partial^2 u}{\partial x^2};\quad
+u(x,0) = f(x).
+\end{equation}
+%
+with the following boundary conditions
+
+\begin{itemize}
+
+\item[Ex:  ]  $u(0,t) = u(L,t) = 0$.
+
+\textbf{Solution:  }  We make the Ansatz, $u(x,t) = T(t)X(x)$.  Then we plug this
+into our heat equation
+%
+\begin{equation*}
+u_t = T'(t)X(x),\, u_{xx} = T(t)X''(x) \Rightarrow T'X = kTX''
+\Rightarrow \frac{T'}{kT} = \frac{X''}{X}.
+\end{equation*}
+%
+Since the LHS is a function of $t$ alone, and the RHS is a function of $x$ alone,
+and since they are equal, they must equal a constant.  Lets call it $-\lambda^2$.
+Then we have
+%
+\begin{equation}
+\frac{T'}{kT} = \frac{X''}{X} = -\lambda^2.
+\end{equation}
+%
+Notice that I call this from the get go because in our Sturm-Liouville problems
+the negative eigenvalue case always gave us trivial solutions.  Here we bypass
+that by automatically assuming a positive eigenvalue $\lambda^2$.  Now we must
+solve the two differential equations.
+
+The $T$ equation is the easiest to solve
+%
+\begin{equation*}
+\frac{T'}{kT} = -\lambda^2 \Rightarrow T' = -k\lambda^2 T
+\Rightarrow \frac{dT}{dt} =  -k\lambda^2 T \Rightarrow
+\frac{dT}{T} = -k\lambda^2 dt \Rightarrow \int \frac{dT}{T} = \int -k\lambda^2 dt
+\Rightarrow \ln T = -k\lambda^2 t \Rightarrow T = e^{-k\lambda^2 t}
+\end{equation*}
+%
+Notice that we don't include the constant in front of the exponential, and that
+is because the $X$ equation will have constants, and we would simply by multiplying
+constants to reduce it to one constant anyway, so I choose to leave it out from the
+beginning.  You don't have to though.
+
+Now, we solve the $X$ equation by recalling our Sturm-Liouville problems
+%
+\begin{equation*}
+\frac{X''}{X} = -\lambda^2 \Rightarrow X'' + \lambda^2 X = 0
+\Rightarrow X = A\cos\lambda x + B\sin\lambda x \text{  for $\lambda \neq 0$ and  }
+X = c_1x + c_2 \text{  for $\lambda = 0$.}
+\end{equation*}
+%
+If we look at the $\lambda = 0$ case we have $X(0) = c_2 = 0$
+and $X(L) = Lc_1 = 0$, so $X \equiv 0$.
+
+Now we look at the $\lambda \neq 0$ case.  $X(0) = A = 0$ and
+%
+\begin{equation*}
+X(L) = X(L) = B\sin\lambda x = 0 \Rightarrow \lambda = \frac{n\pi}{L}
+\Rightarrow X_n = B_n\sin\frac{n\pi}{L}x \text{  and  }
+T_n = e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation*}
+
+Next we combine the $T$ and $X$ solutions to get the general solutions,
+%
+\begin{equation}
+u(x,t) = \sum_{n=1}^\infty B_n\sin\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation}
+%
+And we can solve for the constants using the principles from Fourier series
+with the initial condition.
+Since this is a Fourier sine series we have
+%
+\begin{equation*}
+u(x,0) = \sum_{n=1}^\infty B_n\sin\frac{n\pi x}{L} = f(x)
+\Rightarrow B_n = \frac{2}{L}\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{equation*}
+%
+Then our full solution is
+%
+\begin{equation}
+u(x,t) = \frac{2}{L}\sum_{n=1}^\infty \sin\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{equation}
+
+
+\item[Ex:  ]  $u_x(0,t) = u_x(L,t) = 0$.
+
+\textbf{Solution:  }  We know from the first example that $T = e^{-k\lambda^2 t}$.
+
+For the $X$ equation we need to look at our two cases.  For $\lambda = 0$ we have
+$X = c_1x + c_2$, and $X'(x) = c_1$, so for both boundaries $X'(0) = c_1 = X'(L)$.
+These leaves us with a constant $X = c_2$.
+
+For the $\lambda \neq 0$ case we have
+%
+\begin{equation*}
+X = A\cos\lambda x + B\sin\lambda x \Rightarrow
+X' = -\lambda A\sin\lambda x + \lambda B\cos\lambda x
+\end{equation*}
+%
+Then we get $X'(0) = \lambda B = 0$ and
+%
+\begin{equation*}
+X'(L) = -\lambda A\sin\lambda L = 0 \Rightarrow \lambda = \frac{n\pi}{L}
+\Rightarrow X_n = A_n\cos\frac{n\pi x}{L} \text{  and  }
+T_n = e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation*}
+%
+Next we combine the $T$ and $X$ solutions to get our general solution
+%
+\begin{equation}
+u(x,t) = c_2 + \sum_{n=1}^\infty A_n\cos\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}
+\end{equation}
+%
+Now we find our coefficients by invoking the initial condition and using
+Fourier Series
+%
+\begin{equation*}
+u(x,0) = c_2 + \sum_{n=1}^\infty A_n\cos\frac{n\pi x}{L} = f(x)
+\end{equation*}
+%
+This gives us
+%
+\begin{equation*}
+c_2 = \frac{1}{L}\int_0^L f(x)dx
+\end{equation*}
+%
+and
+%
+\begin{equation*}
+A_n = \frac{2}{L}\int_0^L f(x)\cos\frac{n\pi x}{L}dx
+\end{equation*}
+%
+Combining everything we get the full solution
+%
+\begin{equation}
+u(x,t) = \frac{1}{L}\int_0^L f(x)dx + \frac{2}{L}\sum_{n=1}^\infty
+\cos\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}\int_0^L f(x)\cos\frac{n\pi x}{L}dx
+\end{equation}
+
+
+
+\item[Ex:  ]  Now lets think of heat transfer in a circle.  If we go around
+in one direction we hit $x = -L$ and in the other direction $x = L$, but these
+are the same point.  So we get the following boundary conditions
+%
+\begin{equation}
+u(-L,t) = u(L,t), u_x(-L,t) = u_x(L,t)
+\end{equation}
+
+\textbf{Solution:  }  We know from the previous two problems that
+our solutions will be
+%
+\begin{align*}
+T &= e^{-k\lambda^2 t}\\
+X &= c_1x + c_2 \text{  for $\lambda = 0$}\\
+X &= A\cos\lambda x + B\sin\lambda x \text{  for $\lambda \neq 0$}
+\end{align*}
+%
+For $\lambda = 0$, $X(L) = c_1L + c_2$ and $X(-L) = -c_1L + c_2$, so $c_1 = 0$.
+And the derivative is trivially satisfied.
+
+For $\lambda \neq 0$,
+%
+\begin{equation*}
+X(L) = X(-L) \Rightarrow A\cos\lambda L + B\sin\lambda L = A\cos\lambda L - B\sin\lambda L
+\Rightarrow \sin\lambda L = 0 \Rightarrow \lambda = \frac{n\pi}{L}
+\end{equation*}
+%
+And
+%
+\begin{equation*}
+X'(L) = X'(-L) \Rightarrow -\lambda A\sin\lambda L + \lambda B\cos\lambda L
+= \lambda A\sin \lambda L + \lambda B\cos\lambda L \Rightarrow \sin\lambda L = 0
+\end{equation*}
+%
+But we already showed this.  So, we need to keep both coefficients.
+%
+Then our solution for $X$, which as we saw in previous conditions (for the heat equation)
+is just the initial condition of the general solution, is
+%
+\begin{equation}
+X = c_2 + \sum_{n=1}^\infty A_n\cos\frac{n\pi x}{L} + B_n\sin\frac{n\pi x}{L} = u(x,0) = f(x)
+\end{equation}
+%
+Now we use Fourier series to solve for the coefficients,
+%
+\begin{align*}
+c_2 &= \frac{1}{L}\int_0^L f(x)dx\\
+A_n &= \frac{2}{L}\int_0^L f(x)\cos\frac{n\pi x}{L}dx\\
+B_n &= \frac{2}{L}\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{align*}
+%
+Putting everything back into the general solution gives us
+%
+\begin{equation}
+u(x,t) = \frac{1}{L}\int_0^L f(x)dx + \frac{2}{L}\sum_{n=1}^\infty
+\cos\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}\int_0^L f(x)\cos\frac{n\pi x}{L}dx
++ \sin\frac{n\pi x}{L}e^{-k\left(\frac{n\pi}{L}\right)^2 t}\int_0^L f(x)\sin\frac{n\pi x}{L}dx
+\end{equation}
+
+\end{itemize}
+
+
+\end{document}

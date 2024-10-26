@@ -1,0 +1,137 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 8 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 8 Part 2:  Separable ODEs}
+
+Separable equations are the easiest equations to solve.  This why it's extremely
+important to recognize separable equations.  It will save you a lot of work!
+One thing we will notice right away is that Autonomous first order ODEs are
+always separable.
+
+\begin{definition}
+An ODE is \underline{separable} if it can be written in the form $f(x)dx = g(y)dy$.
+\end{definition}
+
+For the next few problems we will solve some separable equations.
+
+\begin{enumerate}
+
+\item[Ex:  ]  $y' = x^2/y$
+
+\textbf{Solution:  }  We separate the equation by ``moving'' $y$ to the left and $dx$ to the right,
+
+\begin{equation*}
+ydy = x^2dx \Rightarrow \frac{1}{2}y^2 = \frac{1}{3}x^3 + C_0
+\Rightarrow y = \pm \sqrt{\frac{2}{3}x^3 + C_1};\; y \neq 0.
+\end{equation*}
+
+\item[Ex:  ]  $y' = \dfrac{3x^2 - 1}{3 + 2y}$
+
+\textbf{Solution:  } We separate the equation by moving $3+2y$ to the left and
+$dx$ to the right,
+
+\begin{equation*}
+(3+2y)dy = (3x^2-1)dx \Rightarrow 3y + y^2 = x^3 - x + C;\; y \neq -\frac{3}{2}.
+\end{equation*}
+
+\item[Ex:  ]  $y' = (1-2x)/y$
+
+\textbf{Solution:  }
+This type of problem is called an ``Initial Value Problem'' (IVP).  The idea
+is to use the Initial Value to solve for the constant of integration.  First we separate
+the problem by moving $y$ to the left and $dx$ to the right,
+
+\begin{equation*}
+ydy = (1-2x)dx \Rightarrow \frac{1}{2}y^2 = x - x^2 + C.
+\end{equation*}
+
+Now, the initial value tells us that $y = -2$ when $x = 1$, so if we plug this into
+the above equation we get that $C = 2$, so plugging it back in and solving for $y$
+gives,
+
+\begin{equation*}
+y = -\sqrt{2x - 2x^2 + 4};\; y \neq 0.
+\end{equation*}
+
+Notice we only chose the negative branch of the root because the initial condition
+starts with negative for the $y$ value and we know that $y \neq 0$ so the solution
+can't magically cross into the positive branch, so we must stay on the negative branch
+for all time.
+
+For part b and c, we did the plot in class, and the domain of existence is $-1<x<2$.
+
+\item[Ex:  ]  $\dfrac{dy}{dt} = ty\dfrac{4-y}{1+t}$
+
+\textbf{Solution:  }
+Separating gives us,
+%
+\begin{align*}
+&\int \frac{dy}{y(4-y)} = \int \frac{tdt}{1+t} \Rightarrow  \frac{1}{4}\int\left(\frac{1}{y} + \frac{1}{4-y}\right)dy
+= \int \frac{u-1}{u}du
+\Rightarrow \frac{1}{4}\left[\ln|y| - \ln|4-y|\right] = u - \ln|u| + C_0\\
+&\Rightarrow \ln|\frac{y}{4-y}| = 4t - 4\ln|1+t| + C_1 \Rightarrow \frac{y}{4-y} = e^{4t}\frac{K}{(1+t)^4};
+\end{align*}
+%
+plugging in the initial condition gives us $K = y_0/(4-y_0)$, then the full solution is
+%
+\begin{equation}
+y = \frac{\frac{4e^{4t}y_0}{(1+t)^4(4-y_0)}}{1 + \frac{e^{4t}y_0}{(1+t)^4(4-y_0)}}
+\end{equation}
+
+\begin{enumerate}
+
+\item  As $t \rightarrow \infty$, $y \rightarrow 4$.
+
+\item  $y_0 = 2 \Rightarrow K = 1$, so when $y = 3.99$, $T \approx 2.84367$ (via wolfram).
+
+\item  Now, if $t = 2$, $y/(4-y) = e^8e^{-4\ln 3}K$, then $y = 3.99 \Rightarrow y_0 \approx 3.6622$
+and $y = 4.1 \Rightarrow y_0 \approx 4.4042$.  This gives us an interval of $3.6622 \leq y_0 \leq 4.4042$.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

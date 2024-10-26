@@ -1,0 +1,75 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{wrapfig}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 9 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 9 Part 2:  Dynamical Systems, Bifurcations, and Chaos}
+
+In the last lecture we saw a dynamical system derived from a simple pendulum.  A dynamical system is a set of Ordinary Differential Equations (ODEs) or difference equations that evolve in time and have solution spaces with certain topological properties.  Today we will talk about Dynamical Systems more generally and introduce the concepts of bifurcation and chaos.
+
+We noticed that nothing that crazy happened in the previous example.  That's because the pendulum's solution set does not have enough dimensions to be chaotic.  Chaos creeps in when the entropy of the solution set rises.  {\color{red} The formal definitions of Chaos are much too complex for the scope of this class, so lets think of some examples of chaos instead.}
+
+One story that comes to mind is of Poincar\'{e} and the King of Sweden.  From Wikipedia: in 1887, in honour of his 60th birthday, Oscar II, King of Sweden, advised by G\"{o}sta Mittag-Leffler, established a prize for anyone who could find the solution to the problem. The announcement was quite specific:
+
+Given a system of arbitrarily many mass points that attract each according to Newton's law, under the assumption that no two points ever collide, try to find a representation of the coordinates of each point as a series in a variable that is some known function of time and for all of whose values the series converges uniformly.
+
+In case the problem could not be solved, any other important contribution to classical mechanics would then be considered to be prizeworthy. The prize was finally awarded to Poincar\'{e}, even though he did not solve the original problem. One of the judges, the distinguished Karl Weierstrass, said, ``This work cannot indeed be considered as furnishing the complete solution of the question proposed, but that it is nevertheless of such importance that its publication will inaugurate a new era in the history of celestial mechanics.''  The first version of his contribution even contained a serious error. The version finally printed[25] contained many important ideas which led to the theory of chaos.
+
+Another example is Lorenz's model for weather dynamics.  He developed a model for convection rolls where the main ideas were that air moves from hot to cold regions, but this creates a rolling motion.  The fluid velocity of the rolls is determined by properties such as $PV = nRT$, viscosity, and other fluidic properties.  Lorenz simplified his system of PDEs (Partial Differential Equations) to the following system of ODEs
+%
+\begin{equation}
+\begin{split}
+\dot{x} &= \sigma(y-x)\\
+\dot{y} &= rx - xz - y\\
+\dot{z} &= xy - bz
+\end{split}
+\end{equation}
+%
+where $x$ is related to the fluid velocity, $y$ is related to the effects of the surface and atmospheric temperatures gradients on each other, and $z$ is related to the vertical temperature gradients.  For the parameters, $\sigma$ is the Prandtl number, which describes the competition between viscous and thermal diffusion, $r$ is the Rayleigh number representing the applied heat, and $b$ is the aspect ratio of the rolls; i.e., how elliptical they are.
+
+from these equations we get a very complicated phase space that we explored in the coding lectures and the theory lecture video.
+
+
+\end{document}

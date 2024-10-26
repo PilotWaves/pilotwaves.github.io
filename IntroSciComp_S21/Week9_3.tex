@@ -1,0 +1,197 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{wrapfig}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 9 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 9 Part 3:  Boundary Value Problems}
+
+We are used to initial value problems where we are given initial data.  What if we are given boundary
+data instead?  There are many applications where things are happening for a long period of time and
+we don't know what happened in the beginning, but we do know something about the boundary.
+The usual problems are solved in a similar fashion to Initial Value Problems.  We do however have
+a bit more theory.
+
+\begin{definition}
+The boundary values (for a second order ODE) $y(a)$, $y(b)$, $y'(a)$, and/or $y'(b)$
+are said to be \underline{homogeneous} if any two of the above boundary data are zero.
+\end{definition}
+
+We also have eigenvalue problems for BVPs.  Recall that for matrices the eigenvalue problems
+were of the form $Ax = \lambda x$, where we solve for the ``eigenvalue'', $\lambda$.
+For BVPs of a second order ODE, we consider our linear operator to be $L = d^2/dx^2$
+(for matrices the linear operator is the matrix $A$).  So we wish to solve the problem
+$Ly = \lambda y$; i.e. $y'' + \lambda y = 0$.  Here the $y_n's$ corresponding to $\lambda_n's$
+are called eigenfunctions (similar to eigenvectors in the matrix case).  We notice that eigenvalue
+problems are only for homogeneous boundary data.
+
+\begin{definition}
+The boundary value problem
+%
+\begin{equation}
+y'' + \lambda y = 0; \qquad \text{(with homogeneous boundary conditions)},
+\end{equation}
+%
+is called an \underline{eigenvalue problem}.  And the nontrivial (i.e. $y_n \neq 0$) solutions
+$y_n$ corresponding to $\lambda_n$ are the \underline{eigenfunctions} of the corresponding
+\underline{eigenvalues}.
+\end{definition}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+
+Now lets do some boundary value problems,
+%
+\begin{enumerate}
+\setlength\itemsep{2em}
+
+\item[Ex:  ]  $y'' + y = 0$; $y'(0) = 1$, $y(L) = 0$.
+
+\textbf{Solution:  }  The characteristic polynomial gives us
+%
+\begin{equation*}
+r^2 + 1 = 0 \Rightarrow r = \pm i \Rightarrow y = A\cos t + B\sin t \Rightarrow y' = -A\sin t + B\cos t.
+\end{equation*}
+%
+Then our first boundary condition gives $y'(0) = B = 1$, and
+%
+\begin{equation*}
+y(L) = A\cos L + \sin L = 0 \Rightarrow A = - \tan L;\; L \neq (2k+1)\frac{\pi}{2},\, k = 0,\,\pm 1,\,\pm 2,\, \ldots
+\end{equation*}
+%
+However, if $\cos L = 0$, $\sin L = 0$, but this is clearly false because $\sin x \neq 0$ when $\cos x = 0$
+and vice-versa, so the BVP has no solution if $L = (2k+1)\frac{\pi}{2}$.
+
+\item[Ex:  ]  $y'' + \lambda y = 0$; $y'(0) = y'(\pi) = 0$.
+
+\textbf{Solution:  }
+
+\textbf{(i)} If $\lambda > 0$, let $\lambda = \mu^2$.  Then
+%
+\begin{equation*}
+r = \pm i\mu \Rightarrow y = A\cos\mu t + B\sin\mu t \Rightarrow y' = -A\mu\sin\mu t + B\mu\cos\mu t
+\end{equation*}
+%
+From the first boundary condition we get $y'(0) = B\mu = 0 \Rightarrow B = 0$ because $\lambda > 0$.
+From the second B.C. we get $y'(\pi) = -A\mu\sin\mu\pi = 0$.  Since we don't want trivial solutions if we
+can avoid them we can't have $A = 0$, so we require $\sin\mu\pi = 0$ then $\mu = n\pi$ where
+$n = 1,\, 2,\, \ldots$, so our eigenfunctions for the corresponding eigenvalues are
+%
+\begin{equation*}
+y_n = \cos n\pi t;\; \lambda_n = n^2,\, n = 1,\, 2,\, \ldots
+\end{equation*}
+%
+\textbf{(ii)}  If $\lambda < 0$, let $\lambda = - \mu^2$.  Then
+%
+\begin{equation*}
+r = \pm \mu \Rightarrow y = c_1e^{\mu t} + c_2e^{-\mu t} = A\cosh\mu t + B\sinh\mu t
+\Rightarrow y' = A\sinh\mu t + B\cosh\mu t.
+\end{equation*}
+%
+The B.C.'s give $y'(0) = B\mu = 0 \Rightarrow B = 0$ and $y'(\pi) = A\sinh\mu\pi = 0$, but
+$\sinh$ is only zero at zero and $\mu \neq 0$ since $\lambda < 0$, so we have $A = 0$.
+Then $y \equiv 0$, so unfortunately we get a trivial solution.
+%
+\textbf{(iii)}  If $\lambda = 0$, $y = c_1x + c_0 \Rightarrow y' = c_1$, then applying the B.C.'s
+give $y'(0) = c_1 = 0$ and $y'(\pi) = 0$ automatically.  Then our eigenvalue and eigenfunction
+are
+%
+\begin{equation*}
+y_0 = 1,\, \lambda_0 = 0.
+\end{equation*}
+%
+Notice I left out the constants.  It is up to you if you want to include it or not.
+
+\textbf{Complete Solution:  }
+
+\begin{equation*}
+y = c_0 + \sum_{n=1}^\infty A_n \cos n\pi t
+\end{equation*}
+
+\item[Ex:  ]  $y'' + \lambda y = 0$; $y'(0) = y(L) = 0$
+
+\textbf{Solution:  }
+
+\textbf{(i)}  If $\lambda > 0$, let $\lambda = \mu^2$, then
+%
+\begin{equation*}
+y = A\cos\mu t + B\sin\mu t \Rightarrow y' = -A\mu\sin\mu t + B\mu\cos\mu t.
+\end{equation*}
+%
+Notice how we have the same exact general solution!  You do enough of these problems
+and you can go straight to the solution and it's derivative without having to do the characteristic
+polynomial.  Now, from the B.C.'s we get $y'(0) = B\mu = 0 \Rightarrow B = 0$ and
+$y(L) = A\cos\mu L = 0$.  So we require $\mu = (2n-1)\pi/2L$ where $n = 1,\, 2,\, 3,\, \ldots$,
+then our eigenvalues and eigenfunctions are
+%
+\begin{equation*}
+y_n = A_n\cos\left((2n-1)\frac{\pi}{2}t\right);\; \lambda_n = (2n-1)^2\frac{\pi^2}{4},\, n = 1,\, 2,\, 3,\, \ldots
+\end{equation*}
+%
+\textbf{(ii)}  If $\lambda < 0$, let $\lambda = -\mu^2$, then
+%
+\begin{equation*}
+y = A\cosh\mu t + B\sinh\mu t \Rightarrow y' = A\mu\sinh\mu t + B\mu\cosh\mu t.
+\end{equation*}
+%
+From the B.C.'s we get $y'(0) = B\mu = 0 \Rightarrow B = 0$ and $y(L) = A\cosh\mu L = 0 \Rightarrow A = 0$,
+again it's the trivial solution $y \equiv 0$.\\
+%
+\textbf{(iii)}  If $\lambda = 0$, $y = c_1x + c_0 \Rightarrow y' = c_1$, from the
+B.C.'s we get $y'(0) = c_1 = 0$ and $y(L) = c_0 = 0$, so again we have the trivial
+solution $y \equiv 0$.
+
+\textbf{Complete Solution:  }
+%
+\begin{equation*}
+y = \sum_{n=1}^\infty A_n\cos\left((2n-1)\frac{\pi}{2}t\right)
+\end{equation*}
+
+\end{enumerate}
+
+
+\end{document}
