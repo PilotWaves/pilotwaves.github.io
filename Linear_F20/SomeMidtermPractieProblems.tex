@@ -1,0 +1,180 @@
+\documentclass[14pt]{amsart}
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large Amath 352 Rahman} \hfill Some Midterm practice problems
+\bigskip
+\end{flushleft}
+
+These will not appear on the Midterm, but some similar problems might.
+
+\Large
+
+\begin{enumerate}
+
+\setlength\itemsep{1em}
+
+\item  Given the system
+%
+\begin{equation*}
+\begin{split}
+3x_1 + 3x_2 + 3x_3 + 9x_4 &= b_1\\
+2x_1 - x_2 + 4x_3 + 7x_4 &= b_2\\
+3x_1 - 5x_2 - x_3 + 7 x_4 &= b_3
+\end{split}
+\end{equation*}
+
+\begin{enumerate}
+
+\item  Write the system in matrix form $Ax = b$.
+
+\item  Will this have solutions for all $b \in \R^3$?  If not, which vectors $b$ give no solution?
+
+\item  Solve the system of equations for $b = (b_1, b_2, b_3) = (3, 2, 3)$.
+
+\end{enumerate}
+
+\item  Are there any vectors $x$ such that
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 & 0 & -4\\
+0 & 2 & 1 & 4\\
+0 & 0 & 3 & 5
+\end{bmatrix}x = \begin{bmatrix}
+2\\
+-1\\
+3
+\end{bmatrix}
+\end{equation*}
+
+\item  Consider the matrix
+%
+\begin{equation*}
+A = \begin{bmatrix}
+0 & 1 & -1\\
+2 & -2 & -1\\
+-1 & 1 & 1
+\end{bmatrix}
+\end{equation*}
+
+\begin{enumerate}
+
+\item  Find the inverse of $A$.
+
+\item  Are the columns of $A$ linearly independent (You don't have to do any work, just explain why or why not)?
+
+\end{enumerate}
+
+\item  Find the row echelon form of
+%
+\begin{equation*}
+A = \begin{bmatrix}
+1 & 3 & -5 & -3\\
+-1 & -5 & 8 & 4\\
+4 & 2 & -5 & -7\\
+2 & -4 & 7 & 5
+\end{bmatrix}
+\end{equation*}
+
+\pagebreak
+
+\item  Suppose we know the $LU$ factorization of some matrix $A$ to be
+%
+\begin{equation*}
+L = \begin{bmatrix}
+1 & 0 & 0 & 0\\
+-2 & 1 & 0 & 0\\
+1 & 2 & 1 & 0\\
+-2 & -1 & 0 & 1
+\end{bmatrix};\qquad U = \begin{bmatrix}
+1 & 3 & -5 & -3\\
+0 & -2 & 1 & 1\\
+0 & 0 & 1 & 1\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+Solve for $Ax = b$ where
+%
+\begin{equation*}
+b = \begin{bmatrix}
+1\\
+2\\
+9\\
+-6
+\end{bmatrix}
+\end{equation*}
+
+\item  Let $A$ be and $m \times n$ matrix where $r$ is the number of its pivot columns.
+What are the conditions on $m$, $n$, and $r$ (other than $r \leq m$ and $r \leq n$, which
+is always true) such that $Ax = b$
+
+\begin{enumerate}
+
+\item  has infinitely many solutions for each $b$.
+
+\item  has exactly one solution for each $b$.
+
+\end{enumerate}
+
+\item  Suppose $A$ has the row echelon form $R$; i.e.,
+%
+\begin{equation*}
+A = \begin{bmatrix}
+3 & 2 & 1 & 0\\
+6 & 4 & 2 & 0\\
+1 & 0 & 1 & 0\\
+0 & 1 & -1 & 3\\
+7 & 10 & -3 & 12
+\end{bmatrix};\qquad R = \begin{bmatrix}
+1 & 0 & 1 & 0\\
+0 & 1 & -1 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{equation*}
+
+Find the bases for the row space, column space, and null space of $A$.
+
+\item  Let
+%
+\begin{equation*}
+A = \begin{bmatrix}
+\textbf{a}\\
+\textbf{b}\\
+\textbf{c}
+\end{bmatrix}
+\end{equation*}
+%
+be a $3 \times 3$ matrix with rows $\textbf{a}, \textbf{b}, \textbf{c}$, and let $\det(A) = 2$.
+
+\begin{enumerate}
+
+\item  Find an elementary matrix $E$ such that
+%
+\begin{equation*}
+EA = B = \begin{bmatrix}
+\textbf{c} + 3\textbf{b}\\
+2\textbf{b}\\
+\textbf{a}
+\end{bmatrix}
+\end{equation*}
+
+\item  Compute the determinant of $B$.
+
+\item  Compute the determinant of $2BA^2(B^T)^{-1}$.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

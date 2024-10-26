@@ -1,0 +1,240 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 9
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+\newcommand*\circled[1]{\color{red}\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+
+\section*{8.2 Eigenvalues and eigenvectors}
+
+There is an important linear algebra problem that appears quite a bit in Differential Equations.  Suppose our right hand side (RHS) $b = \lambda x$.  Then we have the problem
+%
+\begin{equation}
+Ax = \lambda x.
+\end{equation}
+%
+This is called the {\color{red}\underline{eigenvalue problem}}, where the scalar $\lambda$ is called the {\color{red} \underline{eigenvalue}}, and the vector $x$ is called the {\color{red}\underline{eigenvector}}.  {\color{blue}How do we find $\lambda$ and $x$}?  Lets move some terms around and see what we get.
+%
+\begin{equation*}
+Ax = \lambda x \Rightarrow (A-\lambda I)x = 0 \Rightarrow \det(A-\lambda I) = 0 \quad \text{if $x\neq 0$}.
+\end{equation*}
+%
+We don't want the trivial solution $x=0$ because that does not tell us anything about the problem.
+After finding the determinant we solve for the roots of the polynomial that arises from the determinant, which are the eigenvalues, $\lambda$.  Then we find $x \in \mathcal{N}(A-\lambda I)$ ($x$ is in the nullspace of $A-\lambda I$), which are the eigenvectors.
+
+Lets look at a few examples.
+
+\begin{enumerate}
+
+\setlength{\itemsep}{2em}
+
+\item[Ex:  ]  Solve the eigenvalue problem
+%
+\begin{equation*}
+\begin{bmatrix}
+4 & 1\\
+3 & 2
+\end{bmatrix}x = \lambda x.
+\end{equation*}
+%
+
+\textbf{Solution:  }  We first compute $\det(A-\lambda I)$ and solve for $\lambda$,
+%
+\begin{equation*}
+\Rightarrow \begin{vmatrix}
+4-\lambda & 1\\
+3 & 2-\lambda
+\end{vmatrix} = (4-\lambda)(2-\lambda) - 3 = 8 - 6\lambda \lambda^2 - 3 = \lambda^2 - 6\lambda + 5 = (\lambda - 5)(\lambda - 1) = 0 \Rightarrow \lambda_1 = 5,\, \lambda_2 = 1.
+\end{equation*}
+%
+Next we solve for the eigenvectors.  For $\lambda_1$,
+%
+\begin{equation*}
+A - \lambda_1I = \begin{pmatrix}
+-1 & 1\\
+3 & -3
+\end{pmatrix}x_1 = 0 \Rightarrow x_1 = \begin{pmatrix}
+1\\
+1
+\end{pmatrix}
+\end{equation*}
+%
+For $\lambda_2$,
+%
+\begin{equation*}
+A - \lambda_2I = \begin{pmatrix}
+3 & 1\\
+3 & 1
+\end{pmatrix}x_2 = 0 \Rightarrow x_2 = \begin{pmatrix}
+1\\
+-3
+\end{pmatrix}
+\end{equation*}
+%
+It should be noted that the eigenvectors don't have to be those exact vectors.  They just have to be any vectors in the nullspace of $A - \lambda I$.
+
+\item[Ex:  ]  Solve the eigenvalue problem
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & -1\\
+1 & 1
+\end{bmatrix}x = \lambda x.
+\end{equation*}
+%
+
+\textbf{Solution:  }  We first compute $\det(A-\lambda I)$ and solve for $\lambda$,
+%
+\begin{equation*}
+\begin{vmatrix}
+1 - \lambda & -1\\
+1 & 1-\lambda
+\end{vmatrix} = 1 - 2\lambda + \lambda^2 + 1 = \lambda^2 - 2\lambda + 2 = 0
+\Rightarrow \lambda = \frac{1}{2}\left(2 \pm \sqrt{4 - 8}\right) = 1\pm i.
+\end{equation*}
+%
+Next we solve for the eigenvectors.  For $\lambda_1 = 1 + i$,
+%
+\begin{equation*}
+A - \lambda_1I = \begin{pmatrix}
+-i & -1\\
+1 & -i
+\end{pmatrix}x_1 = 0 \Rightarrow x_1 = \begin{pmatrix}
+i\\
+1
+\end{pmatrix}
+\end{equation*}
+%
+For $\lambda_2 = 1 - i$,
+%
+\begin{equation*}
+A - \lambda_2I = \begin{pmatrix}
+i & -1\\
+1 & i
+\end{pmatrix}x_2 = 0 \Rightarrow x_2 = \begin{pmatrix}
+i\\
+-1
+\end{pmatrix}
+\end{equation*}
+%
+Notice that these eigenvectors are complex conjugates because the eignevalues are complex conjugates, so we only have to have to solve for one eigenvector and get the other one for free.
+
+\pagebreak
+
+\item[Ex:  ]  Solve the eigenvalue problem
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & 6 & 0\\
+0 & 2 & 1\\
+0 & 1 & 2
+\end{bmatrix}x = \lambda x.
+\end{equation*}
+%
+
+\textbf{Solution:  }  We first compute $\det(A-\lambda I)$ and solve for $\lambda$,
+%
+\begin{equation*}
+\begin{vmatrix}
+1-\lambda & 6 & 0\\
+0 & 2-\lambda & 1\\
+0 & 1 & 2-\lambda
+\end{vmatrix} = (1-\lambda)(4-4\lambda + \lambda^2 - 1) = (1-\lambda)(\lambda - 3)(\lambda - 1) = 0
+\Rightarrow \lambda_1 = 1,\, \lambda_2 = 1,\, \lambda_3 = 3.
+\end{equation*}
+%
+Then our eigenvectors are
+%
+\begin{equation*}
+\begin{bmatrix}
+1 - \lambda & 6 & 0\\
+0 & 2-\lambda & 1\\
+0 & 1 & 2-\lambda
+\end{bmatrix}x = 0 \Rightarrow x_1 = \begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix} = x_2,\, x_3 = \begin{pmatrix}
+3\\
+1\\
+1
+\end{pmatrix}
+\end{equation*}
+
+\item[Ex:  ]  Solve the eigenvalue problem
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & -1\\
+1 & 1
+\end{bmatrix}x = \lambda x.
+\end{equation*}
+%
+
+\textbf{Solution:  } We first compute $\det(A-\lambda I)$ and solve for $\lambda$,
+%
+\begin{equation*}
+\begin{vmatrix}
+4-\lambda & -5\\
+2 & -3-\lambda
+\end{vmatrix} = (4-\lambda)(-3-\lambda) + 10 = \lambda^2 - \lambda - 2 = (\lambda - 2)(\lambda + 1) = 0 \Rightarrow \lambda_1 = 2,\, \lambda_2 = -1.
+\end{equation*}
+%
+Then our eigenvectors are
+%
+\begin{equation*}
+\begin{pmatrix}
+4-\lambda & -5\\
+2 & -3-\lambda
+\end{pmatrix}x = 0 \Rightarrow x_1 = \begin{pmatrix}
+5\\
+2
+\end{pmatrix},\, x_2 = \begin{pmatrix}
+1\\
+1
+\end{pmatrix}
+\end{equation*}
+
+\end{enumerate}
+
+\end{document}
