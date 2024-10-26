@@ -1,0 +1,227 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 4
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 1.5 Matrix Inverses}
+
+In linear algebra we want to find a matrix $A^{-1}$ such that $AA^{-1} = A^{-1}A = I$.
+We can only find an inverse if $A$ is nonsingular, so \underline{invertible} and nonsingular
+mean the same thing, and \underline{noninvertible} and singular mean the same thing.
+If $A$ can be put into upper triangular form, it is nonsingular, otherwise it is singular.
+
+Note:  nonsquare matrices do not have inverses, but we can have either a right or left hand
+inverse, which we will talk about later.
+
+Now lets do an example where we find the inverse of a matrix.  Once more we use our usual $3 \times 3$
+matrix
+%
+\begin{equation}
+A = \begin{bmatrix}
+2 & 1 & 1\\
+4 & -6 & 0\\
+-2 & 7 & 2
+\end{bmatrix}
+\end{equation}
+%
+We append the identity matrix to $A$ and use Gauss-Jordan elimination.
+
+\begin{align*}
+&\begin{matrix}
+\\
+{\color{red}2}\\
+{\color{red}-1}
+\end{matrix}\begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+4 & -6 & 0 & | & {\color{blue}0} & {\color{blue}1} & {\color{blue}0}\\
+-2 & 7 & 2 & | & {\color{blue}0} & {\color{blue}0} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}-1}
+\end{matrix}\begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+0 & -8 & -2 & | & {\color{blue}-2} & {\color{blue}1} & {\color{blue}0}\\
+0 & 8 & 3 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+{\color{red}1}\\
+{\color{red}-2}\\
+\\
+\end{matrix}\begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+0 & -8 & -2 & | & {\color{blue}-2} & {\color{blue}1} & {\color{blue}0}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix}\\
+&= \begin{matrix}
+{\color{red}-1/8}\\
+\\
+\\
+\end{matrix}\begin{bmatrix}
+2 & 1 & 0 & | & {\color{blue}2} & {\color{blue}-1} & {\color{blue}-1}\\
+0 & -8 & 0 & | & {\color{blue}-4} & {\color{blue}3} & {\color{blue}2}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+{\color{red}1/2}\\
+{\color{red}-1/8}\\
+\\
+\end{matrix}\begin{bmatrix}
+2 & 0 & 0 & | & {\color{blue}12/8} & {\color{blue}-5/8} & {\color{blue}-6/8}\\
+0 & -8 & 0 & | & {\color{blue}-4} & {\color{blue}3} & {\color{blue}2}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 & | & {\color{blue}12/16} & {\color{blue}-5/16} & {\color{blue}-6/16}\\
+0 & 1 & 0 & | & {\color{blue}4/8} & {\color{blue}-3/8} & {\color{blue}-2/8}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix}\\
+&\Rightarrow {\color{blue}A^{-1}} = \begin{bmatrix}
+{\color{blue}12/16} & {\color{blue}-5/16} & {\color{blue}-6/16}\\
+{\color{blue}4/8} & {\color{blue}-3/8} & {\color{blue}-2/8}\\
+{\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix}
+\end{align*}
+
+\begin{enumerate}
+
+\item[Ex:  ]  
+%
+\begin{equation*}
+A = 
+\begin{bmatrix}
+2 & 0\\
+0 & 3
+\end{bmatrix}
+\end{equation*}
+
+This one is easy since there are only diagonal terms, so
+%
+\begin{equation*}
+A^{-1} = 
+\begin{bmatrix}
+1/2 & 0\\
+0 & 1/3
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  For this one
+%
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red} 3}
+\end{matrix}\begin{bmatrix}
+1 & 2 & | & {\color{blue}1} & {\color{blue}0}\\
+3 & 7 & | & {\color{blue}0} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+{\color{red} 2}\\
+\\
+\end{matrix}\begin{bmatrix}
+1 & 2 & | & {\color{blue}1} & {\color{blue}0}\\
+0 & 1 & | & {\color{blue}-3} & {\color{blue}1}
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & | & {\color{blue}7} & {\color{blue}-2}\\
+0 & 1 & | & {\color{blue}-3} & {\color{blue}1}
+\end{bmatrix}
+\end{equation*}
+
+Don't be fooled by the simplicity of this answer though.  Even for $2 \times 2$, the pattern may not be as you
+see here.  This one is a special case since the determinant (which we will cover later) is 1.
+
+\item[Ex:  ]  Similarly,
+%
+\begin{align*}
+\begin{matrix}
+\\
+{\color{red}3}\\
+{\color{red}-2}
+\end{matrix}
+\begin{bmatrix}
+1 & 1 & 2 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+3 & 1 & 0 & | & {\color{blue}0} & {\color{blue}1} & {\color{blue}0}\\
+-2 & 0 & 3 & | & {\color{blue}0} & {\color{blue}0} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}-1}
+\end{matrix}\begin{bmatrix}
+1 & 1 & 2 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+0 & -2 & -6 & | & {\color{blue}-3} & {\color{blue}1} & {\color{blue}0}\\
+0 & 2 & 7 & | & {\color{blue}2} & {\color{blue}0} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+{\color{red}2}\\
+{\color{red}-6}\\
+\\
+\end{matrix}\begin{bmatrix}
+1 & 1 & 2 & | & {\color{blue}1} & {\color{blue}0} & {\color{blue}0}\\
+0 & -2 & -6 & | & {\color{blue}-3} & {\color{blue}1} & {\color{blue}0}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix}\\
+= \begin{matrix}
+{\color{red}-1/2}\\
+\\
+\\
+\end{matrix}\begin{bmatrix}
+1 & 1 & 0 & | & {\color{blue}3} & {\color{blue}-2} & {\color{blue}-2}\\
+0 & -2 & 0 & | & {\color{blue}-9} & {\color{blue}7} & {\color{blue}6}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix} = \begin{matrix}
+\\
+{\color{red}-1/2}\\
+\\
+\end{matrix}\begin{bmatrix}
+1 & 0 & 0 & | & {\color{blue}-3/2} & {\color{blue}3/2} & {\color{blue}1}\\
+0 & -2 & 0 & | & {\color{blue}-9} & {\color{blue}7} & {\color{blue}6}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 & | & {\color{blue}-3/2} & {\color{blue}3/2} & {\color{blue}1}\\
+0 & 1 & 0 & | & {\color{blue}9/2} & {\color{blue}-7/2} & {\color{blue}-6/2}\\
+0 & 0 & 1 & | & {\color{blue}-1} & {\color{blue}1} & {\color{blue}1}
+\end{bmatrix}
+\end{align*}
+
+\end{enumerate}
+
+Properties:
+%
+\begin{enumerate}
+\item  $\left(A^{-1}\right)^{-1}$,
+\item  $\left(A^k\right)^{-1} = \left(A^{-1}\right)^{-1}$
+\item  $(cA)^{-1} = \dfrac{1}{c}A^{-1}$
+\item  $\left(A^T\right)^{-1} = \left(A^{-1}\right)^T$
+\item  $(AB)^{-1} = B^{-1}A^{-1}$
+\end{enumerate}
+
+\end{document}

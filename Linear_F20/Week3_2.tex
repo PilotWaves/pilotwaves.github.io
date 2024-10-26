@@ -1,0 +1,74 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 3
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 1.7 Practical Linear Algebra}
+
+There are a lot of examples in the book, so I will show a couple of examples that are not in the book.  I'll also mention a few things about a couple of examples in the book.
+
+\underline{Matrix Multiplication}
+
+Consider the multiplication of $A_{l\times m}B_{m\times n}$.  To multiply we take the dot product of the rows of $A$ with the columns of $B$,
+%
+\begin{equation*}
+\begin{bmatrix}
+--- & a_1 & ---\\
+--- & a_2 & ---\\
+ & \vdots & \\
+ --- & a_l & ---
+\end{bmatrix}\begin{bmatrix}
+| & | &  & |\\
+b_1 & b_2 & \cdots & b_n\\
+| & | & & |
+\end{bmatrix} = \begin{bmatrix}
+a_1\cdot b_1 & a_1\cdot b_2 & \cdots & a_1\cdot b_n\\
+a_2\cdot b_1 & a_2\cdot b_2 & \cdots & a_2\cdot b_n\\
+\vdots & \vdots & \ddots & \vdots\\
+a_l\cdot b_1 & a_l\cdot b_2 & \cdots & a_l\cdot b_n
+\end{bmatrix}
+\end{equation*}
+%
+When we analyze the number of steps required, we observe that each entry requires $m$ multiplications and $m-1$ additions to carry out the dot product.  This gives us $2m-1$ operations.  However, there are $l\times n$ entries, so it takes (2m-1)ln operations.  Without loss of generality, suppose $n > l,m$, then $(2m-1)ln \leq 2n^3 \sim O(n^3)$.  {\color{red}This is called \underline{computational complexity}.}  {\color{blue}Notice that we don't care about constants.}
+
+For Gaussian elimination, the example in the book showed that it too was $O(n^3)$.  The book also showed that it makes no difference if you augment or use $Lc = b$.
+
+The book also looks at sparse matrices.  If a matrix has a lot of zeros, then the operations become a lot easier.  A special type of matrix that appears in applications is called a \underline{tridiagonal matrix}.  The book has exmples of this, and shows how it reduces the number of operations.
+
+Lets look at a slightly different problem for computational complexity.  Lets think about how we sort numbers from smallest to largest.  There are many different types of sorting algorithms, but perhaps the most natural is the \underline{Selection sort}, where we simply look for the smallest value and move it to the front of the sequence.  This will have a computational complexity of $O(n^2)$.  If we try a more sophisticated sort (say \underline{Quick sort}), then we look at two adjacent numbers and ask which one is smaller.  If the number to the left is smaller, we don't do anything.  If the number to the right is smaller, we switch them.  This decreases the amount of operations we have to do since we are only comparing two adjacent numbers and not a single number to the whole list.  This algorithm has a computational complexity of $O(n\log n)$.
+
+\end{document}

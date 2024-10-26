@@ -1,0 +1,122 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 5
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 1.8 General linear systems}
+
+Up to this point we've focused on doing LU factorization with square non-singular matrices.  However, sometimes we just can't avoid non-square and singular systems.  In these cases we can expand our definition of LU factorization.
+
+\begin{enumerate}
+
+\item[Ex:  ]
+%
+\begin{equation}
+\begin{matrix}
+\stackinset{l}{-10pt}{t}{20pt}{\resizebox{12pt}{35pt}{\curvearrowdown}}{}\\
+\\
+\\
+\end{matrix}\begin{matrix}
+\vspace*{-10pt}\\
+\curvearrowup\\
+\curvearrowup\\
+\end{matrix}\begin{bmatrix}
+0 & 0 & 0 & 3 & 1\\
+1 & 2 & -3 & 1 & -2\\
+2 & 4 & -2 & 1 & -2
+\end{bmatrix} = \begin{matrix}
+\\
+{\color{red}2}\\
+\\
+\end{matrix}\begin{bmatrix}
+1 & 2 & -3 & 1 & -2\\
+2 & 4 & -2 & 1 & -2\\
+0 & 0 & 0 & 3 & 1
+\end{bmatrix} = \begin{bmatrix}
+{\color{blue}1} & 2 & -3 & 1 & -2\\
+0 & 0 & {\color{blue}4} & -1 & 2\\
+0 & 0 & 0 & {\color{blue}3} & 1
+\end{bmatrix} = U.
+\end{equation}
+%
+Notice that we have three pivots here, and therefore our \emph{Rank} is 3.
+Since we did row exchanges before beginning with our Gaussian elimination, our other matrices are
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix},\qquad
+L = \begin{bmatrix}
+1 & 0 & 0\\
+{\color{red} 2} & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+For this case, since the number of equations is less than the number of unknown variables, we may have an infinite number of solutions, but they will form specific structures in our space $\R^5$.  Suppose that $PA = b$, then
+%
+\begin{equation*}
+c = L^{-1}b = \begin{bmatrix}
+c_1\\
+c_2\\
+c_3
+\end{bmatrix} \Rightarrow 3x_4 + x_5 = c_3 \Rightarrow {\color{blue}\boxed{x_5 = -3x_4 + c_3}}.
+\end{equation*}
+%
+Here we chose $x_4$ to be our {\color{red}\underline{free variable}}; i.e., it can be any real number.  Alternatively, we could have picked $x_5$.  Next we back substitute,
+%
+\begin{equation*}
+4x_3 - x_4 + 2x_5 = 4x_3 - x_4 - 6x_4 + 2c_3 = 4x_3 - 7x_4 + 2c_3 = c_2 \Rightarrow 4x_3 = c_2 - 2c_3 + 7x_4 \Rightarrow {\color{blue}\boxed{x_3 = \frac{1}{4}(c_2-2c_3) + \frac{7}{4}x_4}}.
+\end{equation*}
+%
+Finally,
+%
+\begin{align*}
+x_1 + 2x_2 - 3x_3 + x_4 - 2x_5 = x_1 + 2x_2 - \frac{3}{4}(c_2 - 2c_3) - \frac{21}{4}x_4 + 6x_4 - 2c_3\\
+= x_1 + 2x_2 + \frac{7}{4}x_4 - \frac{3}{4}c_2 - \frac{1}{2}c_3 = c_1
+\Rightarrow {\color{blue}\boxed{x_1 = -2x_2 - \frac{7}{4}x_4 + \frac{3}{4}c_2 + \frac{1}{2}c_3 + c_1}}.
+\end{align*}
+%
+Again, we pick $x_2$ as our next free variable.  We could have picked $x_1$, but it was just more convenient to pick $x_2$.
+
+\end{enumerate}
+
+
+
+\end{document}

@@ -1,0 +1,417 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+
+
+
+\section*{Sec. 1.2 Matrices and Vectors}
+
+\underline{Coefficient matrix}
+
+Consider
+%
+\begin{equation}
+\begin{split}
+2u + v + w &= 5\\
+4u - 6v &= -2\\
+-2u + 7v + 2w &= 9
+\end{split}
+\label{Eq: System}
+\end{equation}
+%
+Then the matrix
+%
+\begin{equation*}
+A_{3\times 3} = \begin{bmatrix}
+2 & 1 & 1\\
+4 & -6 & 0\\
+-2 & 7 & 2
+\end{bmatrix}
+\end{equation*}
+%
+is called the \underline{coefficient matrix} of \eqref{Eq: System}.  Also, the matrix $A$ is said to be
+a $3\times 3$ matrix as it has $3$ rows and $3$ columns.
+
+\bigskip
+
+\underline{Addition}
+
+Matrix addition works just like scalar addition, and we just add the respective elements together.
+
+Consider
+%
+\begin{equation*}
+B_{3 \times 2} = \begin{bmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{bmatrix},\,
+C_{3 \times 2} = \begin{bmatrix}
+1 & 2\\
+-3 & 1\\
+1 & 2
+\end{bmatrix}
+\end{equation*}
+%
+then
+%
+\begin{equation*}
+B + C = \begin{bmatrix}
+3 & 3\\
+0 & 1\\
+1 & 6
+\end{bmatrix}
+\end{equation*}
+
+Further, the matrices $B$ and $C$ are of size $3 \times 2$ since they have $3$ rows and $2$ columns
+
+\underline{Scalar multiplication}
+
+Just multiply the scalar term with each element,
+%
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2B = \begin{bmatrix}
+4 & 2\\
+6 & 0\\
+0 & 8
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2C = \begin{bmatrix}
+2 & 4\\
+-6 & 2\\
+2 & 4
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2(B+C) = 2(C+B) = \begin{bmatrix}
+6 & 6\\
+0 & 2\\
+2 & 12
+\end{bmatrix}
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Transpose}
+
+We denote transpose with a T superscripted onto the matrix,
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+C^T = \begin{bmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+B^T = \begin{bmatrix}
+2 & 3 & 0\\
+1 & 0 & 4
+\end{bmatrix}
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Dot (inner) product}
+
+Most of you have seen dot products in your Calculus courses.  We will see why this is called an
+inner product as well in later sections.
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+\begin{bmatrix}
+1\\
+-3\\
+1
+\end{bmatrix}\cdot \begin{bmatrix}
+2\\
+3\\
+0
+\end{bmatrix} = 1\cdot 2 + (-3)\cdot 3 + 1\cdot 0 = -7.
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Size}
+
+The size of a matrix is written as the number of rows by the number of columns, and if shown is given as
+a subscript.
+
+\bigskip
+
+\underline{Multiplication}
+
+We can only multiply matrices if the number of rows of the first is equivalent to the number of columns of the second.
+In order to multiply we will do the dot product of the row of the first matrix with the column of the second.  Here is a
+generalization of that process for a $2 \times 2$ and $3 \times 3$, and it is a simple extension to other sizes.
+
+$2 \times 2$:
+%
+\begin{equation}
+\begin{pmatrix}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{pmatrix}\begin{pmatrix}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{pmatrix} = \begin{pmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22}\\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{pmatrix}
+\end{equation}
+
+$3 \times 3$:
+%
+\begin{equation}
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}\begin{pmatrix}
+b_{11} & b_{12} & b_{13}\\
+b_{21} & b_{22} & b_{23}\\
+b_{31} & b_{32} & b_{33}
+\end{pmatrix} = \begin{pmatrix}
+a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} & a_{11}b_{12} + a_{12}b_{22} + a{13}b_{23}
+& a_{11}b_{13} + a_{12}b_{23} + a_{13}b_{33}\\
+a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} & a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}
+& a_{21}b_{13} + a_{22}b_{23} + a_{23}b_{33}\\
+a_{31}b_{11} + a_{32}b_{21} + a_{33}b_{31} & a_{31}b_{12} + a_{32}b_{22} + a_{33}b_{32}
+& a_{31}b_{13} + a_{32}b_{23} + a_{33}b_{33}
+\end{pmatrix}
+\end{equation}
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+BC^T = \begin{pmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{pmatrix}\begin{pmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{pmatrix} = \begin{bmatrix}
+4 & -5 & 4\\
+3 & -9 & 3\\
+8 & 4 & 8
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  
+
+\begin{equation*}
+CB^T = \begin{pmatrix}
+1 & 2\\
+-3 & 1\\
+1 & 2
+\end{pmatrix}\begin{pmatrix}
+2 & 3 & 0\\
+1 & 0 & 4
+\end{pmatrix}
+\end{equation*}
+
+Notice that $BC^T = (CB^T)^T$ and vise-versa.
+
+\item[Ex:  ]  
+
+\begin{equation*}
+C^TB = \begin{pmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{pmatrix}\begin{pmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{pmatrix} = \begin{bmatrix}
+-7 & 5\\
+7 & 10
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+B^TC = \begin{bmatrix}
+-7 & 7\\
+5 & 10
+\end{bmatrix}
+\end{equation*}
+
+Notice that now that we know how to transpose products, we did not have to do any work
+since $B^TC = (C^TB)^T$.
+
+\end{itemize}
+
+\bigskip
+
+\underline{Matrix form of linear systems}
+
+Now that we know how to multiply matrices we may convert our system of equations into 
+a matrix equation, which the computer can understand.  Lets again consider \eqref{Eq: System},
+%
+\begin{equation}
+\eqref{Eq: System} \Rightarrow Ax = b \Rightarrow \begin{pmatrix}
+2 & 1 & 1\\
+4 & -6 & 0\\
+-2 & 7 & 2
+\end{pmatrix}\begin{pmatrix}
+u\\
+v\\
+w
+\end{pmatrix} = \begin{pmatrix}
+5\\
+-2\\
+9
+\end{pmatrix}
+\end{equation}
+
+\bigskip
+\bigskip
+
+We talked about a lot of notation, but we skipped some intentionally.  We'll get back to those later.
+
+We saw that matrices of different sizes cannot be commuted; i.e., 
+$A_{2\times 3}B_{3\times 2} \neq B_{3\times 2}A_{2\times 3}$.  However, with scalar multiplication
+we can commute (e.g., $5\cdot 2 = 2\cdot 5$), so can two matrices of the same size commute; i..e,
+$A_{2\times 2}B_{2\times 2} \?  B_{2\times 2}A_{2\times 2}$.
+
+\pagebreak
+
+\begin{itemize}
+
+\item[Ex:  ]  Consider
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & 0\\
+0 & 0
+\end{bmatrix},\, \begin{bmatrix}
+1 & 1\\
+0 & 0
+\end{bmatrix}
+\end{equation*}
+%
+Notice
+%
+\begin{equation*}
+AB = \begin{bmatrix}
+1 & 1\\
+0 & 0
+\end{bmatrix} \neq BA = \begin{bmatrix}
+1 & 0\\
+0 & 0
+\end{bmatrix}
+\end{equation*}
+
+\end{itemize}
+
+Matrix addition works just like scalar addition.
+
+Matrix multiplication:  $(AB)C = A(BC)$, $A(B+C) = AB + AC$, $AB \neq BA$.
+So, in general matrices do not commute.  Is there a matrix that commutes with everything?
+
+Consider the $2 \times 2$ matrix
+%
+\begin{equation}
+I = \begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\end{equation}
+%
+and a generic $2 \times 2$ matrix
+%
+\begin{equation*}
+A = \begin{bmatrix}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{bmatrix},
+\end{equation*}
+%
+then $AI = A = IA$.  This is multiplicative identity of matrices, and is called the \underline{identity matrix}.
+For a general $n \times n$ matrix it takes the form,
+%
+\begin{equation}
+I_n = \begin{bmatrix}
+1 & & & & \\
+   & 1 & & \bigzero & \\
+ &  & \ddots & & \\
+ & \bigzero   &  &  \ddots & \\
+   &  &  &  & 1
+\end{bmatrix}
+\end{equation}
+%
+that is, ones down the diagonal and zeros everywhere else, so for a $3 \times 3$ matrix it would be
+%
+\begin{equation*}
+I = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+Now lets look at properties of the transpose:  $(A^T)^T = A$, $(A+B)^T = A^T + B^T$, $(cA)^T = c(A^T)$,
+$(AB)^T = B^TA^T$.
+
+Notice that a dot product of two vectors can also be written as $v \dot w = v^Tw$.
+
+\end{document}

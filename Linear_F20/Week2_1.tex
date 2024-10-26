@@ -1,0 +1,100 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 1
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+
+
+
+\section*{Sec. 1.1 Solutions to Linear Systems}
+
+Linear equations are equations that create a line.  One main goal of linear algebra is to find where
+lines intersect in many dimensions (e.g., millions of dimensions).  Lets look at some examples.
+
+\begin{itemize}
+
+\item[Ex:  ]  $x + y = 1$ and $x - y = 0$.
+
+ \textbf{Solution}: $x = y \Rightarrow 2x = 1 \Rightarrow \fbox{x = y = 1/2}$.
+
+\item[Ex:  ]  $x + 2y = 3$ and $4x + 5y = 6$. 
+
+\textbf{Solution}: $x = 3 - 2y \Rightarrow 4x + 5y = 12 - 8y + 5y = 12 - 3y = 6$,
+so $\fbox{y = 2} \Rightarrow \fbox{x = -1}$.
+
+\end{itemize}
+
+We learned to solve linear equations in this manner in high school.  Perhaps we even learned how to
+isolate terms through multiplying and adding equations.  However, these methods would not work on
+a computer, which is what we need for say a million equations with a million unknowns.  Lets think about
+how a computer might be able to solve these problems.
+
+\begin{itemize}
+
+\item[Ex:  ]  $x + 2y = 3$ and $4x + 5y = 6$. 
+
+\textbf{Solution}:
+\begin{equation*}
+\begin{split}
+x + 2y = 3\\
+(4x + 5y = 6) - {\color{red}4}{\color{blue}(x + 2y = 3)}
+\end{split} \Rightarrow 
+\begin{split}
+x + 2y = 3\\
+0 - 3y = -6
+\end{split} \Rightarrow
+\fbox{y = 2} \Rightarrow x+4 = 3 \Rightarrow \fbox{x = -1}
+\end{equation*}
+
+\end{itemize}
+
+This is called \underline{Gaussian Elimination}.
+
+This seems dumb for only two equations, but for a million by million your computer can probably do
+this in less than a second.  In order to tell the computer to conduct this operation, you must first
+know how to do it yourself.
+
+Sometimes a system of equations can have \textbf{no solution} or \textbf{infinitely many solutions}.
+If it has \textbf{infinitely many solutions} the system is called a \underline{homogeneous system}, and if it has 
+\textbf{no solutions} it is called a \underline{singular system}.  However, as we will see later, a matrix
+will be called singular if the final system has infinitely many solutions or no solutions.
+
+\begin{itemize}
+
+\item[Ex:  ]  $x + y = 1$, $2x + 2y = 2$.
+
+Notice that an infinite number of $x$ and $y$ combinations (e.g., $x = 1, y = 0$; $x = 0, y = 1$; $x = 1/2, y = 1/2$; etc)
+
+\item[Ex:  ]  $x + 2y = 3$, $4x + 8y = 6$.
+
+Notice that Eq1 - Eq2 gives us $0 = -6$, and therefore does not have a solution.
+
+\end{itemize}
+
+\end{document}

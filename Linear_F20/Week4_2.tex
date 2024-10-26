@@ -1,0 +1,75 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 4
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 1.6 Transposes and Symmetric Matrices}
+
+{\color{red}If $A = A^T$ then it is symmetric.}
+
+If $A = LU$ (i.e., $A$ is regular), and we multiply the rows of $U$ by a scalar factor, the reciprocals of the scalar factor can be saved in a matrix $D$.  That is,
+%
+\begin{equation*}
+U = \begin{bmatrix}
+a & b\\
+0 & c
+\end{bmatrix} \Rightarrow DV = \begin{bmatrix}
+a & 0\\
+0 & c
+\end{bmatrix}\begin{bmatrix}
+1 & b/a\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+If we further assume that $A$ is symmetric, then $V = L^T$ and $A = LDL^T$.  {\color{red}We'll see more neat properties when we do Gram-Schmidt}.
+
+Also note that if $P$ is a permutation matrix, then $PP^T = I$.
+
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix} \Rightarrow P^T = \begin{bmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix} \Rightarrow PP^T
+\end{equation*}
+
+\end{document}

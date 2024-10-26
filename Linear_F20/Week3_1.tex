@@ -1,0 +1,267 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 3
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 1.4 Pivots and Permutations}
+
+We have been doing Gaussian elimination on regular matrices up to this point.  But what happens if we don't have all pivots or our pivots aren't in the right place?  Often we may have to switch rows in order to perform the Gaussian elimination.  Lets look at some examples.
+
+\begin{itemize}
+
+\item[Ex:  ]  
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 1\\
+1 & 2
+\end{bmatrix}
+\end{equation*}
+%
+Here we have a zero where the first pivot should be, and therefore can't proceed with the Gaussian elimination.  However, we can to a row exchange and get the pivot into the correct spot.  Since we only have two rows, the only row exchange is switching rows one and two.  Notice that this can be done via the matrix
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix};
+\end{equation*}
+%
+that is,
+%
+\begin{equation*}
+PA = \begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix}\begin{bmatrix}
+0 & 1\\
+1 & 2
+\end{bmatrix} = \begin{bmatrix}
+1 & 2\\
+0 & 1
+\end{bmatrix} = U,
+\end{equation*}
+%
+which is upper triangular.  Since we only had to do row exchanges that were taken care of by the matrix $P$, our lower triangular matrix will be the identity matrix because we did not have to do any other row operations:
+%
+\begin{equation*}
+L = \begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix} = I.
+\end{equation*}
+
+\item[Ex:  ]  Now lets do a harder problem.  Consider the matrix
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 & 2\\
+-1 & 1 & 3\\
+2 & -2 & 0
+\end{bmatrix}.
+\end{equation*}
+%
+Clearly this doesn't have a pivot in the correct spot.  If we were writing an algorithm to do this on the computer we would move all of the nonzero first entry rows to the top of the matrix (in this case the second and third rows would move to the first and second row position).  However, as humans we have the distinct advantage of intuition.  Notice that the first two entries of the second row will eliminate the first two entries of the third row.  Therefore, there is no reason to move the third row.  All we need to do is switch the second and first row and proceed with the Gaussian elimination:
+%
+\begin{equation*}
+\begin{matrix}
+ \\
+ \\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+-1 & 1 & 3\\
+0 & 1 & 2\\
+2 & -2 & 0
+\end{bmatrix} = \begin{bmatrix}
+-1 & 1 & 3\\
+0 & 1 & 2\\
+0 & 0 & 6
+\end{bmatrix} = U.
+\end{equation*}
+%
+Notice that we did the permutation first and then did the $LU$ factorization on the permuted matrix $PA$, so our $L$ will correspond to $PA$ and not $A$:
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix},\qquad \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+-2 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  In this next example we will be able to see \emph{a priori} that it is singular, however lets carry it to reduced row echelon form.
+%
+\begin{equation*}
+\begin{matrix}
+\curvearrowdown\curvearrowup\\
+\\
+\curvearrowdown\curvearrowup\\
+
+\end{matrix}\begin{bmatrix}
+0 & -1 & 0 & 1\\
+1 & 0 & -1 & 0\\
+0 & 2 & 0 & -2\\
+2 & 0 & 2 & 0
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}2}\\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & -1 & 0 & 1\\
+2 & 0 & 2 & 0\\
+0 & 2 & 0 & -2
+\end{bmatrix} = \begin{bmatrix}
+{\color{red}\textcircled{1}} & 0 & -1 & 0\\
+0 & {\color{red}\textcircled{-1}} & 0 & 1\\
+0 & 0 & {\color{red}\textcircled{4}} & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{equation*}
+%
+Notice that this only has three pivots (circled in red).  In Linear Algebra, the number of pivots is called the {\color{red}\underline{rank}} of the matrix.  This has rank = 3.  However this is a $4\times 4$ matrix; i.e., we are missing a pivot even though we eliminated as much as we could.  When we get to this point, the matrix is called {\color{red}\underline{reduced row echelon}} since we cannot reduce any further.  Notice that an upper triangular matrix from the LU factorization of a nonsingular coefficient matrix is also reduced row echelon.  The augmented matrices from when we first started Gaussian elimination are never put into reduced row echelon form unless it is nonsingular.
+
+\pagebreak
+
+\item[Ex:  ]  Now lets do an example where we have to update our P and L matrices due to not choosing the perfect choice of P the first time around.  Consider the matrix
+with the following initial row exchange:
+%
+\begin{equation*}
+\begin{matrix}
+\stackinset{l}{0pt}{t}{6pt}{\resizebox{12pt}{32pt}{\curvearrowdown}}{}\\
+\\
+\\
+
+\end{matrix}\begin{matrix}
+\\
+\vspace{-14pt}\resizebox{12pt}{32pt}{\curvearrowup}\\
+\\
+
+\end{matrix}\begin{matrix}
+\curvearrowup\\
+\\
+\curvearrowdown\\
+
+\end{matrix}
+\begin{bmatrix}
+0 & -1 & 0 & 1\\
+1 & 0 & -1 & 0\\
+0 & 2 & 0 & -1\\
+2 & 0 & 2 & 0
+\end{bmatrix} = \begin{matrix}
+\\
+{\color{red}2}\\
+\\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+1 & 0 & -1 & 0\\
+2 & 0 & 2 & 0\\
+0 & -1 & 0 & 1\\
+0 & 2 & 0 & -1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & 0 & 4 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+Notice that we don't quite have all the pivots in the correct spots, so we need to do one more permutation.  However, we already did one permutation and started doing row operations.  Just doing another permutation and recording our lower triangular matrix will give us the wrong LU factorization.  Let us record what we have so far and use a tilde to signify that it is not in its final form:
+%
+\begin{equation*}
+\tilde{P} = \begin{bmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{bmatrix},\qquad
+\tilde{L} = \begin{bmatrix}
+1 & 0 & 0 & 0\\
+{\color{red}2} & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & {\color{red}-2} & 1
+\end{bmatrix}
+\end{equation*}
+%
+Now lets proceed with the Gaussian elimination and then see how we need to update $\tilde{L}$ and $\tilde{P}$.
+%
+\begin{equation*}
+\begin{matrix}
+\\
+\curvearrowup\curvearrowdown\\
+\\
+
+\end{matrix}
+\begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & 0 & 4 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 0 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 4 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix} = U
+\end{equation*}
+%
+This has ``full rank''; i.e., it has all of its pivots.  So this does have a LU factorization.  Lets now update the $\tilde{P}$ and $\tilde{L}$ matrices.  We see that we had to switch the second and third rows, so we have to do the same in $\tilde{P}$.  In $\tilde{L}$, however, if we switched the entire second and third rows it would no longer be lower triangular.  To get the correct $L$ we simply move the ``2'' to the same spot in the third row, and the ``-2'' to the second entry in the last row instead of the third.  We are moving any operations involving the 2nd row to the respective entries for operations on the 3rd row ({\color{red}It should be noted that I made an error about this in the lecture video}).  Then we get
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{bmatrix},\qquad \begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+{\color{red}2} & 0 & 1 & 0\\
+0 & {\color{red}-2} & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+There may be cases where multiple updates are necessary.  In those cases you would keep the matrices as tildes until the final update.
+
+\end{itemize}
+
+\end{document}
