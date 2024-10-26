@@ -1,0 +1,103 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 5 Theory
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 5:  Root Finding}
+
+For these notes you may want to read them with the lecture videos or coding lecture.  I show the illustrations in the lecture video, and do a more concrete example in the coding lecture.
+
+This may seem silly because we have been finding roots since like 6\textsuperscript{th} grade.  However, recall that we can only do this for low order polynomials.  Further, we need to find roots of the characteristic polynomial to analyze/solve differential equations.  Plus there are other applications for this.
+
+Let's consider a function similar to $f(x) = x^3$.
+
+\bigskip
+
+\underline{Section search (iterate and pray):  }
+
+Consider the interval $[a, b]$ such that $f(a) < 0$ and $f(b) > 0$, so by the intermediate value theorem we know there is some point $x = \xi \in (a,b)$ such that $f(\xi) = 0$.  We just want to approximate the root.  One thing we can do is break up $[a,b]$ into tiny intervals, and see which $f(x_n)$ is closest to zero.  Consider
+%
+\begin{equation*}
+[a, b] = [a, x_1]\cup [x_1, x_2] \cup \cdots \cup [x_n, x_{n+1}] \cup \cdots \cup [x_{N}, b].
+\end{equation*}
+%
+Then test each of the nodes, $f(x_1), f(x_2), \ldots, f(x_n), \ldots, f(x_N)$.  Notice that this is quite slow.
+
+\bigskip
+
+\underline{Bisection:  }
+
+Since we know the root is between $a$ and $b$, again by the intermediate value theorem we can just test the mid point: $x_1 = (a+b)/2$.  If $f(x_1) < 0$, we will redefine $a = x_1$, but if $f(x_1) > 0$, we will redefine $b = x_1$.  We repeat this until we get the desired error.  The nice thing about bisection is that it will definitely converge as long as $f(a)$ and $f(b)$ have different signs; i.e., there is a root between $a$ and $b$.
+
+\bigskip
+
+\underline{Newton's method:  }
+
+Suppose we know that there is a root near $x_0$.  Lets find the tangent line of $f(x)$ at $x_0$ and record its intersection with the $x$-axis.  We repeat this process.
+
+Newton's method also has a general formula:
+%
+\begin{equation*}
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+\end{equation*}
+%
+This is derived directly from the equation of a line.  Consider two points on a line $(x_1, y_1)$ and $(x_2, y_2)$ (for us one point will be on the curve $f(x)$ and the other point will be on the $x$-axis).  Further, recall that the slope of the tangent line is just the derivative of the function at that point.  Then
+%
+\begin{equation*}
+m = \frac{y_1 - y_2}{x_1 - x_2} \Rightarrow f'(x_n) = \frac{f(x_n) - 0}{x_n - x_{n+1}} \Rightarrow (x_n - x_{n+1})f'(x_n) = f(x_n) \Rightarrow x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+\end{equation*}
+
+While it converges very fast, if it does converge, there are quite a few draw backs:
+%
+\begin{itemize}
+
+\item  Calculating $f'(x)$ may be prohibitive,
+\item  It may not converge (for example if there are many nearby roots),
+\item  It converges slowly for multiplicities.
+
+\end{itemize}
+
+
+
+\end{document}

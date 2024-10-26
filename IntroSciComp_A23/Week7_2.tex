@@ -1,0 +1,86 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 7 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 7 Part 2:  Numerical Integration}
+
+
+I just wanted this here for the sake of completion and for a quick source for the formulas to accompany the video.  For more illustrations please see the coding lectures.
+
+Interestingly integration is easier than differentiation even though in Calc II integration was harder.  That's because for integration we are just summing under the curve.  Also, since you have seen this in Calc II already, I did a short lecture, where I illustrated a few methods of numerical integration.  Please watch the video for the illustrations.  Here I will just include the formulas.
+
+\subsubsection*{Left Hand Rule}
+
+\begin{equation}
+\int_a^b f(x)dx \approx \sum_{n=0}^{N-1} f(x_n)\Delta x_n
+\end{equation}
+
+\subsubsection*{Right Hand Rule}
+
+\begin{equation}
+\int_a^b f(x)dx \approx \sum_{n=1}^N f(x_n)\Delta x_n
+\end{equation}
+
+\subsubsection*{Midpoint Rule}
+This is just the average of the left and right hand rule on the horizontal axis.
+
+\begin{equation}
+\int_a^b f(x)dx \approx \sum_{n=1}^N f(\frac{x_n+x_{n-1}}{2})\Delta x_n
+\end{equation}
+
+\subsubsection*{Trapezoid Rule}
+
+\begin{equation}
+\int_a^b f(x)dx \approx \sum_{n=1}^N \frac{f(x_n)+f(x_{n-1})}{2}\Delta x_n = \frac{\Delta x}{2}\left(f(x_0) + 2f(x_1) + 2f(x_2) + \cdots + 2f(x_{N-1}) + f(x_N)\right).
+\end{equation}
+
+\subsubsection*{Simpson's Rule}
+
+\begin{equation*}
+\int_a^b f(x)dx \approx \sum_{n=1}^N \frac{1}{6}\left[f(x_{n-1}) + 4f\left(\frac{x_{n-1}+x_n}{2}\right) + f(x_n)\right]\Delta x_n
+\end{equation*}
+
+
+\end{document}

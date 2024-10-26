@@ -1,0 +1,175 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 7 Theory Part 1
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 7 Part 1:  Finite Differences}
+
+\subsection*{Difference formulas}
+
+When you first learned about concepts such as velocity and acceleration, you learned it in terms of differences: $\Delta x/\Delta t$, etc.  Then in Calculus you learned about limits, so you could take $\Delta t \rightarrow 0$ and find the derivative.  Recall how difficult thinking in terms of infinitesimals was.  The computer can't think in terms of infinitesimals, so we must go back to differences.  However, we will develop more sophisticated differences to more accurately approximate our derivatives.
+
+In Calc I derivatives were introduced as using the slope of secant lines to approximate the slope of tangent lines (we illustrated this in the video):
+%
+\begin{equation}
+f'(x) \approx \frac{f(x+h) - f(x)}{(x+h) - (x)} = \frac{f(x+h)-f(x)}{h}; \qquad h = \Delta x
+\end{equation}
+%
+{\color{red}This is called a \underline{forward difference}}.  We can go backward as well using the same principle:
+%
+\begin{equation}
+f'(x) \approx \frac{f(x) - f(x-h)}{(x) - (x-h)} = \frac{f(x)-f(x-h)}{h}; \qquad h = \Delta x
+\end{equation}
+%
+{\color{red}This is called a \underline{backward difference}}.  Notice that if we average the forward and backward differences the error will also average geometrically.  In that averaging process we get
+%
+\begin{equation}
+f'(x) \approx \frac{f'_{\text{up}}+f'_{\text{down}}}{2} = \frac{f(x+h) - f(x-h)}{2h},
+\end{equation}
+%
+{\color{red}which is called the \underline{central difference}}.  Now lets take a second derivative,
+%
+\begin{equation}
+f''(x) = \frac{f'_{\text{up}}-f'_{\text{down}}}{h} = \frac{\frac{f(x+h)-f(x)}{h} - \frac{f(x)-f(x-h)}{h}}{h} = \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}.
+\end{equation}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\subsection*{Order of accuracy}
+
+Cool, we can find differences, but how do we calculate how accurate these differences are?  If our method is accurate, then as $\Delta x$ decreases the approximation gets closer to the exact solution; i.e., as $h \rightarrow 0$, $f'_{\text{approx.}} \rightarrow f'$.  Equivalently, we may write $f' = f'_{\text{approx.}} + O(h^n)$.  Where $O(h^n)$ denotes the order of accuracy.  This says that the approximation gets closer to the real function proportional to $h^n$.  Notice that $h^{n+1} < h^n$ since we are thinking of very small $h$, so the larger the exponent the more accurate the method.
+
+Let's now derive the order of accuracy for some of the methods we introduced above.  We know we can approximate functions using Taylor series, so lets go ahead and write some of the relevant Taylor series down.  Notice that we know what $x$ is and we want to approximate the derivative of $f$ at $x$ by going one step forward in time to $x+h$, so
+%
+\begin{align}
+f(x+h) &= f(x) + hf'(x) + \frac{h^2}{2}f''(x) + \frac{h^3}{3!}f'''(x) + \frac{h^4}{4!}f^{(4)}(x) + \cdots\label{Eq: f(x+h)}\\
+f(x-h) &= f(x) - hf'(x) + \frac{h^2}{2}f''(x) - \frac{h^3}{3!}f'''(x) + \frac{h^4}{4!}f^{(4)}(x) + \cdots\label{Eq: f(x-h)}
+\end{align}
+%
+We will use these Taylor series to construct the respective formulas and see what's left over.
+
+\subsubsection*{Forward difference}
+
+We use \eqref{Eq: f(x+h)}, and move $f(x)$ to the left and divide by $h$ to give us our forward difference
+%
+\begin{equation*}
+\frac{f(x+h) - f(x)}{h} = f'(x) + \frac{h}{2}f''(x) + \cdots
+\end{equation*}
+%
+and isolating $f'(x)$ give us
+%
+\begin{equation*}
+f'(x) = \frac{f(x+h) - f(x)}{h} - \frac{h}{2}f''(x) + \cdots = \frac{f(x+h) - f(x)}{h} + O(h)
+\end{equation*}
+%
+Notice that we don't care about signs or constants because this is all happening asymptotically; i.e., as $h \rightarrow 0$.  We also don't care about any terms that are higher than this order as they are all going to be smallest than this order.  The order tells us how quickly the approximation is converging to the true derivative.  As it is of order $O(h)$, the solution is converging proportion to the stepsize $h$; i.e., as the stepsize reduces by a factor of $10$, so does the error.
+
+The backward difference will have the exact same derivation so we will skip that.
+
+\subsubsection*{Central difference}
+
+This one is a bit more tricky as we will have to use both \eqref{Eq: f(x+h)} and \eqref{Eq: f(x-h)}.  Lets take \eqref{Eq: f(x+h)} and subtract \eqref{Eq: f(x-h)}, which gives us the numerator of the central difference,
+%
+\begin{equation*}
+f(x+h) - f(x-h) = 2hf'(x) + \frac{h^3}{3!}f'''(x) + \cdots
+\end{equation*}
+%
+Notice that everything else cancels out. Now if we divide through by $2h$ we get our central difference formula,
+%
+\begin{equation*}
+\frac{f(x+h)-f(x-h)}{2h} = f'(x) + \frac{h^2}{3}f'''(x) + \cdots
+\end{equation*}
+%
+And isolating $f'(x)$ gives us
+%
+\begin{equation*}
+f'(x) = \frac{f(x+h)-f(x-h)}{2h} - \frac{h^2}{3}f'''(x) + \cdots = \frac{f(x+h)-f(x-h)}{2h} + O(h^2)
+\end{equation*}
+%
+This means that if $h$ is reduced by a factor of $10$ the error decreases by a factor of $100$.
+
+\subsubsection*{Second derivative central difference}
+
+In this section we mainly dealt with first derivatives, but lets try a second derivative.  If we look at the numerator we have
+%
+\begin{equation*}
+f(x+h) - 2f(x) + f(x-h) = h^2f''(x) + \frac{h^4}{12}f^{(4)}(x) + \cdots
+\end{equation*}
+%
+Then if we divide through by $f^2$ and isolate our $f''(x)$, we get
+%
+\begin{equation*}
+f''(x) = \frac{f(x+h) - 2f(x) + f(x-h)}{h^2} + \frac{h^2}{12}f^{(4)}(x) + \cdots = \frac{f(x+h) - 2f(x) + f(x-h)}{h^2} + O(h^2).
+\end{equation*}
+%
+This too is an order $h^2$ scheme.
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
+\subsection*{Useful 2nd order formulas}
+
+We derived a few schemes, but here are a few more useful formulas that you may need on the coding project:
+
+\subsubsection*{$O(h^2)$ forward difference approximations}
+
+\begin{equation*}
+f'(x) = \frac{-3f(x) + 4f(x+h) - f(x+2h)}{2h}
+\end{equation*}
+
+\subsubsection*{$O(h^2)$ backward difference approximations}
+
+\begin{equation*}
+f'(x) = \frac{3f(x) - 4f(x-h) + f(x-2h)}{2h}
+\end{equation*}
+
+
+
+\end{document}
