@@ -1,0 +1,341 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 1 Theory 1
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+
+
+
+\section*{Week 1:  Arrays, Vectors, and Matrices}
+
+There are many different ways to arrange a set of numbers.  For example, we can draw a number line, or just scatter numbers randomly.  One way to arrange numbers is in an array (e.g. $(1, 3, 2, 5)$).  A vector is a type of array with certain mathematical properties.  for the purposes of this class, we will use the terms interchangeably.
+
+Another way to arrange numbers is in a matrix.  A matrix extends the definition of a vector to more than one dimension.  So, a vector is just a 1-dimensional matrix, and therefore they will have many similar properties.
+
+The best way to get a feel for these mathematical objects is with examples.  For now, we aren't trying to understand everything, we are just trying to get an intuitive feel.
+
+\begin{enumerate}
+
+\item[Ex:  ]  An example of where one might use a matrix is to represent systems of equations.  Consider
+%
+\begin{equation}
+\begin{split}
+2u + v + w &= 5\\
+4u - 6v &= -2\\
+-2u + 7v + 2w &= 9
+\end{split}
+\label{Eq: System}
+\end{equation}
+%
+Then the matrix
+%
+\begin{equation*}
+A_{3\times 3} = \begin{bmatrix}
+2 & 1 & 1\\
+4 & -6 & 0\\
+-2 & 7 & 2
+\end{bmatrix}
+\end{equation*}
+%
+is called the \underline{coefficient matrix} of \eqref{Eq: System}.  Also, the matrix $A$ is said to be
+a $3\times 3$ matrix as it has $3$ rows and $3$ columns.
+
+We can also write the right hand side of the equation as a vector:
+%
+\begin{equation*}
+\begin{bmatrix}
+5\\
+-2\\
+9
+\end{bmatrix}
+\end{equation*}
+
+Notice that the columns of the matrix $A$ form vectors and the rows of $A$ form other vectors.  These will be called column vectors and row vectors.
+
+\end{enumerate}
+
+
+We can also do arithmatic with vectors and matrices.  For operations that can be done on both vectors and matrices, I will show the example using a matrix.
+
+\bigskip
+
+\underline{Addition}
+
+Matrix addition works just like regular addition, and we just add the respective elements together.
+
+Consider
+%
+\begin{equation*}
+B_{3 \times 2} = \begin{bmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{bmatrix},\,
+C_{3 \times 2} = \begin{bmatrix}
+1 & 2\\
+-3 & 1\\
+1 & 2
+\end{bmatrix}
+\end{equation*}
+%
+then
+%
+\begin{equation*}
+B + C = \begin{bmatrix}
+3 & 3\\
+0 & 1\\
+1 & 6
+\end{bmatrix}
+\end{equation*}
+
+Further, the matrices $B$ and $C$ are of size $3 \times 2$ since they have $3$ rows and $2$ columns.  Since addition and subtraction are essentially the same operation, subtraction will work in the same way.
+
+\bigskip
+
+\underline{Scalar multiplication}
+
+A scalar is just a single number.  For example, the number $2$ is a scalar, and so is $\pi$ and $1/2$, etc.
+
+Just multiply the scalar term with each element,
+%
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2B = \begin{bmatrix}
+4 & 2\\
+6 & 0\\
+0 & 8
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2C = \begin{bmatrix}
+2 & 4\\
+-6 & 2\\
+2 & 4
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+2(B+C) = 2(C+B) = \begin{bmatrix}
+6 & 6\\
+0 & 2\\
+2 & 12
+\end{bmatrix}
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Transpose}
+
+We denote transpose with a T superscripted onto the matrix.  To transpose a matrix, we take the rows of the original matrix and turn them into the columns of the transposed matrix.
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+C^T = \begin{bmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+B^T = \begin{bmatrix}
+2 & 3 & 0\\
+1 & 0 & 4
+\end{bmatrix}
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Dot product}
+
+You may have seen this before in your Calculus courses.
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+\begin{bmatrix}
+1\\
+-3\\
+1
+\end{bmatrix}\cdot \begin{bmatrix}
+2\\
+3\\
+0
+\end{bmatrix} = 1\cdot 2 + (-3)\cdot 3 + 1\cdot 0 = -7.
+\end{equation*}
+
+\end{itemize}
+
+\bigskip
+
+\underline{Size}
+
+The size of a matrix is written as the number of rows by the number of columns, and if shown is given as
+a subscript.
+
+\bigskip
+
+\underline{Multiplication}
+
+We can only multiply matrices if the number of columns of the first is equivalent to the number of rows of the second.  In order to multiply we will do the dot product of the row of the first matrix with the column of the second.  Here is a generalization of that process for a $2 \times 2$ and $3 \times 3$, and it is a simple extension to other sizes.
+
+$2 \times 2$:
+%
+\begin{equation}
+\begin{pmatrix}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{pmatrix}\begin{pmatrix}
+b_{11} & b_{12}\\
+b_{21} & b_{22}
+\end{pmatrix} = \begin{pmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22}\\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{pmatrix}
+\end{equation}
+
+$3 \times 3$:
+%
+\begin{equation}
+\begin{pmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23}\\
+a_{31} & a_{32} & a_{33}
+\end{pmatrix}\begin{pmatrix}
+b_{11} & b_{12} & b_{13}\\
+b_{21} & b_{22} & b_{23}\\
+b_{31} & b_{32} & b_{33}
+\end{pmatrix} = \begin{pmatrix}
+a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} & a_{11}b_{12} + a_{12}b_{22} + a{13}b_{23}
+& a_{11}b_{13} + a_{12}b_{23} + a_{13}b_{33}\\
+a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31} & a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32}
+& a_{21}b_{13} + a_{22}b_{23} + a_{23}b_{33}\\
+a_{31}b_{11} + a_{32}b_{21} + a_{33}b_{31} & a_{31}b_{12} + a_{32}b_{22} + a_{33}b_{32}
+& a_{31}b_{13} + a_{32}b_{23} + a_{33}b_{33}
+\end{pmatrix}
+\end{equation}
+
+\begin{itemize}
+
+\item[Ex:  ]
+
+\begin{equation*}
+BC^T = \begin{pmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{pmatrix}\begin{pmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{pmatrix} = \begin{bmatrix}
+4 & -5 & 4\\
+3 & -9 & 3\\
+8 & 4 & 8
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  
+
+\begin{equation*}
+CB^T = \begin{pmatrix}
+1 & 2\\
+-3 & 1\\
+1 & 2
+\end{pmatrix}\begin{pmatrix}
+2 & 3 & 0\\
+1 & 0 & 4
+\end{pmatrix}
+\end{equation*}
+
+Notice that $BC^T = (CB^T)^T$ and vise-versa.
+
+\item[Ex:  ]  
+
+\begin{equation*}
+C^TB = \begin{pmatrix}
+1 & -3 & 1\\
+2 & 1 & 2
+\end{pmatrix}\begin{pmatrix}
+2 & 1\\
+3 & 0\\
+0 & 4
+\end{pmatrix} = \begin{bmatrix}
+-7 & 5\\
+7 & 10
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]
+
+\begin{equation*}
+B^TC = \begin{bmatrix}
+-7 & 7\\
+5 & 10
+\end{bmatrix}
+\end{equation*}
+
+Notice that now that we know how to transpose products, we did not have to do any work
+since $B^TC = (C^TB)^T$.
+
+\end{itemize}
+
+\bigskip
+
+\underline{The identity}
+
+There is a special matrix called the identity matrix that has $1$'s on its diagonal and $0$ everywhere else.  If you multiply any matrix with the identity you will get the original matrix back.  For example, the $2\times 2$ identity is
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+
+\end{document}

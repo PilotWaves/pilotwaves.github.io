@@ -1,0 +1,637 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 301 Rahman} \hfill Week 3 Theory Part 2
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Week 3 Part 2:  PA = LU Factorization}
+
+Lets now do Gaussian Elimination on matrices.  Again consider our equation from last time
+%
+\begin{equation}
+\begin{split}
+2u + v + w &= 5\\
+4u - 6v &= -2\\
+-2u + 7v + 2w &= 9
+\end{split}
+\end{equation}
+%
+we will write this as an augmented matrix by appending the right hand side (RHS) to the coefficient matrix,
+%
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red} 2}\\
+\\
+\end{matrix}\begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}5}\\
+4 & -6 & 0 & | & {\color{blue}-2}\\
+-2 & 7 & 2 & | & {\color{blue}9}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}-1}
+\end{matrix}\begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}5}\\
+0 & -8 & -2 & | & {\color{blue}-12}\\
+-2 & 7 & 2 & | & {\color{blue}9}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}-1}
+\end{matrix} \begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}5}\\
+0 & -8 & -2 & | & {\color{blue}-12}\\
+0 & 8 & 3 & | & {\color{blue}14}
+\end{bmatrix} = \begin{bmatrix}
+2 & 1 & 1 & | & {\color{blue}5}\\
+0 & -8 & -2 & | & {\color{blue}-12}\\
+0 & 0 & 1 & | & {\color{blue}2}
+\end{bmatrix}
+\end{equation*}
+%
+This means $\fbox{w = 2}$, then we plug into the second equation to get $\fbox{v = 1}$,
+and finally the first to get $\fbox{u = 1}$.
+
+The elements down the diagonal are called \underline{pivots}.  The augmented matrix is said to be in 
+\underline{row-echelon} form.  The original matrix,
+%
+\begin{equation*}
+\begin{bmatrix}
+2 & 1 & 1\\
+0 & -8 & -2\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+is said to be in \underline{upper triangular form}.
+
+All of the operations we talked about up to this point can be organized into matrices.
+For example, if we want to switch the first and second rows, but keep the third as is
+we would do
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+
+In terms of Gaussian elimination lets go back to our original system of equations
+%
+\begin{equation}
+Ax = \begin{pmatrix}
+2 & 1 & 1\\
+4 & -6 & 0\\
+-2 & 7 & 2
+\end{pmatrix}\begin{pmatrix}
+u\\
+v\\
+w
+\end{pmatrix} = \begin{pmatrix}
+5\\
+-2\\
+9
+\end{pmatrix} = b.
+\end{equation}
+%
+Recall that our final system was of the form
+%
+\begin{equation}
+Ux = \begin{pmatrix}
+2 & 1 & 1\\
+0 & -8 & -2\\
+0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}
+u\\
+v\\
+w
+\end{pmatrix} = \begin{pmatrix}
+5\\
+-12\\
+2
+\end{pmatrix} = c.
+\end{equation}
+%
+Lets see how we go from $A$ to $U$ using matrix operations.
+
+The first operation we did was subtract 2 times the first row from the second.  Recall that we kept the
+first and third rows intact, so they will be $1\quad 0 \quad 0$ and $0 \quad 0\quad 1$ respectively.
+In order to do -2 times the first and add it to the second we need $-2\quad 1\quad 0$ in the second
+row of the identity matrix; i.e.,
+%
+\begin{equation}
+E = \begin{bmatrix}
+1 & 0 & 0\\
+-2 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+In a similar fashion, the matrices for the next two operations will be
+%
+\begin{equation}
+F = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+1 & 0 & 1
+\end{bmatrix};\qquad G = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 1 & 1
+\end{bmatrix}
+\end{equation}
+%
+Then $GFEA = U$.  However, all we want from $U$ is to solve $x$.  Afterwards we want to get back to $A$ so
+we don't lose the original matrix.  In order to write $A$ in terms of $U$ lets simply invert:
+%
+\begin{equation}
+A = E^{-1}F^{-1}G^{-1}U.
+\end{equation}
+%
+To invert we just do the reverse row operation for each matrix; i.e.,
+%
+\begin{equation}
+E^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix};\qquad
+F = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+-1 & 0 & 1
+\end{bmatrix};\qquad G = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & -1 & 1
+\end{bmatrix}
+\end{equation}
+%
+Multiplying the matrices gives us
+%
+\begin{equation}
+ E^{-1}F^{-1}G^{-1} = \begin{bmatrix}
+ 1 & 0 & 0\\
+ 2 & 1 & 0\\
+ -1 & -1 & 1
+ \end{bmatrix} = L
+\end{equation}
+%
+We call the matrix $L$, \underline{lower triangular}, and we call $A = LU$, \underline{LU factorization}.
+
+Aside:  Notice that when we did Gaussian elimination, we wanted to solve $Ax = b$, but ended up
+solving $Ux = c$.  This means that since $A = LU$, $LUx = b \Rightarrow Lc = b$.  This is the very
+reason we are allowed to simply append the right hand side.
+
+We have been doing Gaussian elimination on regular matrices up to this point.  But what happens if we don't have all pivots or our pivots aren't in the right place?  Often we may have to switch rows in order to perform the Gaussian elimination.  Lets look at some examples.
+
+\begin{itemize}
+
+\item[Ex:  ]  
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 1\\
+1 & 2
+\end{bmatrix}
+\end{equation*}
+%
+Here we have a zero where the first pivot should be, and therefore can't proceed with the Gaussian elimination.  However, we can to a row exchange and get the pivot into the correct spot.  Since we only have two rows, the only row exchange is switching rows one and two.  Notice that this can be done via the matrix
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix};
+\end{equation*}
+%
+that is,
+%
+\begin{equation*}
+PA = \begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix}\begin{bmatrix}
+0 & 1\\
+1 & 2
+\end{bmatrix} = \begin{bmatrix}
+1 & 2\\
+0 & 1
+\end{bmatrix} = U,
+\end{equation*}
+%
+which is upper triangular.  Since we only had to do row exchanges that were taken care of by the matrix $P$, our lower triangular matrix will be the identity matrix because we did not have to do any other row operations:
+%
+\begin{equation*}
+L = \begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix} = I.
+\end{equation*}
+
+\item[Ex:  ]  Now lets do a harder problem.  Consider the matrix
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 1 & 2\\
+-1 & 1 & 3\\
+2 & -2 & 0
+\end{bmatrix}.
+\end{equation*}
+%
+Clearly this doesn't have a pivot in the correct spot.  If we were writing an algorithm to do this on the computer we would move all of the nonzero first entry rows to the top of the matrix (in this case the second and third rows would move to the first and second row position).  However, as humans we have the distinct advantage of intuition.  Notice that the first two entries of the second row will eliminate the first two entries of the third row.  Therefore, there is no reason to move the third row.  All we need to do is switch the second and first row and proceed with the Gaussian elimination:
+%
+\begin{equation*}
+\begin{matrix}
+ \\
+ \\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+-1 & 1 & 3\\
+0 & 1 & 2\\
+2 & -2 & 0
+\end{bmatrix} = \begin{bmatrix}
+-1 & 1 & 3\\
+0 & 1 & 2\\
+0 & 0 & 6
+\end{bmatrix} = U.
+\end{equation*}
+%
+Notice that we did the permutation first and then did the $LU$ factorization on the permuted matrix $PA$, so our $L$ will correspond to $PA$ and not $A$:
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix},\qquad L = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+-2 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\pagebreak
+
+Here are a few more Gaussian elimination examples.
+%
+\begin{enumerate}
+
+\item[Ex:   ]  
+
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red}3}
+\end{matrix}\begin{bmatrix}
+1 & 3 & | & {\color{blue}11}\\
+3 & 1 & | & {\color{blue}9}
+\end{bmatrix} = \begin{bmatrix}
+1 & 3 & | & {\color{blue}11}\\
+0 & -8 & | & {\color{blue}-24}
+\end{bmatrix}
+\Rightarrow \fbox{y = 3} \Rightarrow \fbox{x = 2};
+\end{equation*}
+
+\item[Ex:   ]  
+
+\begin{equation*}
+\begin{matrix}
+\\
+-2
+\end{matrix}
+\begin{bmatrix}
+-1 & 2 & | & {\color{blue}3/2}\\
+2 & -4 & | & {\color{blue}3}
+\end{bmatrix} = \begin{bmatrix}
+-1 & 2 & | & {\color{blue}3/2}\\
+0 & 0 & | & {\color{blue}-6}
+\end{bmatrix}
+\end{equation*}
+
+Clearly this matrix is singular, and since the RHS is nontrivial it will have \fbox{no solutions}.
+
+\item[Ex:   ]  
+
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red}3}\\
+{\color{red}2}
+\end{matrix}
+\begin{bmatrix}
+1 & 0 & -3 & | & {\color{blue}-2}\\
+3 & 1 & -2 & | & {\color{blue}5}\\
+2 & 2 & 1 & | & {\color{blue}4}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}2}
+\end{matrix}\begin{bmatrix}
+1 & 0 & -3 & | & {\color{blue}-2}\\
+0 & 1 & 7 & | & {\color{blue}11}\\
+0 & 2 & 7 & | & {\color{blue}8}
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & -3 & | & {\color{blue}-2}\\
+0 & 1 & 7 & | & {\color{blue}11}\\
+0 & 0 & -7 & | & {\color{blue}-14}
+\end{bmatrix}
+\end{equation*}
+%
+then $x_3 = 2$, $x_2 = -3$, $x_1 = 4$.
+
+\item[Ex:   ]  
+
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red}2}\\
+{\color{red}4}
+\end{matrix}
+\begin{bmatrix}
+2 & 0 & 3 & | & {\color{blue}3}\\
+4 & -3 & 7 & | & {\color{blue}5}\\
+8 & -9 & 15 & | & {\color{blue}10}
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}3}
+\end{matrix}\begin{bmatrix}
+2 & 0 & 3 & | & {\color{blue}3}\\
+0 & -3 & 1 & | &  {\color{blue}-1}\\
+0 & -9 & 3 & | &  {\color{blue}-2}
+\end{bmatrix} = \begin{bmatrix}
+2 & 0 & 3 & | & {\color{blue}3}\\
+0 & -3 & 1 & | &  {\color{blue}-1}\\
+0 & 0 & 0 & | & {\color{blue}1}
+\end{bmatrix}
+\end{equation*}
+
+Clearly this matrix is singular, and since the RHS is nontrivial it will have \fbox{no solutions}.
+
+\end{enumerate}
+
+
+Now lets do a couple of examples of LU factorization.
+
+\begin{enumerate}
+
+\item[Ex:  ]  
+%
+\begin{equation*}
+A = \begin{bmatrix}
+1 & 0\\
+-2 & 1
+\end{bmatrix}
+\end{equation*}
+%
+Notice that this is already in lower triangular form, so we don't have any work to do
+
+\begin{equation*}
+L = \begin{bmatrix}
+1 & 0\\
+-2 & 1
+\end{bmatrix};  U = \begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  
+
+\begin{equation*}
+\begin{matrix}
+\\
+{\color{red}2}\\
+{\color{red}-1}
+\end{matrix}
+\begin{bmatrix}
+3 & 0 & 1\\
+6 & 1 & 1\\
+-3 & 1 & 0
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}1}
+\end{matrix}
+\begin{bmatrix}
+3 & 0 & 1\\
+0 & 1 & -1\\
+0 & 1 & 1
+\end{bmatrix} = \begin{bmatrix}
+3 & 0 & 1\\
+0 & 1 & -1\\
+0 & 0 & 2
+\end{bmatrix} \Rightarrow U = \begin{bmatrix}
+3 & 0 & 1\\
+0 & 1 & -1\\
+0 & 0 & 2
+\end{bmatrix}
+\end{equation*}
+%
+\begin{equation*}
+E^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix},\,
+F^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+-1 & 0 & 1
+\end{bmatrix},\,
+G^{-1} = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 1 & 1
+\end{bmatrix} \Rightarrow
+L = \begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+-1 & 1 & 1
+\end{bmatrix}
+\end{equation*}
+
+
+\end{enumerate}
+
+
+Lets do a couple of more pivoting examples with permutation matrices.
+
+\item[Ex:  ]  In this next example we will be able to see \emph{a priori} that it is singular, however lets carry it to reduced row echelon form.
+%
+\begin{equation*}
+\begin{matrix}
+\curvearrowdown\curvearrowup\\
+\\
+\curvearrowdown\curvearrowup\\
+
+\end{matrix}\begin{bmatrix}
+0 & -1 & 0 & 1\\
+1 & 0 & -1 & 0\\
+0 & 2 & 0 & -2\\
+2 & 0 & 2 & 0
+\end{bmatrix} = \begin{matrix}
+\\
+\\
+{\color{red}2}\\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & -1 & 0 & 1\\
+2 & 0 & 2 & 0\\
+0 & 2 & 0 & -2
+\end{bmatrix} = \begin{bmatrix}
+{\color{red}\textcircled{1}} & 0 & -1 & 0\\
+0 & {\color{red}\textcircled{-1}} & 0 & 1\\
+0 & 0 & {\color{red}\textcircled{4}} & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{equation*}
+%
+Notice that this only has three pivots (circled in red).  In Linear Algebra, the number of pivots is called the {\color{red}\underline{rank}} of the matrix.  This has rank = 3.  However this is a $4\times 4$ matrix; i.e., we are missing a pivot even though we eliminated as much as we could.  When we get to this point, the matrix is called {\color{red}\underline{reduced row echelon}} since we cannot reduce any further.  Notice that an upper triangular matrix from the LU factorization of a nonsingular coefficient matrix is also reduced row echelon.  The augmented matrices from when we first started Gaussian elimination are never put into reduced row echelon form unless it is nonsingular.
+
+\pagebreak
+
+\item[Ex:  ]  Now lets do an example where we have to update our P and L matrices due to not choosing the perfect choice of P the first time around.  Consider the matrix
+with the following initial row exchange:
+%
+\begin{equation*}
+\begin{matrix}
+\stackinset{l}{0pt}{t}{6pt}{\resizebox{12pt}{32pt}{\curvearrowdown}}{}\\
+\\
+\\
+
+\end{matrix}\begin{matrix}
+\\
+\vspace{-14pt}\resizebox{12pt}{32pt}{\curvearrowup}\\
+\\
+
+\end{matrix}\begin{matrix}
+\curvearrowup\\
+\\
+\curvearrowdown\\
+
+\end{matrix}
+\begin{bmatrix}
+0 & -1 & 0 & 1\\
+1 & 0 & -1 & 0\\
+0 & 2 & 0 & -1\\
+2 & 0 & 2 & 0
+\end{bmatrix} = \begin{matrix}
+\\
+{\color{red}2}\\
+\\
+{\color{red}-2}
+\end{matrix}\begin{bmatrix}
+1 & 0 & -1 & 0\\
+2 & 0 & 2 & 0\\
+0 & -1 & 0 & 1\\
+0 & 2 & 0 & -1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & 0 & 4 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+Notice that we don't quite have all the pivots in the correct spots, so we need to do one more permutation.  However, we already did one permutation and started doing row operations.  Just doing another permutation and recording our lower triangular matrix will give us the wrong LU factorization.  Let us record what we have so far and use a tilde to signify that it is not in its final form:
+%
+\begin{equation*}
+\tilde{P} = \begin{bmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{bmatrix},\qquad
+\tilde{L} = \begin{bmatrix}
+1 & 0 & 0 & 0\\
+{\color{red}2} & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & {\color{red}-2} & 1
+\end{bmatrix}
+\end{equation*}
+%
+Now lets proceed with the Gaussian elimination and then see how we need to update $\tilde{L}$ and $\tilde{P}$.
+%
+\begin{equation*}
+\begin{matrix}
+\\
+\curvearrowup\curvearrowdown\\
+\\
+
+\end{matrix}
+\begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & 0 & 4 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 0 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & -1 & 0\\
+0 & -1 & 0 & 1\\
+0 & 0 & 4 & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix} = U
+\end{equation*}
+%
+This has ``full rank''; i.e., it has all of its pivots.  So this does have a LU factorization.  Lets now update the $\tilde{P}$ and $\tilde{L}$ matrices.  We see that we had to switch the second and third rows, so we have to do the same in $\tilde{P}$.  In $\tilde{L}$, however, if we switched the entire second and third rows it would no longer be lower triangular.  To get the correct $L$ we simply move the ``2'' to the same spot in the third row, and the ``-2'' to the second entry in the last row instead of the third.  We are moving any operations involving the 2nd row to the respective entries for operations on the 3rd row ({\color{red}It should be noted that I made an error about this in the lecture video}).  Then we get
+%
+\begin{equation*}
+P = \begin{bmatrix}
+0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{bmatrix},\qquad L = \begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+{\color{red}2} & 0 & 1 & 0\\
+0 & {\color{red}-2} & 0 & 1
+\end{bmatrix}
+\end{equation*}
+%
+There may be cases where multiple updates are necessary.  In those cases you would keep the matrices as tildes until the final update.
+
+\end{itemize}
+
+
+
+\end{document}
