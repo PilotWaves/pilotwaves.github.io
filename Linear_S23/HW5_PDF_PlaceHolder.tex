@@ -1,0 +1,205 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Homework 5 PDF Place Holder\\
+Due Monday, December 7, 2020
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+\newcommand*\circled[1]{\color{red}\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+
+\begin{enumerate}
+
+\item  Consider the vectors
+%
+\begin{equation*}
+u = \begin{bmatrix}
+1\\
+2\\
+-1
+\end{bmatrix};\qquad
+v = \begin{bmatrix}
+-1\\
+2\\
+-1
+\end{bmatrix}
+\end{equation*}
+
+\begin{enumerate}
+
+\item  Find the projection of $u$ onto $v$
+
+\item  Find the projection of $v$ onto $u$
+
+\end{enumerate}
+
+\item  Apply the Gram-Schmidt process to transform the given basis into an orthonormal basis.
+%
+\begin{equation*}
+\left\lbrace\begin{bmatrix}
+4\\
+-3
+\end{bmatrix},\qquad
+\begin{bmatrix}
+3\\
+2
+\end{bmatrix}\right\rbrace
+\end{equation*}
+
+In order to make it easier to match up with the solutions that will be on the submission page on Canvas, please apply Gram-Schmidt in the order the original vectors are in.
+
+\item  Apply the Gram-Schmidt process to transform the given basis into an orthonormal basis.
+%
+\begin{equation*}
+\left\lbrace\begin{bmatrix}
+0\\
+1\\
+2
+\end{bmatrix},\qquad
+\begin{bmatrix}
+2\\
+0\\
+0
+\end{bmatrix},\qquad
+\begin{bmatrix}
+1\\
+1\\
+1
+\end{bmatrix}\right\rbrace
+\end{equation*}
+
+In order to make it easier to match up with the solutions that will be on the submission page on Canvas, please apply Gram-Schmidt in the order the original vectors are in.
+
+\item  Find the least squares solution, $\hat{x}$ to
+%
+\begin{equation*}
+\begin{bmatrix}
+1 & -1 & 1\\
+1 & 1 & 1\\
+0 & 1 & 1\\
+1 & 0 & 1
+\end{bmatrix}x = \begin{bmatrix}
+2\\
+1\\
+0\\
+2
+\end{bmatrix}
+\end{equation*}
+
+\item  Find the least squares solution, $\hat{x}$ to
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & 2 & 1\\
+1 & 1 & -1\\
+2 & 1 & 0\\
+1 & 1 & 1\\
+0 & 2 & -1
+\end{bmatrix}x = \begin{bmatrix}
+1\\
+0\\
+1\\
+-1\\
+0
+\end{bmatrix}
+\end{equation*}
+
+\item  Find a quadratic fit for data points $(-2, 0),\, (-1,0),\, (0,1),\, (1,2),\, (2,5)$.
+This is similar to finding a linear fit, which I showed in the lectures.  For a linear fit
+we use the equation $y = mx + b$ to write down our matrix equation.  For a quadratic fit
+we will use the same idea, except with the equation $y = ax^2 + bx + c$.  Notice that the
+matrix for the quadratic fit will have three columns.  
+
+I didn't show this in the lecture or notes because I want you to practice going from something
+we did (linear fit) to something we didn't (quadratic fit) using the ideas of the linear fit.
+I will put a problem on the Final that goes a few steps beyond, but you can again use the same
+ideas.
+
+\item  Solve the eigenvalue problem for the matrix.  Please find the eigenvalues and eigenvectors.
+%
+\begin{equation*}
+\begin{bmatrix}
+2 & -2 & 3\\
+0 & 3 & -2\\
+0 & -1 & 2
+\end{bmatrix}
+\end{equation*}
+
+\item  Solve the eigenvalue problem for the matrix.  Please find the eigenvalues and eigenvectors.
+%
+\begin{equation*}
+\begin{bmatrix}
+0 & -3 & 5\\
+-4 & 4 & -10\\
+0 & 0 & 4
+\end{bmatrix}
+\end{equation*}
+
+Please refrain from exchanging rows as that will give you the wrong answer because with
+any row exchange you would be solving the problem $PAx = \lambda x$, which is not equivalent
+to the problem $Ax = \lambda x$.
+
+\item  If a diagonalization exists, find the matrices $S$ and $\Lambda$ from $A = S\Lambda S^{-1}$.
+If a diagonalization does not exist, state the reasoning.
+%
+\begin{equation*}
+A = \begin{bmatrix}
+2 & -2 & 3\\
+0 & 3 & -2\\
+0 & -1 & 2
+\end{bmatrix}
+\end{equation*}
+
+\item  If a diagonalization exists, find the matrices $S$ and $\Lambda$ from $A = S\Lambda S^{-1}$.
+If a diagonalization does not exist, state the reasoning.
+%
+\begin{equation*}
+A = \begin{bmatrix}
+1 & -2 & 1\\
+0 & 1 & 4\\
+0 & 0 & 2
+\end{bmatrix}
+\end{equation*}
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,203 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\newenvironment{handwave}{%
+  \renewcommand{\proofname}{Handwavey proof}\proof}{\endproof}
+\newenvironment{altpf}{%
+  \renewcommand{\proofname}{Alternate proof}\proof}{\endproof}
+  %\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 9
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+\newcommand*\circled[1]{\color{red}\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+
+\section*{8.3 Diagonalization}
+
+Suppose $A_{n\times n}$ has $n$ linearly independent eigenvectors.  If these eigenvectors are the columns of a matrix $S$, then $A$ has a factorization such that $S^{-1}AS = \Lambda$ is a diagonal matrix where the eigenvalues of $A$ are on the diagonal.  We can see this in the following calculation,
+%
+\begin{align*}
+AS &= A\begin{bmatrix}
+\vline & \vline & & \vline\\
+x_1 & x_2 & \cdots & x_n\\
+\vline & \vline & & \vline
+\end{bmatrix} = \begin{bmatrix}
+\vline & \vline & & \vline\\
+Ax_1 & Ax_2 & \cdots & Ax_n\\
+\vline & \vline & & \vline
+\end{bmatrix} = \begin{bmatrix}
+\vline & \vline & & \vline\\
+\lambda_1x_1 & \lambda_2x_2 & \cdots & \lambda_nx_n\\
+\vline & \vline & & \vline
+\end{bmatrix}\\
+&= \begin{bmatrix}
+\vline & \vline & & \vline\\
+x_1 & x_2 & \cdots & x_n\\
+\vline & \vline & & \vline
+\end{bmatrix}\begin{bmatrix}
+\lambda_1 & &  & \bigzero\\
+ & \lambda_2 &  & \\
+ & & \ddots & \\
+\bigzero & & & \lambda_n
+\end{bmatrix} = S\Lambda \Rightarrow A = S\Lambda S^{-1}
+\end{align*}
+
+{\color{red} A matrix is not diagonalizable if the eigenvectors are not linearly independent.}
+
+Caveat:  there is no direct connection between this and invertibility.  Diagonalizability depends on the linear independence of eigenvectors and invertibility depends on the linear independence of the columns of a matrix.
+
+Now lets look at some examples.
+
+\begin{enumerate}
+
+\item[Ex:  ]  Find $S$ and $\Lambda$ in the $A = S\Lambda S^{-1}$ factorization of
+%
+\begin{equation*}
+A = \begin{bmatrix}
+1/2 & 1/2\\
+1/2 & 1/2
+\end{bmatrix}
+\end{equation*}
+
+\textbf{Solution:  }  First we find the eigenvalues
+%
+\begin{equation*}
+\begin{vmatrix}
+1/2 - \lambda & 1/2\\
+1/2 & 1/2 - \lambda
+\end{vmatrix} = \frac{1}{4} - \lambda + \lambda^2 - \frac{1}{4} = \lambda(\lambda - 1) = 0 \Rightarrow \lambda = 0, 1
+\end{equation*}
+%
+Next we find the eigenvectors
+%
+\begin{equation*}
+\begin{pmatrix}
+1/2 - \lambda & 1/2\\
+1/2 & 1/2 - \lambda
+\end{pmatrix}x = 0 \Rightarrow x = \begin{pmatrix}
+1\\
+-1
+\end{pmatrix},\, \begin{pmatrix}
+1\\
+1
+\end{pmatrix}
+\end{equation*}
+%
+Then
+%
+\begin{equation*}
+\Lambda = \begin{bmatrix}
+0 & 0\\
+0 & 1
+\end{bmatrix},\qquad S = \begin{bmatrix}
+1 & 1\\
+-1 & 1
+\end{bmatrix}
+\end{equation*}
+
+\item[Ex:  ]  Find $S$ and $\Lambda$ in the $K = S\Lambda S^{-1}$ factorization of
+%
+\begin{equation*}
+K = \begin{bmatrix}
+0 & -1\\
+1 & 0
+\end{bmatrix}
+\end{equation*}
+
+First we find the eigenvalues,
+%
+\begin{equation*}
+\begin{vmatrix}
+-\lambda & -1\\
+1 & -\lambda
+\end{vmatrix} = \lambda^2 + 1 = 0 \Rightarrow \lambda = \pm i.
+\end{equation*}
+%
+Next we find the eignevectors
+%
+\begin{equation*}
+\begin{pmatrix}
+-\lambda & -1\\
+1 & -\lambda
+\end{pmatrix}x = 0 \Rightarrow x = \begin{pmatrix}
+1\\
+-i
+\end{pmatrix},\, \begin{pmatrix}
+1\\
+i
+\end{pmatrix}
+\end{equation*}
+%
+Then
+%
+\begin{equation*}
+\Lambda = \begin{bmatrix}
+i & 0\\
+0 & -1
+\end{bmatrix},\quad S = \begin{bmatrix}
+1 & 1\\
+-i & i
+\end{bmatrix}
+\end{equation*}
+
+\end{enumerate}
+
+Lets look at a couple of interesting results that may be useful to us.
+
+\begin{thm}
+The eigenvalues of $A^2$ is $\lambda_1^2,\,\lambda_2^2,\,\ldots,\,\lambda_n^2$ if the eigenvalues of $A$ are $\lambda_1,\,\lambda_2,\,\ldots,\,\lambda_n$.
+\end{thm}
+
+\begin{proof}
+\begin{equation*}
+A^2x = A(Ax) = A(\lambda x) = \lambda Ax = \lambda^2 x.
+\end{equation*}
+\end{proof}
+
+\begin{altpf}
+\begin{equation*}
+A = S\Lambda S^{-1} \Rightarrow A^2 = \left(S\Lambda S^{-1}\right)\left(S\Lambda S^{-1}\right)
+= S\Lambda S^{-1}S\Lambda S^{-1} = S\Lambda\Lambda S^{-1} = S\Lambda^2S^{-1}.
+\end{equation*}
+\end{altpf}
+
+{\color{blue} We can extend this to higher powers and inverses; i.e., $A^k = S\Lambda^k S^{-1}$
+and $A^{-1} = S\Lambda^{-1}S^{-1}$ if $\lambda_1,\,\ldots,\,\lambda_n \neq 0$.}
+
+
+\end{document}

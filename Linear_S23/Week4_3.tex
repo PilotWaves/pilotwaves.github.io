@@ -1,0 +1,137 @@
+\documentclass[reqno]{amsart}
+
+
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage[margin = 1cm]{geometry}
+\usepackage{color}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{stackengine}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\begin{flushleft}
+{\sc \Large AMATH 352 Rahman} \hfill Week 4
+\bigskip
+\end{flushleft}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand{\?}{\stackrel{?}{=}}
+\renewcommand{\varphi}{\phi}
+\newcommand{\card}{\text{Card}}
+\newcommand{\bigzero}{\text{\Huge 0}}
+\newcommand{\curvearrowdown}{{\color{red}\rotatebox{90}{$\curvearrowleft$}}}
+\newcommand{\curvearrowup}{{\color{red}\rotatebox{90}{$\curvearrowright$}}}
+
+
+
+\section*{Sec. 9.4 Iterative Methods}
+
+\bigskip
+
+\underline{\color{blue}Scalar iteration}
+
+Suppose we want to solve $(1-m)x = b; |m| < 1$, then clearly $x = b/(1-m)$.  However, we want to see how these numerical methods are derived, so lets pretend that we do not know the solution.  Notice that $(1-m)x = b$, then
+%
+\begin{equation}
+x = mx + b
+\end{equation}
+%
+This is just the equation of a fixed oint of a recurrence relation.  If the recurrence is stable,
+%
+\begin{equation}
+x_{n+1} = mx_n + b
+\end{equation}
+%
+will approximate the solution.  If we assume that $x_0 = 0$ we get
+%
+\begin{equation*}
+x_1 = b \Rightarrow x_2 = mb + b \Rightarrow \cdots \Rightarrow x_n = m^{n-1}b + m^{n-2}b + \cdots + m^2b + mb + b.
+\end{equation*}
+%
+This is just a geometric series in $m$, so
+%
+\begin{equation}
+x_n = \frac{1-m^n}{1-m}b.
+\end{equation}
+%
+Notice that if $|m| < 1$,
+%
+\begin{equation*}
+x_n \rightarrow \frac{b}{1-m} \qquad \text{as} \qquad n \rightarrow \infty
+\end{equation*}
+
+\bigskip
+
+\underline{\color{blue}Matrix iteration}
+
+Similarly, for matrices, we can do $x_{n+1} = Mx_n + b$, but this gives us the fixed point equation
+%
+\begin{equation}
+x = Mx + b \Rightarrow (I-M)x = b.
+\end{equation}
+%
+If $A = I - M$, then this is our infamous $Ax = b$ problem.  Notice that $M^n$ has to be decreasing as $n \rightarrow \infty$ for our algorithm to converge.  Also, $I - M$ must be nonsingular.
+
+\bigskip
+
+\underline{\color{blue}Jacobi Method}
+
+Let $A = L+D+U$, then
+%
+\begin{equation*}
+Ax = (L+D+U)x = b \Rightarrow D^{-1}(L+D+U)x = D^{-1}b \Rightarrow x + D^{-1}(L+U)x = D^{-1}b,
+\end{equation*}
+%
+which yields
+%
+\begin{equation}
+x_{n+1} = -D^{-1}(L+U)x_n + D^{-1}b.
+\end{equation}
+%
+Here $M = -D^{-1}(L+U)$ and $b$ is replaced with $D^{-1}b$.
+
+\bigskip
+
+\underline{\color{blue}Gauss-Seidel Method}
+
+Suppose $L$ is faster to invert than $A$, and not much slower to invert than $D$, then we can invert $L+D$,
+%
+\begin{equation*}
+(L+D)^{-1}(L+D+U)x = (L+D)^{-1}b \Rightarrow x + (L+D)^{-1}Ux = (L+D)^{-1}b,
+\end{equation*}
+%
+and
+%
+\begin{equation}
+x_{n+1} = -(L+D)^{-1}Ux_n + (L+D)^{-1}b.
+\end{equation}
+
+\bigskip
+
+\underline{\color{blue}Convergence}
+
+\begin{definition}
+\color{red} An $n\times n$ matrix $A$ is said to be \underline{strictly diagonally dominant} if
+%
+\begin{equation}
+|a_{ii}| > \sum_{j=1,\, i\neq j}^n |a_{ij}|,\quad \forall\quad 1\leq i\leq n.
+\end{equation}
+\end{definition}
+%
+
+While we won't prove it in this class, but it can be shown that the Jacobi and Gauss-Seidel methods are guaranteed to converge only if the matrix is strictly diagonally dominant.
+
+\end{document}
